@@ -1,4 +1,5 @@
 
+"use client";
 import type { Course } from '@/types';
 import Link from 'next/link';
 import Image from 'next/image';
