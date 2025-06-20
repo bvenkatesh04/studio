@@ -60,7 +60,7 @@ export default function Header() {
               <span className="sr-only">Search</span>
             </Button>
           </form>
-          {/* Removed UserCircle icon
+          {/* Removed UserCircle icon and profile link
           <Link href="/profile" aria-label="User Profile">
             <Button variant="ghost" size="icon" className="text-primary hover:text-primary/80">
               <UserCircle size={28} />
