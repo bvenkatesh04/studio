@@ -15,6 +15,14 @@ const sampleModulesTech: Module[] = [
   { id: 'mt_integration', title: 'Integration and Advanced Usage', content: 'Understand how to integrate with other systems or use advanced features of the subject. This module covers APIs, tool integrations, or complex configurations.', duration: '50 minutes' },
 ];
 
+const sampleModulesManualTesting: Module[] = [
+  { id: 'mt_intro_stlc', title: 'Introduction to STLC & SDLC', content: 'Understand the Software Testing Life Cycle (STLC) and Software Development Life Cycle (SDLC). Learn how testing fits into the development process and the different phases involved. Explore various testing models like Waterfall, Agile, and V-Model.', duration: '60 minutes', videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+  { id: 'mt_test_design', title: 'Test Design Techniques', content: 'Learn various black-box and white-box test design techniques such as Equivalence Partitioning, Boundary Value Analysis, Decision Table Testing, State Transition Testing, and Use Case Testing. Practical examples will be provided for each technique.', duration: '90 minutes' },
+  { id: 'mt_test_execution', title: 'Test Execution and Reporting', content: 'Covering the process of executing test cases, logging defects, and reporting test results. Learn about different types of testing like Functional, Non-Functional, Regression, and Retesting. Defect life cycle management will also be discussed.', duration: '75 minutes', videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'  },
+  { id: 'mt_agile_testing', title: 'Agile Testing & Tools', content: 'Deep dive into testing methodologies in an Agile environment, including Scrum and Kanban. Introduction to popular test management tools like JIRA, Zephyr, or TestRail. Learn about exploratory testing and session-based test management.', duration: '60 minutes' },
+];
+
+
 export const courses: Course[] = [
   {
     id: 'java-masterclass',
@@ -28,6 +36,19 @@ export const courses: Course[] = [
     instructor: 'Dr. Java Expert',
     rating: 4.8,
     enrolledStudents: 2500,
+  },
+  {
+    id: 'aws-solutions-architect-associate',
+    title: 'AWS Certified Solutions Architect - Associate Prep',
+    description: 'Prepare for the AWS SAA-C03 exam. Learn to design resilient, high-performing, secure, and cost-optimized architectures.',
+    longDescription: 'This course is tailored for the AWS Certified Solutions Architect - Associate (SAA-C03) exam. It covers core AWS services, including EC2, S3, VPC, RDS, IAM, Lambda, CloudFormation, and teaches best practices for designing solutions on AWS.',
+    category: 'Cloud Computing',
+    imageUrl: 'https://placehold.co/600x400.png',
+    imageHint: 'aws cloud architecture',
+    modules: sampleModulesTech,
+    instructor: 'Cloud Architect Pro',
+    rating: 4.7,
+    enrolledStudents: 2800,
   },
   {
     id: 'selenium-webdriver-automation',
@@ -58,28 +79,15 @@ export const courses: Course[] = [
   {
     id: 'devops-bootcamp-full',
     title: 'The Complete DevOps Bootcamp',
-    description: 'Master DevOps tools: Kubernetes, Docker, Terraform, Ansible, Jenkins, CI/CD, Git, Prometheus, Grafana, ELK, Jfrog Artifactory and more.',
-    longDescription: 'This bootcamp provides a comprehensive overview of DevOps principles and tools. Learn containerization with Docker, orchestration with Kubernetes, IaC with Terraform, configuration management with Ansible, CI/CD with Jenkins, Maven, GitLab & GitHub Actions, monitoring with Prometheus & Grafana, logging with ELK Stack, artifact management with Jfrog Artifactory, and version control with Git. Includes hands-on labs and real-world scenarios.',
+    description: 'Master DevOps tools: Kubernetes, Docker, Terraform, Ansible, Jenkins, CI/CD, Git, Prometheus, Grafana, ELK, Jfrog Artifactory, ArgoCD, Helm, Vault, and more.',
+    longDescription: 'This bootcamp provides a comprehensive overview of DevOps principles and tools. Learn containerization with Docker, orchestration with Kubernetes, IaC with Terraform, configuration management with Ansible, CI/CD with Jenkins, Maven, GitLab & GitHub Actions, monitoring with Prometheus & Grafana, logging with ELK Stack, artifact management with Jfrog Artifactory, GitOps with ArgoCD, package management with Helm, secrets management with Vault and version control with Git. Includes hands-on labs and real-world scenarios.',
     category: 'DevOps',
     imageUrl: 'https://placehold.co/600x400.png',
-    imageHint: 'devops tools',
+    imageHint: 'devops tools pipeline',
     modules: sampleModulesGeneric,
     instructor: 'DevOps Guru',
     rating: 4.8,
     enrolledStudents: 3200,
-  },
-  {
-    id: 'aws-solutions-architect-associate',
-    title: 'AWS Certified Solutions Architect - Associate Prep',
-    description: 'Prepare for the AWS SAA-C03 exam. Learn to design resilient, high-performing, secure, and cost-optimized architectures.',
-    longDescription: 'This course is tailored for the AWS Certified Solutions Architect - Associate (SAA-C03) exam. It covers core AWS services, including EC2, S3, VPC, RDS, IAM, Lambda, CloudFormation, and teaches best practices for designing solutions on AWS.',
-    category: 'Cloud Computing',
-    imageUrl: 'https://placehold.co/600x400.png',
-    imageHint: 'aws cloud architecture',
-    modules: sampleModulesTech,
-    instructor: 'Cloud Architect Pro',
-    rating: 4.7,
-    enrolledStudents: 2800,
   },
   {
     id: 'playwright-modern-testing',
@@ -88,12 +96,25 @@ export const courses: Course[] = [
     longDescription: "Explore Playwright for robust end-to-end testing. This course covers Playwright's powerful features like auto-waits, network interception, multi-page emulation, and its API for JavaScript/TypeScript, Python, Java, and C#.",
     category: 'Software Testing',
     imageUrl: 'https://placehold.co/600x400.png',
-    imageHint: 'playwright automation',
+    imageHint: 'playwright automation browser',
     modules: sampleModulesGeneric.slice(0,3),
     instructor: 'Wright Tester',
     rating: 4.6,
     enrolledStudents: 1200,
   },
+  {
+    id: 'manual-testing-fundamentals',
+    title: 'Manual Testing Fundamentals & Best Practices',
+    description: 'Master the core concepts and techniques of manual software testing.',
+    longDescription: 'This course covers the fundamentals of manual testing, including test planning, test case design, execution, defect reporting, and various testing types (functional, usability, exploratory). Learn essential skills for ensuring software quality without automation. Ideal for aspiring QA professionals and those new to software testing.',
+    category: 'Software Testing',
+    imageUrl: 'https://placehold.co/600x400.png',
+    imageHint: 'quality assurance checklist',
+    modules: sampleModulesManualTesting,
+    instructor: 'QA Lead Expert',
+    rating: 4.5,
+    enrolledStudents: 1500,
+  }
 ];
 
 export const userProfile: UserProfile = {
@@ -102,11 +123,12 @@ export const userProfile: UserProfile = {
   email: 'alex.johnson@example.com',
   avatarUrl: 'https://placehold.co/100x100.png',
   bio: 'Passionate software developer and lifelong learner. Currently exploring cutting-edge tech.',
-  coursesEnrolled: courses.filter(c => ['java-masterclass', 'aws-solutions-architect-associate'].includes(c.id)),
+  coursesEnrolled: courses.filter(c => ['java-masterclass', 'aws-solutions-architect-associate', 'manual-testing-fundamentals'].includes(c.id)),
   coursesCompleted: courses.filter(c => ['selenium-webdriver-automation'].includes(c.id)),
   progress: [
     { courseId: 'java-masterclass', completedModules: ['m_intro'] },
     { courseId: 'aws-solutions-architect-associate', completedModules: ['mt_deep_dive'] },
+    { courseId: 'manual-testing-fundamentals', completedModules: ['mt_intro_stlc'] },
   ],
 };
 
@@ -116,5 +138,3 @@ export const getModuleById = (courseId: string, moduleId: string): Module | unde
   const course = getCourseById(courseId);
   return course?.modules.find(module => module.id === moduleId);
 };
-
-    
