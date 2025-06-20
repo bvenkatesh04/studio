@@ -4,52 +4,52 @@
 
 @layer base {
   :root {
-    --background: 220 30% 12%; /* Deep, cool dark blue */
-    --foreground: 210 50% 95%; /* Soft, off-white */
+    --background: 140 60% 10%; /* Very dark, slightly desaturated green */
+    --foreground: 120 20% 95%; /* Very light, slightly greenish white */
 
-    --card: 220 25% 18%; /* Slightly lighter than bg, cool tone */
-    --card-foreground: 210 40% 90%;
+    --card: 140 50% 15%; /* Dark green, slightly lighter than bg */
+    --card-foreground: 120 20% 90%;
 
-    --popover: 220 25% 16%; /* Slightly darker than card for layering */
-    --popover-foreground: 210 40% 90%;
+    --popover: 140 50% 12%; /* Darker green for popovers */
+    --popover-foreground: 120 20% 90%;
 
-    --primary: 190 80% 50%; /* Vibrant Cyan/Teal */
-    --primary-foreground: 200 100% 10%; /* Very dark (near black) for high contrast on Cyan */
+    --primary: 130 65% 45%; /* Vibrant, fresh green */
+    --primary-foreground: 130 100% 5%; /* Very dark green for high contrast on primary */
 
-    --secondary: 220 20% 25%; /* A muted, lighter cool tone */
-    --secondary-foreground: 210 30% 85%;
+    --secondary: 140 40% 25%; /* Muted, darker green */
+    --secondary-foreground: 120 15% 85%;
 
-    --muted: 220 15% 30%;
-    --muted-foreground: 220 10% 55%; /* Softer, cool gray */
+    --muted: 140 30% 30%; /* Desaturated green */
+    --muted-foreground: 140 15% 60%; /* Softer, desaturated green-gray */
 
-    --accent: 280 70% 65%; /* Vibrant Purple/Violet */
-    --accent-foreground: 210 100% 98%; /* White/very light for Purple */
+    --accent: 80 70% 55%; /* Bright lime/yellowish green as accent */
+    --accent-foreground: 80 100% 10%; /* Dark for contrast on lime green */
 
-    --destructive: 0 70% 55%; /* Slightly more saturated red */
-    --destructive-foreground: 0 0% 100%;
+    --destructive: 0 70% 55%; /* Standard red */
+    --destructive-foreground: 0 0% 100%; /* White for destructive */
 
-    --border: 220 15% 28%; /* Subtle, cool border */
-    --input: 220 20% 22%; /* Slightly darker than card, for inputs */
-    --ring: 190 80% 50%; /* Matches new Primary */
+    --border: 140 40% 22%; /* Subtle, dark green border */
+    --input: 140 45% 20%; /* Dark green for inputs */
+    --ring: 130 65% 45%; /* Matches primary green */
 
-    --radius: 0.75rem; /* Smoother corners */
+    --radius: 0.75rem; /* Keep existing smoother corners */
 
-    /* Chart colors - can be adjusted if charts are used */
-    --chart-1: 190 70% 60%; /* Lighter Cyan */
-    --chart-2: 280 60% 70%; /* Lighter Violet */
-    --chart-3: 220 40% 50%; /* Mid Blue */
-    --chart-4: 170 50% 55%; /* Tealish Green */
-    --chart-5: 300 60% 60%; /* Magenta/Pinkish */
+    /* Chart colors harmonized with green theme */
+    --chart-1: 130 60% 55%; /* Lighter primary green */
+    --chart-2: 80 60% 60%; /* Lighter accent lime */
+    --chart-3: 140 50% 40%; /* Mid-tone green */
+    --chart-4: 120 40% 50%; /* Slightly desaturated green */
+    --chart-5: 100 50% 60%; /* Another shade of green, more yellow-ish */
 
-    /* Sidebar specific colors */
-    --sidebar-background: 220 28% 14%; /* Slightly different from main bg, still dark & cool */
-    --sidebar-foreground: 210 40% 88%;
-    --sidebar-primary: 190 80% 50%; /* Match main primary */
-    --sidebar-primary-foreground: 200 100% 10%; /* Match main primary foreground */
-    --sidebar-accent: 280 70% 65%; /* Match main accent */
-    --sidebar-accent-foreground: 210 100% 98%; /* Match main accent foreground */
-    --sidebar-border: 220 15% 25%;
-    --sidebar-ring: 190 80% 50%;
+    /* Sidebar specific colors for green theme */
+    --sidebar-background: 140 55% 12%; /* Slightly different dark green for sidebar */
+    --sidebar-foreground: 120 20% 92%;
+    --sidebar-primary: 130 65% 45%; /* Match main primary green */
+    --sidebar-primary-foreground: 130 100% 5%; /* Match main primary foreground */
+    --sidebar-accent: 80 70% 55%; /* Match main accent lime */
+    --sidebar-accent-foreground: 80 100% 10%; /* Match main accent foreground */
+    --sidebar-border: 140 40% 20%;
+    --sidebar-ring: 130 65% 45%;
   }
 }
 
