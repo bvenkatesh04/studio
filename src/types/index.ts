@@ -21,13 +21,4 @@ export interface Course {
   enrolledStudents?: number;
 }
 
-export interface UserProfile {
-  id: string;
-  name: string;
-  email: string;
-  avatarUrl: string;
-  bio?: string;
-  coursesEnrolled: Course[]; // Simplified: just an array of courses
-  coursesCompleted: Course[];
-  progress?: Array<{ courseId: string; completedModules: string[] }>;
-}
+// Removed UserProfile interface as it's no longer needed.

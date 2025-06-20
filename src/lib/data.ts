@@ -1,5 +1,5 @@
 
-import type { Course, UserProfile, Module } from '@/types';
+import type { Course, Module } from '@/types';
 
 const sampleModulesGeneric: Module[] = [
   { id: 'm_intro', title: 'Introduction to Core Concepts', content: 'This module covers the fundamental principles and theories. We explore the history and evolution of the subject, laying a strong foundation for advanced topics. Key definitions and terminologies will be introduced and explained with practical examples.', duration: '45 minutes', videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
@@ -22,8 +22,38 @@ const sampleModulesManualTesting: Module[] = [
   { id: 'mt_agile_testing', title: 'Agile Testing & Tools', content: 'Deep dive into testing methodologies in an Agile environment, including Scrum and Kanban. Introduction to popular test management tools like JIRA, Zephyr, or TestRail. Learn about exploratory testing and session-based test management.', duration: '60 minutes' },
 ];
 
+const sampleModulesDevOps: Module[] = [
+    { id: 'do_intro', title: 'Introduction to DevOps Principles', content: 'Understand the core concepts of DevOps, C.A.L.M.S. framework, and the benefits of adopting a DevOps culture. Overview of the DevOps lifecycle and toolchain.', duration: '60 minutes', videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+    { id: 'do_git', title: 'Version Control with Git & GitHub/GitLab', content: 'Master Git for version control, including branching, merging, rebasing, and pull requests. Learn to collaborate effectively using GitHub and GitLab.', duration: '90 minutes' },
+    { id: 'do_docker', title: 'Containerization with Docker', content: 'Learn to build, manage, and deploy applications using Docker containers. Cover Dockerfiles, Docker Compose, and best practices for containerization.', duration: '120 minutes', videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+    { id: 'do_kubernetes', title: 'Orchestration with Kubernetes (K8s)', content: 'Deep dive into Kubernetes for container orchestration. Understand Pods, Services, Deployments, ConfigMaps, Secrets, and Helm charts.', duration: '150 minutes' },
+    { id: 'do_terraform', title: 'Infrastructure as Code (IaC) with Terraform', content: 'Manage cloud infrastructure using Terraform. Learn to write HCL, manage state, and provision resources across various cloud providers.', duration: '120 minutes' },
+    { id: 'do_ansible', title: 'Configuration Management with Ansible', content: 'Automate configuration management using Ansible. Write playbooks, manage inventories, and ensure consistent environments.', duration: '90 minutes' },
+    { id: 'do_jenkins', title: 'CI/CD with Jenkins & Maven', content: 'Set up CI/CD pipelines using Jenkins. Integrate with Maven for build automation and automate testing and deployment processes.', duration: '120 minutes', videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+    { id: 'do_monitoring', title: 'Monitoring with Prometheus & Grafana', content: 'Implement monitoring solutions using Prometheus for metrics collection and Grafana for visualization. Set up alerts and dashboards.', duration: '90 minutes' },
+    { id: 'do_logging', title: 'Logging with ELK Stack (Elasticsearch, Logstash, Kibana)', content: 'Centralize and analyze logs using the ELK Stack. Configure Logstash for data ingestion, Elasticsearch for storage and search, and Kibana for visualization.', duration: '90 minutes' },
+    { id: 'do_artifactory', title: 'Artifact Management with JFrog Artifactory', content: 'Manage binary artifacts and dependencies using JFrog Artifactory. Integrate with CI/CD pipelines for efficient artifact storage and retrieval.', duration: '60 minutes' },
+    { id: 'do_argocd', title: 'GitOps with ArgoCD', content: 'Implement GitOps principles for continuous delivery using ArgoCD. Synchronize application state with Git repositories.', duration: '75 minutes' },
+    { id: 'do_vault', title: 'Secrets Management with HashiCorp Vault', content: 'Securely manage secrets and sensitive data using HashiCorp Vault. Integrate Vault with applications and CI/CD pipelines.', duration: '75 minutes' },
+    { id: 'do_aws_tools', title: 'AWS DevOps Tools Overview', content: 'Explore AWS native DevOps tools like CodeCommit, CodeBuild, CodeDeploy, and CodePipeline. Learn how they integrate to form a complete CI/CD solution on AWS.', duration: '90 minutes' },
+    { id: 'do_azure_devops', title: 'Azure DevOps Services', content: 'Introduction to Azure DevOps services including Azure Repos, Azure Pipelines, Azure Boards, Azure Test Plans, and Azure Artifacts.', duration: '90 minutes'},
+];
+
 
 export const courses: Course[] = [
+  {
+    id: 'manual-testing-fundamentals',
+    title: 'Manual Testing Fundamentals & Best Practices',
+    description: 'Master the core concepts and techniques of manual software testing.',
+    longDescription: 'This course covers the fundamentals of manual testing, including test planning, test case design, execution, defect reporting, and various testing types (functional, usability, exploratory). Learn essential skills for ensuring software quality without automation. Ideal for aspiring QA professionals and those new to software testing.',
+    category: 'Software Testing',
+    imageUrl: 'https://placehold.co/600x400.png',
+    imageHint: 'quality assurance checklist',
+    modules: sampleModulesManualTesting,
+    instructor: 'QA Lead Expert',
+    rating: 4.5,
+    enrolledStudents: 1500,
+  },
   {
     id: 'java-masterclass',
     title: 'Java Programming Masterclass',
@@ -49,19 +79,6 @@ export const courses: Course[] = [
     instructor: 'Cloud Architect Pro',
     rating: 4.7,
     enrolledStudents: 2800,
-  },
-  {
-    id: 'manual-testing-fundamentals',
-    title: 'Manual Testing Fundamentals & Best Practices',
-    description: 'Master the core concepts and techniques of manual software testing.',
-    longDescription: 'This course covers the fundamentals of manual testing, including test planning, test case design, execution, defect reporting, and various testing types (functional, usability, exploratory). Learn essential skills for ensuring software quality without automation. Ideal for aspiring QA professionals and those new to software testing.',
-    category: 'Software Testing',
-    imageUrl: 'https://placehold.co/600x400.png',
-    imageHint: 'quality assurance checklist',
-    modules: sampleModulesManualTesting,
-    instructor: 'QA Lead Expert',
-    rating: 4.5,
-    enrolledStudents: 1500,
   },
   {
     id: 'selenium-webdriver-automation',
@@ -92,12 +109,12 @@ export const courses: Course[] = [
   {
     id: 'devops-bootcamp-full',
     title: 'The Complete DevOps Bootcamp',
-    description: 'Master DevOps tools: Kubernetes, Docker, Terraform, Ansible, Jenkins, CI/CD, Git, Prometheus, Grafana, ELK, Jfrog Artifactory, ArgoCD, Helm, Vault, and more.',
-    longDescription: 'This bootcamp provides a comprehensive overview of DevOps principles and tools. Learn containerization with Docker, orchestration with Kubernetes, IaC with Terraform, configuration management with Ansible, CI/CD with Jenkins, Maven, GitLab & GitHub Actions, monitoring with Prometheus & Grafana, logging with ELK Stack, artifact management with Jfrog Artifactory, GitOps with ArgoCD, package management with Helm, secrets management with Vault and version control with Git. Includes hands-on labs and real-world scenarios.',
+    description: 'Master DevOps tools: Kubernetes, Docker, Terraform, Ansible, Jenkins, CI/CD, Git, Prometheus, Grafana, ELK, Jfrog Artifactory, ArgoCD, Helm, Vault, AWS DevOps tools, Azure DevOps and more.',
+    longDescription: 'This bootcamp provides a comprehensive overview of DevOps principles and tools. Learn containerization with Docker, orchestration with Kubernetes, IaC with Terraform, configuration management with Ansible, CI/CD with Jenkins, Maven, GitLab & GitHub Actions, monitoring with Prometheus & Grafana, logging with ELK Stack, artifact management with Jfrog Artifactory, GitOps with ArgoCD, package management with Helm, secrets management with Vault, version control with Git. Also covers AWS native DevOps tools (CodeCommit, CodeBuild, CodeDeploy, CodePipeline) and Azure DevOps Services (Repos, Pipelines, Boards, Test Plans, Artifacts). Includes hands-on labs and real-world scenarios.',
     category: 'DevOps',
     imageUrl: 'https://placehold.co/600x400.png',
     imageHint: 'devops tools pipeline',
-    modules: sampleModulesGeneric,
+    modules: sampleModulesDevOps,
     instructor: 'DevOps Guru',
     rating: 4.8,
     enrolledStudents: 3200,
@@ -117,20 +134,7 @@ export const courses: Course[] = [
   }
 ];
 
-export const userProfile: UserProfile = {
-  id: 'user123',
-  name: 'Alex Johnson',
-  email: 'alex.johnson@example.com',
-  avatarUrl: 'https://placehold.co/100x100.png',
-  bio: 'Passionate software developer and lifelong learner. Currently exploring cutting-edge tech.',
-  coursesEnrolled: courses.filter(c => ['java-masterclass', 'aws-solutions-architect-associate', 'manual-testing-fundamentals'].includes(c.id)),
-  coursesCompleted: courses.filter(c => ['selenium-webdriver-automation'].includes(c.id)),
-  progress: [
-    { courseId: 'java-masterclass', completedModules: ['m_intro'] },
-    { courseId: 'aws-solutions-architect-associate', completedModules: ['mt_deep_dive'] },
-    { courseId: 'manual-testing-fundamentals', completedModules: ['mt_intro_stlc', 'mt_test_design'] },
-  ],
-};
+// Removed userProfile object as it's no longer needed.
 
 export const getCourseById = (id: string): Course | undefined => courses.find(course => course.id === id);
 
@@ -138,4 +142,3 @@ export const getModuleById = (courseId: string, moduleId: string): Module | unde
   const course = getCourseById(courseId);
   return course?.modules.find(module => module.id === moduleId);
 };
-

@@ -1,18 +1,17 @@
 
 "use client";
 import Link from 'next/link';
-import { BookOpenText, UserCircle, Menu, X, Search } from 'lucide-react';
+import { BookOpenText, Menu, X, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { useState, useEffect } from 'react';
-import { usePathname, useRouter } // useRouter added for search
-from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/courses', label: 'Courses' },
-  { href: '/profile', label: 'Profile' },
+  // { href: '/profile', label: 'Profile' }, // Removed Profile link
 ];
 
 export default function Header() {
@@ -61,11 +60,13 @@ export default function Header() {
               <span className="sr-only">Search</span>
             </Button>
           </form>
+          {/* Removed UserCircle icon
           <Link href="/profile" aria-label="User Profile">
             <Button variant="ghost" size="icon" className="text-primary hover:text-primary/80">
               <UserCircle size={28} />
             </Button>
           </Link>
+          */}
         </nav>
 
         {/* Mobile Navigation Trigger */}
