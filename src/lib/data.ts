@@ -51,6 +51,19 @@ export const courses: Course[] = [
     enrolledStudents: 2800,
   },
   {
+    id: 'manual-testing-fundamentals',
+    title: 'Manual Testing Fundamentals & Best Practices',
+    description: 'Master the core concepts and techniques of manual software testing.',
+    longDescription: 'This course covers the fundamentals of manual testing, including test planning, test case design, execution, defect reporting, and various testing types (functional, usability, exploratory). Learn essential skills for ensuring software quality without automation. Ideal for aspiring QA professionals and those new to software testing.',
+    category: 'Software Testing',
+    imageUrl: 'https://placehold.co/600x400.png',
+    imageHint: 'quality assurance checklist',
+    modules: sampleModulesManualTesting,
+    instructor: 'QA Lead Expert',
+    rating: 4.5,
+    enrolledStudents: 1500,
+  },
+  {
     id: 'selenium-webdriver-automation',
     title: 'Selenium WebDriver for Test Automation',
     description: 'Learn to automate web application testing using Selenium WebDriver with Java.',
@@ -101,19 +114,6 @@ export const courses: Course[] = [
     instructor: 'Wright Tester',
     rating: 4.6,
     enrolledStudents: 1200,
-  },
-  {
-    id: 'manual-testing-fundamentals',
-    title: 'Manual Testing Fundamentals & Best Practices',
-    description: 'Master the core concepts and techniques of manual software testing.',
-    longDescription: 'This course covers the fundamentals of manual testing, including test planning, test case design, execution, defect reporting, and various testing types (functional, usability, exploratory). Learn essential skills for ensuring software quality without automation. Ideal for aspiring QA professionals and those new to software testing.',
-    category: 'Software Testing',
-    imageUrl: 'https://placehold.co/600x400.png',
-    imageHint: 'quality assurance checklist',
-    modules: sampleModulesManualTesting,
-    instructor: 'QA Lead Expert',
-    rating: 4.5,
-    enrolledStudents: 1500,
   }
 ];
 
@@ -128,7 +128,7 @@ export const userProfile: UserProfile = {
   progress: [
     { courseId: 'java-masterclass', completedModules: ['m_intro'] },
     { courseId: 'aws-solutions-architect-associate', completedModules: ['mt_deep_dive'] },
-    { courseId: 'manual-testing-fundamentals', completedModules: ['mt_intro_stlc'] },
+    { courseId: 'manual-testing-fundamentals', completedModules: ['mt_intro_stlc', 'mt_test_design'] },
   ],
 };
 
@@ -138,3 +138,4 @@ export const getModuleById = (courseId: string, moduleId: string): Module | unde
   const course = getCourseById(courseId);
   return course?.modules.find(module => module.id === moduleId);
 };
+
