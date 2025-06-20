@@ -16,8 +16,12 @@ interface CourseCardProps {
 export default function CourseCard({ course }: CourseCardProps) {
   return (
     <motion.div
-      whileHover={{ y: -5, boxShadow: "0px 10px 20px hsla(var(--primary) / 0.2)" }}
-      transition={{ type: 'spring', stiffness: 300 }}
+      whileHover={{ 
+        y: -8, 
+        scale: 1.03, 
+        boxShadow: "0px 12px 25px hsla(var(--primary) / 0.25)" 
+      }}
+      transition={{ type: 'spring', stiffness: 280, damping: 15 }}
       className="h-full"
     >
       <Card className="h-full flex flex-col overflow-hidden bg-secondary hover:border-primary/50 transition-all duration-300">
