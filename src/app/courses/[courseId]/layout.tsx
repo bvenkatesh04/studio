@@ -18,10 +18,12 @@ export default function CourseLayout({
   }
 
   return (
-    <div className="flex flex-col lg:flex-row gap-8">
-      <ModuleNavigation course={course} />
-      <div className="flex-grow lg:w-3/4">
-        {children}
+    <div className="container mx-auto px-4 py-8">
+      <div className="flex flex-col lg:flex-row gap-8">
+        <ModuleNavigation course={course} />
+        <div className="flex-grow lg:w-3/4">
+          {children}
+        </div>
       </div>
     </div>
   );

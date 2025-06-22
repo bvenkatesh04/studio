@@ -26,20 +26,22 @@ function ContactFormSkeleton() {
 
 export default function ContactPage() {
   return (
-    <div className="flex justify-center items-center py-8">
-      <Card className="w-full max-w-2xl shadow-xl bg-card">
-        <CardHeader className="text-center">
-          <CardTitle className="text-3xl font-bold text-primary">Contact Us</CardTitle>
-          <CardDescription className="text-lg text-muted-foreground">
-            Have questions? We'd love to hear from you.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Suspense fallback={<ContactFormSkeleton />}>
-            <ContactForm />
-          </Suspense>
-        </CardContent>
-      </Card>
+    <div className="container mx-auto px-4 py-8">
+      <div className="flex justify-center items-center">
+        <Card className="w-full max-w-2xl shadow-xl bg-card">
+          <CardHeader className="text-center">
+            <CardTitle className="text-3xl font-bold text-primary">Contact Us</CardTitle>
+            <CardDescription className="text-lg text-muted-foreground">
+              Have questions? We'd love to hear from you.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Suspense fallback={<ContactFormSkeleton />}>
+              <ContactForm />
+            </Suspense>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 }
