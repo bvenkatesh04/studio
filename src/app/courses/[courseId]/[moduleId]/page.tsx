@@ -8,6 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Terminal } from "lucide-react";
+import { Badge } from '@/components/ui/badge';
 
 export default function ModulePage({ params }: { params: { courseId: string; moduleId: string } }) {
   const course = getCourseById(params.courseId);
