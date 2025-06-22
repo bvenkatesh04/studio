@@ -6,8 +6,6 @@ import Link from 'next/link';
 import { ArrowLeft, ArrowRight, BookOpen, Video } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Terminal } from "lucide-react";
 import { Badge } from '@/components/ui/badge';
 
 export default function ModulePage({ params }: { params: { courseId: string; moduleId: string } }) {
@@ -15,15 +13,7 @@ export default function ModulePage({ params }: { params: { courseId: string; mod
   const module = getModuleById(params.courseId, params.moduleId);
 
   if (!course || !module) {
-     return (
-      <Alert variant="destructive" className="mt-8">
-        <Terminal className="h-4 w-4" />
-        <AlertTitle>Error: Module Not Found</AlertTitle>
-        <AlertDescription>
-          The module you are looking for could not be loaded. It might not exist or has been removed.
-        </AlertDescription>
-      </Alert>
-    );
+    notFound();
   }
 
   const moduleIndex = course.modules.findIndex(m => m.id === module.id);

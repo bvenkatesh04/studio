@@ -15,15 +15,7 @@ export default function CourseOverviewPage({ params }: { params: { courseId: str
   const course = getCourseById(params.courseId);
 
   if (!course) {
-    return (
-      <Alert variant="destructive" className="mt-8">
-        <Terminal className="h-4 w-4" />
-        <AlertTitle>Error: Course Not Found</AlertTitle>
-        <AlertDescription>
-          The details for this course could not be loaded. It might not exist or has been removed.
-        </AlertDescription>
-      </Alert>
-    );
+    notFound();
   }
 
   const firstModuleId = course.modules.length > 0 ? course.modules[0].id : null;
