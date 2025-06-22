@@ -1,35 +1,23 @@
-
 "use client";
 import Link from 'next/link';
-import { BookOpenText, Menu, X, Search } from 'lucide-react';
+import { BookOpenText, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { useState, useEffect } from 'react';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 
 const navLinks = [
   { href: '/', label: 'Home' },
-  { href: '/courses', label: 'Courses' },
   { href: '/contact', label: 'Contact' },
 ];
 
 export default function Header() {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
   const pathname = usePathname();
-  const router = useRouter();
 
   useEffect(() => {
     setIsSheetOpen(false);
   }, [pathname]);
-
-  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (searchQuery.trim()) {
-      router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
-    }
-  };
 
   return (
     <header className="bg-card shadow-md sticky top-0 z-50">
@@ -46,20 +34,6 @@ export default function Header() {
               <Link href={link.href}>{link.label}</Link>
             </Button>
           ))}
-          <form onSubmit={handleSearch} className="flex items-center gap-2">
-            <Input
-              type="search"
-              placeholder="Search courses..."
-              className="h-9 w-48 bg-background border-primary/50 focus:border-primary"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              aria-label="Search courses"
-            />
-            <Button type="submit" variant="outline" size="icon" className="h-9 w-9 border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground">
-              <Search size={18} />
-              <span className="sr-only">Search</span>
-            </Button>
-          </form>
         </nav>
 
         {/* Mobile Navigation Trigger */}
@@ -83,19 +57,6 @@ export default function Header() {
                       <Link href={link.href}>{link.label}</Link>
                     </Button>
                   ))}
-                   <form onSubmit={handleSearch} className="flex flex-col gap-2 mt-4">
-                    <Input
-                      type="search"
-                      placeholder="Search courses..."
-                      className="h-10 bg-background border-primary/50 focus:border-primary"
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      aria-label="Search courses"
-                    />
-                    <Button type="submit" variant="outline" className="w-full border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground">
-                      <Search size={18} className="mr-2"/> Search
-                    </Button>
-                  </form>
                 </nav>
               </div>
             </SheetContent>

@@ -2,7 +2,7 @@
 import { courses } from '@/lib/data';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { ArrowRight, MessageSquare, Briefcase } from 'lucide-react';
+import { MessageSquare } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 
 
@@ -15,11 +15,6 @@ export default function HomePage() {
         <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
           Your journey to mastering cutting-edge software technologies starts here. Explore our courses and level up your skills.
         </p>
-        <Button size="lg" asChild className="bg-primary hover:bg-primary/80 text-primary-foreground">
-          <Link href="/courses">
-            Explore Courses <ArrowRight className="ml-2 h-5 w-5" />
-          </Link>
-        </Button>
       </section>
 
       <section>
@@ -41,12 +36,6 @@ export default function HomePage() {
                     {course.longDescription || course.description}
                   </CardDescription>
                   <div className="mt-6 flex flex-col sm:flex-row gap-4">
-                    <Button asChild className="bg-primary hover:bg-primary/80 text-primary-foreground">
-                      <Link href={`/courses/${course.id}`}>
-                        <Briefcase className="mr-2 h-5 w-5" />
-                        View Course Details
-                      </Link>
-                    </Button>
                     <Button asChild variant="outline" className="border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground">
                        <Link href={`/contact?course=${encodeURIComponent(course.title)}`}>
                         <MessageSquare className="mr-2 h-5 w-5" />
