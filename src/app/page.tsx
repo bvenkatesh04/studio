@@ -62,9 +62,11 @@ export default function HomePage() {
   return (
     <>
       <motion.section
-        className="relative min-h-screen flex items-center justify-center text-center text-white bg-cover bg-center"
+        className="relative min-h-screen flex items-center justify-center text-center text-white"
         style={{
-          backgroundImage: `linear-gradient(rgba(17, 24, 39, 0.7), rgba(17, 24, 39, 0.7)), url(https://storage.googleapis.com/devo-st-bucket/assets/a64a3d46-1736-419b-a39c-297c827e8d0e.png)`
+          backgroundImage: `linear-gradient(rgba(17, 24, 39, 0.7), rgba(17, 24, 39, 0.7)), url(https://storage.googleapis.com/devo-st-bucket/assets/a64a3d46-1736-419b-a39c-297c827e8d0e.png)`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
         }}
         initial="hidden"
         animate="visible"
