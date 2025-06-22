@@ -10,7 +10,7 @@ export default function HomePage() {
 
   return (
     <div className="space-y-12">
-      <section className="text-center py-12 bg-card rounded-lg shadow-xl">
+      <section className="text-center py-12 bg-card rounded-lg shadow-2xl border-2 border-border/50">
         <h1 className="text-4xl md:text-5xl font-bold font-headline mb-4 text-primary">Welcome to TechFarm UI</h1>
         <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
           Your journey to mastering cutting-edge software technologies starts here. Explore our courses and level up your skills.
@@ -26,7 +26,7 @@ export default function HomePage() {
         </p>
         <div className="space-y-8">
           {courses.map((course) => (
-            <Card key={course.id} className="bg-secondary shadow-lg overflow-hidden">
+            <Card key={course.id} className="bg-secondary shadow-2xl overflow-hidden border-2 border-border/50">
               <div className="p-6 md:p-8">
                 <CardHeader className="p-0 mb-4">
                   <CardTitle className="text-2xl font-bold font-headline text-primary">{course.title}</CardTitle>
@@ -56,7 +56,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="text-center py-12 bg-card rounded-lg shadow-lg">
+      <section className="text-center py-12 bg-card rounded-lg shadow-2xl border-2 border-border/50">
         <h2 className="text-3xl font-bold font-headline mb-6 text-primary">Why Choose TechFarm UI?</h2>
         <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto text-muted-foreground">
           <div className="p-4">
