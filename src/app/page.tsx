@@ -65,7 +65,7 @@ export default function HomePage() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           variants={sectionVariants}
         >
-          <h2 className="text-3xl font-semibold font-headline mb-2 text-center text-blue-600">
+          <h2 className="text-3xl font-semibold font-headline mb-2 text-center text-primary">
             Why Invest in These Technologies?
           </h2>
           <p className="text-lg text-muted-foreground mb-10 text-center max-w-3xl mx-auto">
@@ -82,8 +82,12 @@ export default function HomePage() {
                 viewport={{ once: false, amount: 0.2 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 variants={itemVariants}
+                whileHover={{
+                  y: -8,
+                  boxShadow: "0px 20px 30px hsla(var(--primary) / 0.15)" 
+                }}
               >
-                <Card className="bg-secondary shadow-2xl overflow-hidden border-2 border-border/50">
+                <Card className="bg-secondary shadow-lg overflow-hidden border-2 border-transparent hover:border-primary/30 transition-colors duration-300">
                   <div className="p-6 md:p-8">
                     <CardHeader className="p-0 mb-4">
                       <CardTitle className="text-2xl font-bold font-headline text-primary">{course.title}</CardTitle>

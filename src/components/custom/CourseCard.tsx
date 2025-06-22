@@ -18,13 +18,13 @@ export default function CourseCard({ course }: CourseCardProps) {
     <motion.div
       whileHover={{ 
         y: -8, 
-        scale: 1.03, 
-        boxShadow: "0px 12px 25px hsla(var(--primary) / 0.25)" 
+        scale: 1.02, 
+        boxShadow: "0px 20px 30px hsla(var(--primary) / 0.15)" 
       }}
       transition={{ type: 'spring', stiffness: 280, damping: 15 }}
       className="h-full"
     >
-      <Card className="h-full flex flex-col overflow-hidden bg-secondary hover:border-primary/50 transition-all duration-300">
+      <Card className="h-full flex flex-col overflow-hidden bg-card hover:border-primary/50 transition-all duration-300 shadow-lg">
         <CardHeader className="p-0 relative">
           <Image
             src={course.imageUrl}
@@ -34,7 +34,7 @@ export default function CourseCard({ course }: CourseCardProps) {
             className="w-full h-48 object-cover"
             data-ai-hint={course.imageHint || 'technology course'}
           />
-           <Badge variant="default" className="absolute top-2 right-2 bg-primary/80 text-primary-foreground backdrop-blur-sm">
+           <Badge variant="default" className="absolute top-2 right-2 bg-primary/80 text-primary-foreground backdrop-blur-sm border-none">
             {course.category}
           </Badge>
         </CardHeader>

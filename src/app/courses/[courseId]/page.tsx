@@ -50,7 +50,7 @@ export default async function CourseOverviewPage({ params: rawParams }: { params
         
         {/* Left Column (main content) */}
         <div className="lg:col-span-2 space-y-8">
-           <Card>
+           <Card className="shadow-lg">
             <CardHeader>
               <CardTitle className="text-2xl font-headline text-primary">About this course</CardTitle>
             </CardHeader>
@@ -81,7 +81,7 @@ export default async function CourseOverviewPage({ params: rawParams }: { params
               </Alert>
           )}
 
-          <Card className="bg-secondary/50">
+          <Card className="bg-secondary/50 shadow-lg">
             <CardContent className="p-6 space-y-4">
               {course.instructor && (
                 <div className="flex items-center justify-between">
