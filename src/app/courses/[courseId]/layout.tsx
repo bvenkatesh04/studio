@@ -6,12 +6,12 @@ import type { ReactNode } from 'react';
 
 export default async function CourseLayout({
   children,
-  params,
+  params: rawParams,
 }: {
   children: ReactNode;
   params: { courseId: string };
 }) {
-  await params;
+  const params = await rawParams;
   const course = getCourseById(params.courseId);
 
   if (!course) {
