@@ -8,9 +8,9 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
 
-export default function ModulePage({ params }: { params: { courseId: string; moduleId: string } }) {
-  const course = getCourseById(params.courseId);
-  const module = getModuleById(params.courseId, params.moduleId);
+export default function ModulePage({ params: { courseId, moduleId } }: { params: { courseId: string; moduleId: string } }) {
+  const course = getCourseById(courseId);
+  const module = getModuleById(courseId, moduleId);
 
   if (!course || !module) {
     notFound();

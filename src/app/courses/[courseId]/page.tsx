@@ -11,8 +11,8 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Terminal } from "lucide-react";
 import { Separator } from '@/components/ui/separator';
 
-export default function CourseOverviewPage({ params }: { params: { courseId: string } }) {
-  const course = getCourseById(params.courseId);
+export default function CourseOverviewPage({ params: { courseId } }: { params: { courseId: string } }) {
+  const course = getCourseById(courseId);
 
   if (!course) {
     notFound();
