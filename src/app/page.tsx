@@ -1,3 +1,4 @@
+
 "use client";
 
 import { courses } from '@/lib/data';
@@ -35,8 +36,8 @@ export default function HomePage() {
           <h1 className="text-5xl md:text-7xl font-bold font-headline mb-4 text-white drop-shadow-lg">
             Unlock Your Potential with TechFarm UI
           </h1>
-          <p className="text-xl md:text-2xl text-white/90 mb-8 drop-shadow-md">
-            Master in-demand technologies with our expert-led, hands-on courses.
+          <p className="text-xl md:text-2xl text-white/90 mb-8 drop-shadow-md max-w-3xl mx-auto">
+            Navigate the digital frontier with confidence. Our courses are crafted to equip you with today's most in-demand technologies, turning your ambition into real-world expertise.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Button asChild size="lg" className="bg-primary hover:bg-primary/80 text-primary-foreground">
@@ -60,7 +61,7 @@ export default function HomePage() {
           id="why-invest"
           initial="hidden"
           whileInView="visible"
-          viewport={{ amount: 0.1 }}
+          viewport={{ once: false, amount: 0.1 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           variants={sectionVariants}
         >
@@ -78,7 +79,7 @@ export default function HomePage() {
                 key={course.id}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ amount: 0.2 }}
+                viewport={{ once: false, amount: 0.2 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 variants={itemVariants}
               >
@@ -117,7 +118,7 @@ export default function HomePage() {
           className="text-center py-12 bg-card rounded-lg shadow-2xl border-2 border-border/50"
           initial="hidden"
           whileInView="visible"
-          viewport={{ amount: 0.2 }}
+          viewport={{ once: false, amount: 0.2 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           variants={sectionVariants}
         >
