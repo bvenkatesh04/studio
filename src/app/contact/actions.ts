@@ -4,6 +4,7 @@ export async function sendContactMessage(formData: FormData) {
   const name = formData.get('name');
   const email = formData.get('email');
   const message = formData.get('message');
+  const course = formData.get('course');
 
   // Basic validation on the server
   if (!name || !email || !message) {
@@ -15,6 +16,9 @@ export async function sendContactMessage(formData: FormData) {
   console.log('--- New Contact Form Submission ---');
   console.log(`Name: ${name}`);
   console.log(`Email: ${email}`);
+  if (course) {
+    console.log(`Course: ${course}`);
+  }
   console.log(`Message: ${message}`);
   console.log('------------------------------------');
 

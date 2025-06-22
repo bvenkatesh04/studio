@@ -10,21 +10,35 @@ import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { Send, Loader2 } from 'lucide-react';
 import { sendContactMessage } from './actions';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { courses } from '@/lib/data';
 
 export default function ContactForm() {
   const searchParams = useSearchParams();
   const { toast } = useToast();
   const formRef = useRef<HTMLFormElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const courseInquiry = searchParams.get('course');
   
-  const [message, setMessage] = useState('');
+  const courseFromUrl = searchParams.get('course') || '';
+
+  const [selectedCourse, setSelectedCourse] = useState(courseFromUrl);
+  const [message, setMessage] = useState(
+    courseFromUrl ? `I'm interested in the "${courseFromUrl}" course.` : ''
+  );
 
   useEffect(() => {
-    if (courseInquiry) {
-      setMessage(`I'm interested in the ${courseInquiry} course.`);
-    }
-  }, [courseInquiry]);
+    setSelectedCourse(courseFromUrl);
+    setMessage(
+      courseFromUrl ? `I'm interested in the "${courseFromUrl}" course.` : ''
+    );
+  }, [courseFromUrl]);
+
+  const handleCourseChange = (newCourse: string) => {
+    setSelectedCourse(newCourse);
+    setMessage(
+      newCourse ? `I'm interested in the "${newCourse}" course.` : ''
+    );
+  };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -41,8 +55,7 @@ export default function ContactForm() {
         description: "Thanks for reaching out. We'll get back to you shortly.",
       });
       formRef.current?.reset();
-      // After reset, re-apply the inquiry message if it exists
-      setMessage(courseInquiry ? `I'm interested in the ${courseInquiry} course.` : '');
+      handleCourseChange(courseFromUrl);
     } else {
       toast({
         title: "Error Sending Message",
@@ -61,6 +74,22 @@ export default function ContactForm() {
       <div className="space-y-2">
         <Label htmlFor="email">Email Address</Label>
         <Input id="email" name="email" type="email" placeholder="you@example.com" required className="bg-background" />
+      </div>
+      <div className="space-y-2">
+        <Label htmlFor="course">Course of Interest (Optional)</Label>
+        <Select name="course" value={selectedCourse} onValueChange={handleCourseChange}>
+          <SelectTrigger id="course" className="bg-background">
+            <SelectValue placeholder="Select a course..." />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="">None</SelectItem>
+            {courses.map((course) => (
+              <SelectItem key={course.id} value={course.title}>
+                {course.title}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
       </div>
       <div className="space-y-2">
         <Label htmlFor="message">Message</Label>
