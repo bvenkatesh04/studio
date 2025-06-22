@@ -11,7 +11,7 @@ import { usePathname, useRouter } from 'next/navigation';
 const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/courses', label: 'Courses' },
-  // { href: '/profile', label: 'Profile' }, // Removed Profile link
+  { href: '/contact', label: 'Contact' },
 ];
 
 export default function Header() {
@@ -60,13 +60,6 @@ export default function Header() {
               <span className="sr-only">Search</span>
             </Button>
           </form>
-          {/* Removed UserCircle icon and profile link
-          <Link href="/profile" aria-label="User Profile">
-            <Button variant="ghost" size="icon" className="text-primary hover:text-primary/80">
-              <UserCircle size={28} />
-            </Button>
-          </Link>
-          */}
         </nav>
 
         {/* Mobile Navigation Trigger */}

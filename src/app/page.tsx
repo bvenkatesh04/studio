@@ -1,12 +1,12 @@
 
 import { courses } from '@/lib/data';
-import CourseCard from '@/components/custom/CourseCard';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, MessageSquare, Briefcase } from 'lucide-react';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+
 
 export default function HomePage() {
-  const featuredCourses = courses.slice(0, 3); // Display first 3 courses as featured
 
   return (
     <div className="space-y-12">
@@ -23,15 +23,45 @@ export default function HomePage() {
       </section>
 
       <section>
-        <h2 className="text-3xl font-bold font-headline mb-8 text-center text-primary-foreground">Featured Courses</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {featuredCourses.map((course) => (
-            <CourseCard key={course.id} course={course} />
+        <h2 className="text-3xl font-bold font-headline mb-2 text-center text-primary-foreground">
+          Why Invest in These Technologies?
+        </h2>
+        <p className="text-lg text-muted-foreground mb-10 text-center max-w-3xl mx-auto">
+          In a rapidly evolving digital landscape, mastering key technologies is crucial for career growth. Here’s why our courses are essential for your success.
+        </p>
+        <div className="space-y-8">
+          {courses.map((course) => (
+            <Card key={course.id} className="bg-secondary shadow-lg overflow-hidden">
+              <div className="p-6 md:p-8">
+                <CardHeader className="p-0 mb-4">
+                  <CardTitle className="text-2xl font-bold font-headline text-primary">{course.title}</CardTitle>
+                </CardHeader>
+                <CardContent className="p-0">
+                  <CardDescription className="text-base text-muted-foreground leading-relaxed">
+                    {course.longDescription || course.description}
+                  </CardDescription>
+                  <div className="mt-6 flex flex-col sm:flex-row gap-4">
+                    <Button asChild className="bg-primary hover:bg-primary/80 text-primary-foreground">
+                      <Link href={`/courses/${course.id}`}>
+                        <Briefcase className="mr-2 h-5 w-5" />
+                        View Course Details
+                      </Link>
+                    </Button>
+                    <Button asChild variant="outline" className="border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground">
+                       <Link href={`/contact?course=${encodeURIComponent(course.title)}`}>
+                        <MessageSquare className="mr-2 h-5 w-5" />
+                        Inquire Now
+                      </Link>
+                    </Button>
+                  </div>
+                </CardContent>
+              </div>
+            </Card>
           ))}
         </div>
       </section>
 
-      <section className="text-center py-12 bg-secondary rounded-lg shadow-lg">
+      <section className="text-center py-12 bg-card rounded-lg shadow-lg">
         <h2 className="text-3xl font-bold font-headline mb-6 text-primary-foreground">Why Choose TechFarm UI?</h2>
         <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto text-muted-foreground">
           <div className="p-4">
