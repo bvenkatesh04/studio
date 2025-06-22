@@ -37,7 +37,7 @@ export default async function CourseOverviewPage({ params: rawParams }: { params
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
           <div className="absolute bottom-0 left-0 p-6 md:p-8 text-white">
             <Badge variant="secondary" className="mb-2 bg-white/20 text-white backdrop-blur-sm border-none">{course.category}</Badge>
-            <CardTitle className="text-4xl md:text-5xl font-bold font-headline">{course.title}</CardTitle>
+            <CardTitle className="text-3xl sm:text-4xl md:text-5xl font-bold font-headline">{course.title}</CardTitle>
             <CardDescription className="mt-2 text-lg text-white/90 max-w-3xl">
               {course.description}
             </CardDescription>

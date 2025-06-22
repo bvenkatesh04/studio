@@ -33,7 +33,7 @@ export default function HomePage() {
         <div
             className="max-w-4xl px-4"
         >
-          <h1 className="text-5xl md:text-7xl font-bold font-headline mb-4 text-white drop-shadow-lg">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold font-headline mb-4 text-white drop-shadow-lg">
             Unlock Your Potential with TechFarm UI
           </h1>
           <p className="text-xl md:text-2xl text-white/90 mb-8 drop-shadow-md max-w-3xl mx-auto">

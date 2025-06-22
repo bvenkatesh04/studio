@@ -23,7 +23,7 @@ export default function SearchPage() {
     <div className="container mx-auto px-4 py-8">
       <div className="space-y-8">
         <section className="text-center">
-          <h1 className="text-4xl md:text-5xl font-bold font-headline mb-4 text-primary">Search Courses</h1>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold font-headline mb-4 text-primary">Search Courses</h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
             Find the perfect course to match your learning goals.
           </p>
