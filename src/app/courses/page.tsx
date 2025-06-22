@@ -1,18 +1,24 @@
 
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Terminal } from "lucide-react";
-import Link from 'next/link';
+import { courses } from '@/lib/data';
+import CourseCard from '@/components/custom/CourseCard';
 
 export default function CoursesPage() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-[50vh]">
-        <Alert variant="destructive" className="max-w-lg">
-            <Terminal className="h-4 w-4" />
-            <AlertTitle>Page Not Found</AlertTitle>
-            <AlertDescription>
-                This page has been removed or does not exist. Please navigate back to <Link href="/" className="font-semibold text-primary hover:underline">Home</Link>.
-            </AlertDescription>
-        </Alert>
+    <div className="space-y-12">
+      <section className="text-center">
+        <h1 className="text-4xl md:text-5xl font-bold font-headline mb-4 text-primary">Explore Our Courses</h1>
+        <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+          Browse our catalog of expert-led courses designed to elevate your skills in software development and technology.
+        </p>
+      </section>
+
+      <section>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {courses.map((course) => (
+            <CourseCard key={course.id} course={course} />
+          ))}
+        </div>
+      </section>
     </div>
   );
 }

@@ -2,7 +2,7 @@
 import { courses } from '@/lib/data';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { MessageSquare } from 'lucide-react';
+import { MessageSquare, BookOpen } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 
 
@@ -36,6 +36,12 @@ export default function HomePage() {
                     {course.longDescription || course.description}
                   </CardDescription>
                   <div className="mt-6 flex flex-col sm:flex-row gap-4">
+                    <Button asChild>
+                      <Link href={`/courses/${course.id}`}>
+                        <BookOpen className="mr-2 h-5 w-5" />
+                        View Course
+                      </Link>
+                    </Button>
                     <Button asChild variant="outline" className="border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground">
                        <Link href={`/contact?course=${encodeURIComponent(course.title)}`}>
                         <MessageSquare className="mr-2 h-5 w-5" />
