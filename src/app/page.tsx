@@ -1,4 +1,3 @@
-
 "use client";
 
 import { courses } from '@/lib/data';
@@ -69,10 +68,11 @@ export default function HomePage() {
         variants={sectionVariants}
       >
         <Image
-          src="/hero-image.png"
+          src="https://placehold.co/1920x1080.png"
           alt="Illustration of a developer building a web page"
           fill
           className="object-cover -z-20"
+          data-ai-hint="developer web"
           priority
         />
         <div className="absolute inset-0 bg-gray-900/70 -z-10" />
