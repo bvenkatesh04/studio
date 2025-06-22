@@ -18,7 +18,7 @@ export default function HomePage() {
       </section>
 
       <section>
-        <h2 className="text-3xl font-bold font-headline mb-2 text-center text-blue-600">
+        <h2 className="text-3xl font-semibold font-headline mb-2 text-center text-blue-600">
           Why Invest in These Technologies?
         </h2>
         <p className="text-lg text-muted-foreground mb-10 text-center max-w-3xl mx-auto">
