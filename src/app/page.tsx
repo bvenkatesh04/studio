@@ -4,6 +4,7 @@
 import { courses } from '@/lib/data';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import Image from 'next/image';
 import { MessageSquare, BookOpen, ArrowDownCircle, Award, Laptop, Users } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { motion } from 'framer-motion';
@@ -92,30 +93,43 @@ export default function HomePage() {
                   boxShadow: "0px 20px 30px hsla(var(--primary) / 0.15)" 
                 }}
               >
-                <Card className="bg-secondary shadow-lg overflow-hidden border-2 border-transparent hover:border-primary/30 transition-colors duration-300">
-                  <div className="p-6 md:p-8">
-                    <CardHeader className="p-0 mb-4">
-                      <CardTitle className="text-2xl font-bold font-headline text-primary">{course.title}</CardTitle>
-                    </CardHeader>
-                    <CardContent className="p-0">
-                      <CardDescription className="text-base text-muted-foreground leading-relaxed">
-                        {course.longDescription || course.description}
-                      </CardDescription>
-                      <div className="mt-6 flex flex-col sm:flex-row gap-4">
-                        <Button asChild>
-                          <Link href={`/courses/${course.id}`}>
-                            <BookOpen className="mr-2 h-5 w-5" />
-                            View Course
-                          </Link>
-                        </Button>
-                        <Button asChild variant="outline" className="border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground">
-                           <Link href={`/contact?course=${encodeURIComponent(course.title)}`}>
-                            <MessageSquare className="mr-2 h-5 w-5" />
-                            Inquire Now
-                          </Link>
-                        </Button>
+                <Card className="bg-card shadow-lg overflow-hidden border-2 border-transparent hover:border-primary/30 transition-colors duration-300">
+                  <div className="grid md:grid-cols-12 gap-0">
+                    <div className="md:col-span-4 relative h-64 md:h-full min-h-[200px]">
+                      <Image
+                        src={course.imageUrl}
+                        alt={course.title}
+                        fill
+                        className="object-cover"
+                        data-ai-hint={course.imageHint || 'technology education'}
+                      />
+                    </div>
+                    <div className="md:col-span-8">
+                      <div className="p-6 md:p-8 flex flex-col h-full">
+                        <CardHeader className="p-0 mb-4">
+                          <CardTitle className="text-2xl font-bold font-headline text-primary">{course.title}</CardTitle>
+                        </CardHeader>
+                        <CardContent className="p-0 flex-grow">
+                          <CardDescription className="text-base text-muted-foreground leading-relaxed">
+                            {course.longDescription || course.description}
+                          </CardDescription>
+                        </CardContent>
+                        <div className="mt-6 flex flex-col sm:flex-row gap-4">
+                          <Button asChild>
+                            <Link href={`/courses/${course.id}`}>
+                              <BookOpen className="mr-2 h-5 w-5" />
+                              View Course
+                            </Link>
+                          </Button>
+                          <Button asChild variant="outline" className="border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground">
+                            <Link href={`/contact?course=${encodeURIComponent(course.title)}`}>
+                              <MessageSquare className="mr-2 h-5 w-5" />
+                              Inquire Now
+                            </Link>
+                          </Button>
+                        </div>
                       </div>
-                    </CardContent>
+                    </div>
                   </div>
                 </Card>
               </motion.div>
