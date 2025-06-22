@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
@@ -6,8 +7,8 @@ import Footer from '@/components/custom/Footer';
 import { AnimatedPage } from '@/components/custom/AnimatedPage';
 
 export const metadata: Metadata = {
-  title: 'TechFarm UI',
-  description: 'Software training courses by TechFarm UI',
+  title: 'TechFarm',
+  description: 'Software training courses by TechFarm',
 };
 
 export default function RootLayout({

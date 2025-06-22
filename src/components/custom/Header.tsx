@@ -1,3 +1,4 @@
+
 "use client";
 import Link from 'next/link';
 import { BookOpenText, Menu, X, Search } from 'lucide-react';
@@ -25,7 +26,7 @@ export default function Header() {
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 text-primary hover:opacity-80 transition-opacity">
           <BookOpenText size={32} />
-          <span className="text-2xl font-bold font-headline">TechFarm UI</span>
+          <span className="text-2xl font-bold font-headline">TechFarm</span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -58,7 +59,7 @@ export default function Header() {
               <div className="p-6">
                  <Link href="/" className="flex items-center gap-2 text-primary mb-6">
                     <BookOpenText size={28} />
-                    <span className="text-xl font-bold font-headline">TechFarm UI</span>
+                    <span className="text-xl font-bold font-headline">TechFarm</span>
                 </Link>
                 <nav className="flex flex-col gap-3">
                   {navLinks.map((link) => (

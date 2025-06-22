@@ -40,7 +40,7 @@ export default function HomePage() {
             className="max-w-4xl px-4"
         >
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold font-headline mb-4 text-white drop-shadow-lg">
-            Unlock Your Potential with TechFarm UI
+            Unlock Your Potential with TechFarm
           </h1>
           <p className="text-xl md:text-2xl text-white/90 mb-8 drop-shadow-md max-w-3xl mx-auto">
             Navigate the digital frontier with confidence. Our courses are crafted to equip you with today's most in-demand technologies, turning your ambition into real-world expertise.
@@ -145,7 +145,7 @@ export default function HomePage() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           variants={sectionVariants}
         >
-          <h2 className="text-3xl font-bold font-headline mb-10 text-primary">Why Choose TechFarm UI?</h2>
+          <h2 className="text-3xl font-bold font-headline mb-10 text-primary">Why Choose TechFarm?</h2>
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             <motion.div variants={featureCardVariants} transition={{ duration: 0.5, delay: 0.1 }}>
               <Card className="h-full bg-card p-6 text-center shadow-xl hover:shadow-2xl transition-shadow duration-300">

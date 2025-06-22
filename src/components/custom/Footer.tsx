@@ -12,7 +12,7 @@ export default function Footer() {
           <div className="md:col-span-2 space-y-4">
             <Link href="/" className="flex items-center gap-2 text-primary hover:opacity-80 transition-opacity">
               <BookOpenText size={28} />
-              <span className="text-xl font-bold font-headline">TechFarm UI</span>
+              <span className="text-xl font-bold font-headline">TechFarm</span>
             </Link>
             <p className="text-sm pr-8">
               Empowering the next generation of tech professionals with high-quality, hands-on courses designed to build real-world skills.
@@ -51,7 +51,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-10 pt-8 border-t border-border/50 text-center text-sm">
-          <p>&copy; {currentYear} TechFarm UI. All rights reserved.</p>
+          <p>&copy; {currentYear} TechFarm. All rights reserved.</p>
         </div>
       </div>
     </footer>
