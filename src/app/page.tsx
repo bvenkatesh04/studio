@@ -1,4 +1,3 @@
-
 "use client";
 
 import { courses } from '@/lib/data';
@@ -64,7 +63,7 @@ export default function HomePage() {
       <motion.section
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.1 }}
+        viewport={{ amount: 0.1 }}
         variants={sectionVariants}
       >
         <h2 className="text-3xl font-semibold font-headline mb-2 text-center text-blue-600">
@@ -78,7 +77,7 @@ export default function HomePage() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
+          viewport={{ amount: 0.1 }}
         >
           {courses.map((course) => (
             <motion.div key={course.id} variants={itemVariants}>
@@ -117,7 +116,7 @@ export default function HomePage() {
         className="text-center py-12 bg-card rounded-lg shadow-2xl border-2 border-border/50"
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ amount: 0.2 }}
         variants={containerVariants}
       >
         <motion.h2 variants={itemVariants} className="text-3xl font-bold font-headline mb-6 text-primary">Why Choose TechFarm UI?</motion.h2>
