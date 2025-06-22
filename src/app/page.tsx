@@ -12,9 +12,9 @@ export default function HomePage() {
   return (
     <>
       <section
-        className="relative min-h-screen flex items-center justify-center text-center text-white"
+        className="hero-bg relative min-h-screen flex items-center justify-center text-center text-white"
         style={{
-          backgroundImage: `linear-gradient(rgba(17, 24, 39, 0.7), rgba(17, 24, 39, 0.7)), url(https://storage.googleapis.com/devo-st-bucket/assets/asset-1a134371-18e3-469b-8d82-965a3d7d4c2b.png)`,
+          backgroundImage: `url(https://storage.googleapis.com/devo-st-bucket/assets/asset-1a134371-18e3-469b-8d82-965a3d7d4c2b.png)`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
