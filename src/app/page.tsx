@@ -6,7 +6,6 @@ import Link from 'next/link';
 import { MessageSquare, BookOpen, ArrowDownCircle } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 
 // Parent container variants for staggering children
 const containerVariants = {
@@ -62,25 +61,19 @@ export default function HomePage() {
   return (
     <>
       <motion.section
-        className="relative min-h-screen flex items-center justify-center text-center text-white"
+        className="relative min-h-screen flex items-center justify-center text-center text-white bg-cover bg-center"
+        style={{
+          backgroundImage: `linear-gradient(rgba(17, 24, 39, 0.7), rgba(17, 24, 39, 0.7)), url(https://placehold.co/1920x1080.png)`
+        }}
         initial="hidden"
         animate="visible"
         variants={sectionVariants}
       >
-        <Image
-          src="https://placehold.co/1920x1080.png"
-          alt="Illustration of a developer building a web page"
-          fill
-          className="object-cover -z-20"
-          data-ai-hint="developer web"
-          priority
-        />
-        <div className="absolute inset-0 bg-gray-900/70 -z-10" />
         <motion.div
             variants={heroContainerVariants}
             initial="hidden"
             animate="visible"
-            className="max-w-4xl px-4"
+            className="max-w-4xl px-4 z-10"
         >
           <motion.h1 variants={itemVariants} className="text-5xl md:text-7xl font-bold font-headline mb-4 text-white drop-shadow-lg">
             Unlock Your Potential with TechFarm UI
