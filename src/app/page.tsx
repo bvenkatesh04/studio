@@ -1,3 +1,4 @@
+
 "use client";
 
 import { courses } from '@/lib/data';
@@ -60,7 +61,7 @@ const sectionVariants = {
 export default function HomePage() {
 
   return (
-    <div className="space-y-12">
+    <>
       <motion.section
         className="relative min-h-screen flex items-center justify-center text-center text-white"
         initial="hidden"
@@ -105,7 +106,7 @@ export default function HomePage() {
         </motion.div>
       </motion.section>
 
-      <div className="container mx-auto px-4 py-8 space-y-12">
+      <div className="container mx-auto px-4 py-16 space-y-16">
         <motion.section
           id="why-invest"
           initial="hidden"
@@ -183,6 +184,6 @@ export default function HomePage() {
           </div>
         </motion.section>
       </div>
-    </div>
+    </>
   );
 }
