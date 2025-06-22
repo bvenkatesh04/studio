@@ -22,7 +22,7 @@ export default async function ModulePage({ params: rawParams }: { params: { cour
   const nextModule = moduleIndex < course.modules.length - 1 ? course.modules[moduleIndex + 1] : null;
 
   return (
-    <Card className="bg-card shadow-xl">
+    <Card className="bg-card shadow-xl rounded-lg">
       <CardHeader>
         <div className="flex items-center justify-between">
             <div>
@@ -35,7 +35,7 @@ export default async function ModulePage({ params: rawParams }: { params: { cour
         </div>
       </CardHeader>
       <Separator />
-      <CardContent className="py-6 prose prose-invert max-w-none prose-headings:text-primary prose-p:text-muted-foreground prose-a:text-primary prose-strong:text-foreground">
+      <CardContent className="py-6 prose max-w-none prose-headings:text-primary prose-p:text-muted-foreground prose-a:text-primary prose-strong:text-foreground">
         {module.videoUrl && (
           <div className="aspect-video mb-6 rounded-lg overflow-hidden shadow-lg">
             <iframe
@@ -55,16 +55,24 @@ export default async function ModulePage({ params: rawParams }: { params: { cour
       <Separator />
       <div className="p-6 flex justify-between items-center">
         {prevModule ? (
-          <Button asChild variant="outline" className="border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground">
-            <Link href={`/courses/${course.id}/${prevModule.id}`}>
-              <ArrowLeft className="mr-2 h-4 w-4" /> Previous
+          <Button asChild variant="outline" className="h-auto border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground group">
+            <Link href={`/courses/${course.id}/${prevModule.id}`} className="flex items-center">
+              <ArrowLeft className="mr-3 h-5 w-5 flex-shrink-0" />
+              <div className="text-left">
+                <span className="text-xs font-normal opacity-80 group-hover:opacity-100">Previous</span>
+                <p className="font-semibold truncate max-w-[200px]">{prevModule.title}</p>
+              </div>
             </Link>
           </Button>
         ) : <div /> } {/* Placeholder for spacing */}
         {nextModule ? (
-          <Button asChild variant="default" className="bg-primary hover:bg-primary/80 text-primary-foreground">
-            <Link href={`/courses/${course.id}/${nextModule.id}`}>
-              Next <ArrowRight className="ml-2 h-4 w-4" />
+           <Button asChild variant="default" className="h-auto bg-primary hover:bg-primary/80 text-primary-foreground">
+            <Link href={`/courses/${course.id}/${nextModule.id}`} className="flex items-center">
+              <div className="text-right">
+                <span className="text-xs font-normal opacity-80">Next</span>
+                <p className="font-semibold truncate max-w-[200px]">{nextModule.title}</p>
+              </div>
+              <ArrowRight className="ml-3 h-5 w-5 flex-shrink-0" />
             </Link>
           </Button>
         ) : <div /> } {/* Placeholder for spacing */}
