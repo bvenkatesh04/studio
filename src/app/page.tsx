@@ -3,9 +3,10 @@
 import { courses } from '@/lib/data';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { MessageSquare, BookOpen } from 'lucide-react';
+import { MessageSquare, BookOpen, ArrowDownCircle } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 // Parent container variants for staggering children
 const containerVariants = {
@@ -13,10 +14,22 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.15
+      staggerChildren: 0.15,
     }
   }
 };
+
+const heroContainerVariants = {
+  hidden: { opacity: 1 },
+  visible: {
+    opacity: 1,
+    transition: {
+      delayChildren: 0.3,
+      staggerChildren: 0.25,
+    }
+  }
+};
+
 
 // Child item variants
 const itemVariants = {
@@ -48,22 +61,55 @@ export default function HomePage() {
 
   return (
     <div className="space-y-12 overflow-hidden">
-      <motion.section 
-        className="text-center py-12 bg-card rounded-lg shadow-2xl border-2 border-border/50"
+      <motion.section
+        className="relative min-h-screen flex items-center justify-center text-center text-white -mx-4 -mt-8"
         initial="hidden"
         animate="visible"
         variants={sectionVariants}
       >
-        <h1 className="text-4xl md:text-5xl font-bold font-headline mb-4 text-primary">Welcome to TechFarm UI</h1>
-        <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-          Your journey to mastering cutting-edge software technologies starts here. Explore our courses and level up your skills.
-        </p>
+        <Image
+          src="https://placehold.co/1920x1080.png"
+          alt="Abstract technology background"
+          fill
+          className="object-cover -z-20"
+          data-ai-hint="abstract technology"
+          priority
+        />
+        <div className="absolute inset-0 bg-gray-900/70 -z-10" />
+        <motion.div
+            variants={heroContainerVariants}
+            initial="hidden"
+            animate="visible"
+            className="max-w-4xl px-4"
+        >
+          <motion.h1 variants={itemVariants} className="text-5xl md:text-7xl font-bold font-headline mb-4 text-white drop-shadow-lg">
+            Unlock Your Potential with TechFarm UI
+          </motion.h1>
+          <motion.p variants={itemVariants} className="text-xl md:text-2xl text-white/90 mb-8 drop-shadow-md">
+            Master in-demand technologies with our expert-led, hands-on courses.
+          </motion.p>
+          <motion.div variants={itemVariants} className="flex flex-wrap gap-4 justify-center">
+            <Button asChild size="lg" className="bg-primary hover:bg-primary/80 text-primary-foreground">
+              <Link href="/courses">
+                <BookOpen className="mr-2 h-5 w-5" />
+                Browse Courses
+              </Link>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="border-white/50 bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm">
+              <Link href="#why-invest">
+                <ArrowDownCircle className="mr-2 h-5 w-5" />
+                Learn More
+              </Link>
+            </Button>
+          </motion.div>
+        </motion.div>
       </motion.section>
 
       <motion.section
+        id="why-invest"
         initial="hidden"
         whileInView="visible"
-        viewport={{ amount: 0.1 }}
+        viewport={{ amount: 0.1, once: false }}
         variants={sectionVariants}
       >
         <h2 className="text-3xl font-semibold font-headline mb-2 text-center text-blue-600">
@@ -77,7 +123,7 @@ export default function HomePage() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ amount: 0.1 }}
+          viewport={{ amount: 0.1, once: false }}
         >
           {courses.map((course) => (
             <motion.div key={course.id} variants={itemVariants}>
@@ -116,7 +162,7 @@ export default function HomePage() {
         className="text-center py-12 bg-card rounded-lg shadow-2xl border-2 border-border/50"
         initial="hidden"
         whileInView="visible"
-        viewport={{ amount: 0.2 }}
+        viewport={{ amount: 0.2, once: false }}
         variants={containerVariants}
       >
         <motion.h2 variants={itemVariants} className="text-3xl font-bold font-headline mb-6 text-primary">Why Choose TechFarm UI?</motion.h2>
