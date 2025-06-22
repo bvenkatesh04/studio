@@ -18,7 +18,7 @@ export default function HomePage() {
       </section>
 
       <section>
-        <h2 className="text-3xl font-bold font-headline mb-2 text-center text-primary-foreground">
+        <h2 className="text-3xl font-bold font-headline mb-2 text-center text-primary">
           Why Invest in These Technologies?
         </h2>
         <p className="text-lg text-muted-foreground mb-10 text-center max-w-3xl mx-auto">
@@ -57,7 +57,7 @@ export default function HomePage() {
       </section>
 
       <section className="text-center py-12 bg-card rounded-lg shadow-lg">
-        <h2 className="text-3xl font-bold font-headline mb-6 text-primary-foreground">Why Choose TechFarm UI?</h2>
+        <h2 className="text-3xl font-bold font-headline mb-6 text-primary">Why Choose TechFarm UI?</h2>
         <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto text-muted-foreground">
           <div className="p-4">
             <h3 className="text-xl font-semibold mb-2 text-primary">Expert-Led Content</h3>
