@@ -9,7 +9,7 @@ import { usePathname } from 'next/navigation';
 
 const navLinks = [
   { href: '/', label: 'Home' },
-  { href: '/courses', label: 'Courses' },
+  { href: '/#why-invest', label: 'Courses' },
   { href: '/contact', label: 'Contact' },
 ];
 

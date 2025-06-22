@@ -91,7 +91,7 @@ export default function HomePage() {
           </motion.p>
           <motion.div variants={itemVariants} className="flex flex-wrap gap-4 justify-center">
             <Button asChild size="lg" className="bg-primary hover:bg-primary/80 text-primary-foreground">
-              <Link href="/courses">
+              <Link href="/#why-invest">
                 <BookOpen className="mr-2 h-5 w-5" />
                 Browse Courses
               </Link>
