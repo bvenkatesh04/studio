@@ -1,4 +1,3 @@
-
 "use client";
 
 import { courses } from '@/lib/data';
@@ -61,7 +60,7 @@ export default function HomePage() {
           id="why-invest"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
+          viewport={{ amount: 0.1 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           variants={sectionVariants}
         >
@@ -79,7 +78,7 @@ export default function HomePage() {
                 key={course.id}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
+                viewport={{ amount: 0.2 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 variants={itemVariants}
               >
@@ -118,7 +117,7 @@ export default function HomePage() {
           className="text-center py-12 bg-card rounded-lg shadow-2xl border-2 border-border/50"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ amount: 0.2 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           variants={sectionVariants}
         >
