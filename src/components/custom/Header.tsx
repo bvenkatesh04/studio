@@ -31,7 +31,7 @@ export default function Header() {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-2">
           {navLinks.map((link) => (
-            <Button key={link.href} variant="ghost" asChild className={pathname === link.href ? 'text-primary font-semibold' : 'text-foreground'}>
+            <Button key={link.href} variant={pathname === link.href ? "secondary" : "ghost"} asChild>
               <Link href={link.href}>{link.label}</Link>
             </Button>
           ))}
@@ -53,8 +53,8 @@ export default function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-[280px] bg-card p-0">
-              <SheetTitle className="sr-only">Mobile Menu</SheetTitle>
-              <SheetDescription className="sr-only">A list of navigation links for the site.</SheetDescription>
+               <SheetTitle className="sr-only">Mobile Menu</SheetTitle>
+               <SheetDescription className="sr-only">A list of navigation links for the site.</SheetDescription>
               <div className="p-6">
                  <Link href="/" className="flex items-center gap-2 text-primary mb-6">
                     <BookOpenText size={28} />

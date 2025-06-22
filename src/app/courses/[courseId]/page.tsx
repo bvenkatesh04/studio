@@ -89,7 +89,7 @@ export default async function CourseOverviewPage({ params: rawParams }: { params
                     <Users className="h-5 w-5 text-primary" />
                     <span>Instructor</span>
                   </div>
-                  <span className="font-semibold text-sm text-primary-foreground">{course.instructor}</span>
+                  <span className="font-semibold text-sm text-secondary-foreground">{course.instructor}</span>
                 </div>
               )}
               <Separator />
@@ -99,7 +99,7 @@ export default async function CourseOverviewPage({ params: rawParams }: { params
                     <Star className="h-5 w-5 text-yellow-400" />
                     <span>Rating</span>
                   </div>
-                  <span className="font-semibold text-sm text-primary-foreground">{course.rating.toFixed(1)} / 5.0</span>
+                  <span className="font-semibold text-sm text-secondary-foreground">{course.rating.toFixed(1)} / 5.0</span>
                 </div>
               )}
                <Separator />
@@ -108,7 +108,7 @@ export default async function CourseOverviewPage({ params: rawParams }: { params
                     <BookOpen className="h-5 w-5 text-primary" />
                     <span>Modules</span>
                   </div>
-                  <span className="font-semibold text-sm text-primary-foreground">{course.modules.length} Modules</span>
+                  <span className="font-semibold text-sm text-secondary-foreground">{course.modules.length} Modules</span>
                 </div>
                 <Separator />
                 {course.enrolledStudents && (
@@ -117,7 +117,7 @@ export default async function CourseOverviewPage({ params: rawParams }: { params
                     <Clock className="h-5 w-5 text-primary" />
                     <span>Enrolled</span>
                   </div>
-                  <span className="font-semibold text-sm text-primary-foreground">{course.enrolledStudents.toLocaleString()} Students</span>
+                  <span className="font-semibold text-sm text-secondary-foreground">{course.enrolledStudents.toLocaleString()} Students</span>
                 </div>
                 )}
             </CardContent>

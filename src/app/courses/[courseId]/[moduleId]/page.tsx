@@ -29,13 +29,13 @@ export default async function ModulePage({ params: rawParams }: { params: { cour
                 <Link href={`/courses/${course.id}`} className="text-sm text-primary hover:underline flex items-center">
                     <BookOpen className="h-4 w-4 mr-1" /> Back to {course.title}
                 </Link>
-                <CardTitle className="text-3xl font-bold font-headline mt-1 text-primary-foreground">{module.title}</CardTitle>
+                <CardTitle className="text-3xl font-bold font-headline mt-1 text-primary">{module.title}</CardTitle>
             </div>
             <Badge variant="outline" className="text-sm">{module.duration}</Badge>
         </div>
       </CardHeader>
       <Separator />
-      <CardContent className="py-6 prose prose-invert max-w-none prose-headings:text-primary-foreground prose-p:text-muted-foreground prose-a:text-primary prose-strong:text-foreground">
+      <CardContent className="py-6 prose prose-invert max-w-none prose-headings:text-primary prose-p:text-muted-foreground prose-a:text-primary prose-strong:text-foreground">
         {module.videoUrl && (
           <div className="aspect-video mb-6 rounded-lg overflow-hidden shadow-lg">
             <iframe

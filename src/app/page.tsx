@@ -4,7 +4,7 @@
 import { courses } from '@/lib/data';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { MessageSquare, BookOpen, ArrowDownCircle } from 'lucide-react';
+import { MessageSquare, BookOpen, ArrowDownCircle, Award, Laptop, Users } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { motion } from 'framer-motion';
 
@@ -18,6 +18,11 @@ export default function HomePage() {
   const itemVariants = {
     hidden: { opacity: 0, x: -50 },
     visible: { opacity: 1, x: 0 },
+  };
+
+  const featureCardVariants = {
+    hidden: { opacity: 0, y: 30, scale: 0.95 },
+    visible: { opacity: 1, y: 0, scale: 1 },
   };
 
   return (
@@ -56,7 +61,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <div className="container mx-auto px-4 py-16 space-y-16">
+      <div className="container mx-auto px-4 py-16 space-y-24">
         <motion.section
           id="why-invest"
           initial="hidden"
@@ -119,27 +124,42 @@ export default function HomePage() {
         </motion.section>
 
         <motion.section 
-          className="text-center py-12 bg-card rounded-lg shadow-2xl border-2 border-border/50"
+          className="text-center"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, amount: 0.2 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           variants={sectionVariants}
         >
-          <h2 className="text-3xl font-bold font-headline mb-6 text-primary">Why Choose TechFarm UI?</h2>
-          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto text-muted-foreground">
-            <div className="p-4">
-              <h3 className="text-xl font-semibold mb-2 text-primary">Expert-Led Content</h3>
-              <p>Learn from industry professionals with real-world experience.</p>
-            </div>
-            <div className="p-4">
-              <h3 className="text-xl font-semibold mb-2 text-primary">Hands-On Projects</h3>
-              <p>Apply your knowledge with practical projects and exercises.</p>
-            </div>
-            <div className="p-4">
-              <h3 className="text-xl font-semibold mb-2 text-primary">Flexible Learning</h3>
-              <p>Learn at your own pace, anytime, anywhere, on any device.</p>
-            </div>
+          <h2 className="text-3xl font-bold font-headline mb-10 text-primary">Why Choose TechFarm UI?</h2>
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <motion.div variants={featureCardVariants} transition={{ duration: 0.5, delay: 0.1 }}>
+              <Card className="h-full bg-card p-6 text-center shadow-xl hover:shadow-2xl transition-shadow duration-300">
+                  <div className="mb-4 inline-flex items-center justify-center h-16 w-16 rounded-full bg-primary/10 text-primary">
+                    <Award className="h-8 w-8" />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2 text-card-foreground">Expert-Led Content</h3>
+                  <p className="text-muted-foreground">Learn from industry professionals with real-world experience.</p>
+              </Card>
+            </motion.div>
+             <motion.div variants={featureCardVariants} transition={{ duration: 0.5, delay: 0.2 }}>
+              <Card className="h-full bg-card p-6 text-center shadow-xl hover:shadow-2xl transition-shadow duration-300">
+                 <div className="mb-4 inline-flex items-center justify-center h-16 w-16 rounded-full bg-primary/10 text-primary">
+                    <Laptop className="h-8 w-8" />
+                  </div>
+                <h3 className="text-xl font-semibold mb-2 text-card-foreground">Hands-On Projects</h3>
+                <p className="text-muted-foreground">Apply your knowledge with practical projects and exercises.</p>
+              </Card>
+            </motion.div>
+            <motion.div variants={featureCardVariants} transition={{ duration: 0.5, delay: 0.3 }}>
+              <Card className="h-full bg-card p-6 text-center shadow-xl hover:shadow-2xl transition-shadow duration-300">
+                <div className="mb-4 inline-flex items-center justify-center h-16 w-16 rounded-full bg-primary/10 text-primary">
+                    <Users className="h-8 w-8" />
+                  </div>
+                <h3 className="text-xl font-semibold mb-2 text-card-foreground">Flexible Learning</h3>
+                <p className="text-muted-foreground">Learn at your own pace, anytime, anywhere, on any device.</p>
+              </Card>
+            </motion.div>
           </div>
         </motion.section>
       </div>

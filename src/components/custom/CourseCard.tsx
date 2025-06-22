@@ -39,7 +39,7 @@ export default function CourseCard({ course }: CourseCardProps) {
           </Badge>
         </CardHeader>
         <CardContent className="p-4 flex-grow">
-          <CardTitle className="text-xl font-headline mb-2 text-primary-foreground">{course.title}</CardTitle>
+          <CardTitle className="text-xl font-headline mb-2 text-card-foreground">{course.title}</CardTitle>
           <CardDescription className="text-muted-foreground text-sm line-clamp-3">{course.description}</CardDescription>
            <div className="mt-3 flex items-center space-x-4 text-xs text-muted-foreground">
             {course.rating && (
