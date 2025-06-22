@@ -1,13 +1,17 @@
 
+"use client";
+
 import { courses } from '@/lib/data';
 import CourseCard from '@/components/custom/CourseCard';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Search } from 'lucide-react';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 
-export default function SearchPage({ searchParams }: { searchParams?: { [key: string]: string | string[] | undefined }}) {
-  const query = typeof searchParams?.q === 'string' ? searchParams.q : '';
+export default function SearchPage() {
+  const searchParams = useSearchParams();
+  const query = searchParams.get('q') || '';
 
   const filteredCourses = courses.filter(course =>
     course.title.toLowerCase().includes(query.toLowerCase()) ||
