@@ -31,7 +31,7 @@ export default function HomePage() {
       <section
         className="relative min-h-screen flex items-center justify-center text-center text-white"
         style={{
-          backgroundImage: `linear-gradient(rgba(17, 24, 39, 0.7), rgba(17, 24, 39, 0.7)), url(https://storage.googleapis.com/devo-st-bucket/assets/asset-1a134371-18e3-469b-8d82-965a3d7d4c2b.png)`,
+          backgroundImage: `linear-gradient(to top, rgba(17, 24, 39, 0.9), rgba(17, 24, 39, 0.3)), url(https://storage.googleapis.com/devo-st-bucket/assets/asset-1a134371-18e3-469b-8d82-965a3d7d4c2b.png)`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
@@ -111,7 +111,7 @@ export default function HomePage() {
                         </CardHeader>
                         <CardContent className="p-0 flex-grow">
                           <CardDescription className="text-base text-muted-foreground leading-relaxed">
-                            {course.longDescription || course.description}
+                            {course.description}
                           </CardDescription>
                         </CardContent>
                         <div className="mt-6 flex flex-col sm:flex-row gap-4">
