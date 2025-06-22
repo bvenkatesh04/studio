@@ -4,13 +4,14 @@ import ModuleNavigation from '@/components/custom/ModuleNavigation';
 import { notFound } from 'next/navigation';
 import type { ReactNode } from 'react';
 
-export default function CourseLayout({
+export default async function CourseLayout({
   children,
   params,
 }: {
   children: ReactNode;
   params: { courseId: string };
 }) {
+  await params;
   const { courseId } = params;
   const course = getCourseById(courseId);
 

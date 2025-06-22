@@ -11,7 +11,8 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Terminal } from "lucide-react";
 import { Separator } from '@/components/ui/separator';
 
-export default function CourseOverviewPage({ params }: { params: { courseId: string } }) {
+export default async function CourseOverviewPage({ params }: { params: { courseId: string } }) {
+  await params;
   const { courseId } = params;
   const course = getCourseById(courseId);
 
