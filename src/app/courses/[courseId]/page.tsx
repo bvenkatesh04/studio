@@ -13,8 +13,7 @@ import { Separator } from '@/components/ui/separator';
 
 export default async function CourseOverviewPage({ params }: { params: { courseId: string } }) {
   await params;
-  const { courseId } = params;
-  const course = getCourseById(courseId);
+  const course = getCourseById(params.courseId);
 
   if (!course) {
     notFound();

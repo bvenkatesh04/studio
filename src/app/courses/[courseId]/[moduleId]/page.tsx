@@ -10,9 +10,8 @@ import { Badge } from '@/components/ui/badge';
 
 export default async function ModulePage({ params }: { params: { courseId: string; moduleId: string } }) {
   await params;
-  const { courseId, moduleId } = params;
-  const course = getCourseById(courseId);
-  const module = getModuleById(courseId, moduleId);
+  const course = getCourseById(params.courseId);
+  const module = getModuleById(params.courseId, params.moduleId);
 
   if (!course || !module) {
     notFound();

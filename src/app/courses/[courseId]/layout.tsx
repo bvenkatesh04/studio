@@ -12,8 +12,7 @@ export default async function CourseLayout({
   params: { courseId: string };
 }) {
   await params;
-  const { courseId } = params;
-  const course = getCourseById(courseId);
+  const course = getCourseById(params.courseId);
 
   if (!course) {
     notFound();
