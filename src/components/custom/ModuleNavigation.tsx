@@ -18,9 +18,9 @@ export default function ModuleNavigation({ course, currentModuleId }: ModuleNavi
   const completedModules = ['m1_1']; 
 
   return (
-    <aside className="w-full lg:w-80 bg-card p-6 rounded-lg shadow-lg h-full">
+    <aside className="w-full lg:w-80 bg-card p-6 rounded-lg shadow-lg">
       <h3 className="text-xl font-semibold mb-4 text-primary font-headline">Course Modules</h3>
-      <ScrollArea className="h-[calc(100vh-200px)] pr-3"> {/* Adjust height as needed */}
+      <ScrollArea className="h-auto max-h-[calc(100vh-12rem)] pr-3"> {/* Adjust height as needed */}
         <nav>
           <ul className="space-y-2">
             {course.modules.map((module) => {
