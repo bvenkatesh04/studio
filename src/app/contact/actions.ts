@@ -16,7 +16,7 @@ export async function sendContactMessage(formData: FormData) {
   console.log('--- New Contact Form Submission ---');
   console.log(`Name: ${name}`);
   console.log(`Email: ${email}`);
-  if (course) {
+  if (course && course !== 'none') {
     console.log(`Course: ${course}`);
   }
   console.log(`Message: ${message}`);

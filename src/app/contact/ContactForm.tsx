@@ -36,7 +36,7 @@ export default function ContactForm() {
   const handleCourseChange = (newCourse: string) => {
     setSelectedCourse(newCourse);
     setMessage(
-      newCourse ? `I'm interested in the "${newCourse}" course.` : ''
+      newCourse && newCourse !== 'none' ? `I'm interested in the "${newCourse}" course.` : ''
     );
   };
 
@@ -82,7 +82,7 @@ export default function ContactForm() {
             <SelectValue placeholder="Select a course..." />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="">None</SelectItem>
+            <SelectItem value="none">None</SelectItem>
             {courses.map((course) => (
               <SelectItem key={course.id} value={course.title}>
                 {course.title}
