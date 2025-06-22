@@ -1,6 +1,7 @@
+
 "use client";
 import Link from 'next/link';
-import { BookOpenText, Menu, X } from 'lucide-react';
+import { BookOpenText, Menu, X, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { useState, useEffect } from 'react';
@@ -8,6 +9,7 @@ import { usePathname } from 'next/navigation';
 
 const navLinks = [
   { href: '/', label: 'Home' },
+  { href: '/courses', label: 'Courses' },
   { href: '/contact', label: 'Contact' },
 ];
 
@@ -28,12 +30,18 @@ export default function Header() {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-4">
+        <nav className="hidden md:flex items-center gap-2">
           {navLinks.map((link) => (
             <Button key={link.href} variant="ghost" asChild className={pathname === link.href ? 'text-primary font-semibold' : 'text-foreground'}>
               <Link href={link.href}>{link.label}</Link>
             </Button>
           ))}
+           <Button variant="ghost" size="icon" asChild>
+              <Link href="/search">
+                <Search className="h-5 w-5" />
+                <span className="sr-only">Search</span>
+              </Link>
+            </Button>
         </nav>
 
         {/* Mobile Navigation Trigger */}
@@ -57,6 +65,9 @@ export default function Header() {
                       <Link href={link.href}>{link.label}</Link>
                     </Button>
                   ))}
+                  <Button variant={pathname === '/search' ? "secondary" : "ghost"} asChild className="justify-start text-lg">
+                    <Link href="/search">Search</Link>
+                  </Button>
                 </nav>
               </div>
             </SheetContent>
