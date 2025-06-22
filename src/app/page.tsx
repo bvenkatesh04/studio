@@ -12,15 +12,15 @@ export default function HomePage() {
   return (
     <>
       <section
-        className="hero-bg relative min-h-screen flex items-center justify-center text-center text-white"
+        className="relative min-h-screen flex items-center justify-center text-center text-white"
         style={{
-          backgroundImage: `url(https://storage.googleapis.com/devo-st-bucket/assets/asset-1a134371-18e3-469b-8d82-965a3d7d4c2b.png)`,
+          backgroundImage: `linear-gradient(rgba(17, 24, 39, 0.7), rgba(17, 24, 39, 0.7)), url(https://storage.googleapis.com/devo-st-bucket/assets/asset-1a134371-18e3-469b-8d82-965a3d7d4c2b.png)`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
       >
         <div
-            className="max-w-4xl px-4 z-10"
+            className="max-w-4xl px-4"
         >
           <h1 className="text-5xl md:text-7xl font-bold font-headline mb-4 text-white drop-shadow-lg">
             Unlock Your Potential with TechFarm UI
