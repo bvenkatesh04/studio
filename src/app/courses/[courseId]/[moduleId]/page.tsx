@@ -8,7 +8,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
 
-export default function ModulePage({ params: { courseId, moduleId } }: { params: { courseId: string; moduleId: string } }) {
+export default function ModulePage({ params }: { params: { courseId: string; moduleId: string } }) {
+  const { courseId, moduleId } = params;
   const course = getCourseById(courseId);
   const module = getModuleById(courseId, moduleId);
 

@@ -6,11 +6,12 @@ import type { ReactNode } from 'react';
 
 export default function CourseLayout({
   children,
-  params: { courseId },
+  params,
 }: {
   children: ReactNode;
   params: { courseId: string };
 }) {
+  const { courseId } = params;
   const course = getCourseById(courseId);
 
   if (!course) {
