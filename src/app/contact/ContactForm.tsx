@@ -36,7 +36,7 @@ export default function ContactForm() {
   const handleCourseChange = (newCourse: string) => {
     setSelectedCourse(newCourse);
     setMessage(
-      newCourse && newCourse !== 'none' ? `I'm interested in the "${newCourse}" course.` : ''
+      newCourse ? `I'm interested in the "${newCourse}" course.` : ''
     );
   };
 
@@ -76,13 +76,16 @@ export default function ContactForm() {
         <Input id="email" name="email" type="email" placeholder="you@example.com" required className="bg-background" />
       </div>
       <div className="space-y-2">
-        <Label htmlFor="course">Course of Interest (Optional)</Label>
-        <Select name="course" value={selectedCourse} onValueChange={handleCourseChange}>
+        <Label htmlFor="phone">Mobile Number</Label>
+        <Input id="phone" name="phone" type="tel" placeholder="+1 (555) 123-4567" required className="bg-background" />
+      </div>
+      <div className="space-y-2">
+        <Label htmlFor="course">Course of Interest</Label>
+        <Select name="course" value={selectedCourse} onValueChange={handleCourseChange} required>
           <SelectTrigger id="course" className="bg-background">
             <SelectValue placeholder="Select a course..." />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="none">None</SelectItem>
             {courses.map((course) => (
               <SelectItem key={course.id} value={course.title}>
                 {course.title}
