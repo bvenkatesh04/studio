@@ -13,8 +13,8 @@
     --popover: 0 0% 100%;
     --popover-foreground: 220 15% 20%;
 
-    --primary: 145 65% 40%; /* Fresh Green */
-    --primary-foreground: 0 0% 100%; /* White */
+    --primary: 145 65% 50%; /* Lighter Fresh Green */
+    --primary-foreground: 220 15% 20%; /* Dark text for readability */
 
     --secondary: 210 30% 94%; /* Light Blue-Gray */
     --secondary-foreground: 220 15% 10%;
@@ -30,26 +30,26 @@
 
     --border: 210 20% 88%;
     --input: 210 20% 92%;
-    --ring: 145 65% 40%; /* Fresh Green */
+    --ring: 145 65% 50%; /* Lighter Fresh Green */
 
     --radius: 0.75rem;
 
     /* Chart colors harmonized with green theme */
-    --chart-1: 145 60% 45%;
-    --chart-2: 155 55% 55%;
-    --chart-3: 135 65% 50%;
-    --chart-4: 165 60% 60%;
-    --chart-5: 140 70% 40%;
+    --chart-1: 145 60% 55%;
+    --chart-2: 155 55% 60%;
+    --chart-3: 135 65% 55%;
+    --chart-4: 165 60% 65%;
+    --chart-5: 140 70% 50%;
 
     /* Sidebar specific colors for light theme */
     --sidebar-background: 210 40% 96%;
     --sidebar-foreground: 220 15% 10%;
-    --sidebar-primary: 145 65% 40%;
-    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-primary: 145 65% 50%;
+    --sidebar-primary-foreground: 220 15% 20%; /* Dark text for readability */
     --sidebar-accent: 210 30% 90%;
     --sidebar-accent-foreground: 220 15% 10%;
     --sidebar-border: 210 20% 88%;
-    --sidebar-ring: 145 65% 40%;
+    --sidebar-ring: 145 65% 50%;
   }
 }
 
