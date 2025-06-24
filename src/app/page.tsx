@@ -67,7 +67,7 @@ export default function HomePage() {
           id="why-invest"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
+          viewport={{ amount: 0.1 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           variants={sectionVariants}
         >
@@ -85,7 +85,7 @@ export default function HomePage() {
                 key={course.id}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.1 }}
+                viewport={{ amount: 0.1 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 variants={itemVariants}
                 whileHover={{
@@ -141,7 +141,7 @@ export default function HomePage() {
           className="text-center"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
+          viewport={{ amount: 0.1 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           variants={sectionVariants}
         >
