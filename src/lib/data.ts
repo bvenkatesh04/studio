@@ -57,7 +57,7 @@ export const courses: Course[] = [
     description: 'Master the core concepts and techniques of manual software testing.',
     longDescription: 'This course covers the fundamentals of manual testing, including test planning, test case design, execution, defect reporting, and various testing types (functional, usability, exploratory). Learn essential skills for ensuring software quality without automation. Ideal for aspiring QA professionals and those new to software testing.',
     category: 'Software Testing',
-    imageUrl: 'https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg',
+    imageUrl: 'https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg',
     imageHint: 'quality assurance collaboration',
     modules: sampleModulesManualTesting,
     instructor: 'QA Lead Expert',
