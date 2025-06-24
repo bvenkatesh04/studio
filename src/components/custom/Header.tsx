@@ -1,4 +1,3 @@
-
 "use client";
 import Link from 'next/link';
 import { BookOpenText, Menu, X, Search } from 'lucide-react';
@@ -16,38 +15,20 @@ const navLinks = [
 
 export default function Header() {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      // Set scrolled to true if user has scrolled more than 20px
-      setIsScrolled(window.scrollY > 20);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Call on mount to set initial state
-
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   useEffect(() => {
     setIsSheetOpen(false);
   }, [pathname]);
 
-  const isHomePage = pathname === '/';
-  // Header is transparent only on the homepage at the very top
-  const isTransparent = isHomePage && !isScrolled;
-
   return (
     <header className={cn(
       "sticky top-0 z-50 transition-all duration-300 ease-in-out",
-      isTransparent ? "bg-transparent" : "bg-card shadow-md"
+      "bg-black/20 backdrop-blur-sm"
     )}>
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         <Link href="/" className={cn(
-          "flex items-center gap-2 hover:opacity-80 transition-opacity",
-          isTransparent ? "text-white" : "text-primary"
+          "flex items-center gap-2 hover:opacity-80 transition-opacity text-white"
         )}>
           <BookOpenText size={32} />
           <span className="text-2xl font-bold font-headline">TechFarm</span>
@@ -60,12 +41,11 @@ export default function Header() {
             return (
               <Button
                 key={link.href}
-                variant={!isTransparent && isActive ? "secondary" : "ghost"}
+                variant="ghost"
                 asChild
                 className={cn(
-                  "transition-colors",
-                  isTransparent && "text-white hover:bg-white/10 hover:text-white",
-                  isTransparent && isActive && "bg-white/10",
+                  "transition-colors text-white hover:bg-white/10 hover:text-white",
+                  isActive && "bg-white/20",
                 )}
               >
                 <Link href={link.href}>{link.label}</Link>
@@ -77,8 +57,7 @@ export default function Header() {
             size="icon" 
             asChild
             className={cn(
-              'transition-colors',
-              isTransparent ? 'text-white hover:bg-white/10' : ''
+              'transition-colors text-white hover:bg-white/10'
             )}
            >
               <Link href="/search">
@@ -92,10 +71,7 @@ export default function Header() {
         <div className="md:hidden">
           <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className={cn(
-                "transition-colors",
-                isTransparent ? "text-white" : "text-primary"
-              )}>
+              <Button variant="ghost" size="icon" className="text-white">
                 {isSheetOpen ? <X size={28} /> : <Menu size={28} />}
                 <span className="sr-only">Toggle menu</span>
               </Button>
