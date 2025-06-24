@@ -68,7 +68,7 @@ export default function HomePage() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, amount: 0.05 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
           variants={sectionVariants}
         >
           <h2 className="text-3xl font-semibold font-headline mb-2 text-center text-primary">
@@ -86,14 +86,13 @@ export default function HomePage() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: false, amount: 0.05 }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
                 variants={itemVariants}
                 whileHover={{
                   y: -8,
-                  boxShadow: "0px 20px 30px hsla(var(--primary) / 0.15)" 
                 }}
               >
-                <Card className="bg-card shadow-lg overflow-hidden border-2 border-transparent hover:border-primary/30 transition-colors duration-300">
+                <Card className="bg-card shadow-lg overflow-hidden border-2 border-transparent hover:border-primary/30 transition-all duration-300">
                   <div className="grid md:grid-cols-12 gap-0">
                     <div className="md:col-span-4 relative h-64 md:h-full min-h-[200px]">
                       <Image
@@ -142,7 +141,7 @@ export default function HomePage() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, amount: 0.05 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
           variants={sectionVariants}
         >
           <h2 className="text-3xl font-bold font-headline mb-10 text-primary">Why Choose TechFarm?</h2>

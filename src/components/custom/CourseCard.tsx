@@ -19,9 +19,8 @@ export default function CourseCard({ course }: CourseCardProps) {
       whileHover={{ 
         y: -8, 
         scale: 1.02, 
-        boxShadow: "0px 20px 30px hsla(var(--primary) / 0.15)" 
       }}
-      transition={{ type: 'spring', stiffness: 280, damping: 15 }}
+      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
       className="h-full"
     >
       <Card className="h-full flex flex-col overflow-hidden bg-card hover:border-primary/50 transition-all duration-300 shadow-lg">
