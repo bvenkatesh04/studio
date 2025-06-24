@@ -28,7 +28,7 @@ export default function Header() {
     )}>
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         <Link href="/" className={cn(
-          "flex items-center gap-2 hover:opacity-80 transition-opacity text-white"
+          "flex items-center gap-2 text-primary hover:opacity-80 transition-opacity"
         )}>
           <BookOpenText size={32} />
           <span className="text-2xl font-bold font-headline">TechFarm</span>
@@ -44,8 +44,8 @@ export default function Header() {
                 variant="ghost"
                 asChild
                 className={cn(
-                  "transition-colors text-white hover:bg-white/10 hover:text-white",
-                  isActive && "bg-white/20",
+                  "transition-colors text-primary hover:bg-primary/10 hover:text-primary",
+                  isActive && "bg-primary/20",
                 )}
               >
                 <Link href={link.href}>{link.label}</Link>
@@ -57,7 +57,7 @@ export default function Header() {
             size="icon" 
             asChild
             className={cn(
-              'transition-colors text-white hover:bg-white/10'
+              'transition-colors text-primary hover:bg-primary/10'
             )}
            >
               <Link href="/search">
@@ -71,7 +71,7 @@ export default function Header() {
         <div className="md:hidden">
           <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="text-white">
+              <Button variant="ghost" size="icon" className="text-primary hover:bg-primary/10">
                 {isSheetOpen ? <X size={28} /> : <Menu size={28} />}
                 <span className="sr-only">Toggle menu</span>
               </Button>
