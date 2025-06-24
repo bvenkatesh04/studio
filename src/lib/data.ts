@@ -39,6 +39,16 @@ const sampleModulesDevOps: Module[] = [
     { id: 'do_azure_devops', title: 'Azure DevOps Services', content: 'Introduction to Azure DevOps services including Azure Repos, Azure Pipelines, Azure Boards, Azure Test Plans, and Azure Artifacts.', duration: '90 minutes'},
 ];
 
+const sampleModulesDataEngineering: Module[] = [
+    { id: 'de_intro', title: 'Introduction to Data Engineering', content: 'An overview of the data engineering landscape, roles, responsibilities, and the lifecycle of data.', duration: '60 minutes' },
+    { id: 'de_sql', title: 'Advanced SQL for Data Engineers', content: 'Master advanced SQL concepts like window functions, CTEs, and query optimization for large-scale data manipulation.', duration: '90 minutes' },
+    { id: 'de_pipelines', title: 'Building ETL/ELT Pipelines', content: 'Learn to design and implement robust Extract, Transform, Load (ETL) and Extract, Load, Transform (ELT) pipelines.', duration: '120 minutes' },
+    { id: 'de_spark', title: 'Big Data Processing with Apache Spark', content: 'A deep dive into Apache Spark for distributed data processing, including RDDs, DataFrames, and Spark SQL.', duration: '150 minutes' },
+    { id: 'de_airflow', title: 'Workflow Orchestration with Apache Airflow', content: 'Automate, schedule, and monitor complex data workflows using Apache Airflow. Learn to create DAGs and manage tasks.', duration: '120 minutes' },
+    { id: 'de_kafka', title: 'Real-time Data Streaming with Kafka', content: 'Explore the fundamentals of Apache Kafka for building real-time data streaming applications.', duration: '90 minutes' },
+    { id: 'de_warehousing', title: 'Data Warehousing & Data Lakes', content: 'Understand the architecture and principles of modern data warehousing, data lakes, and data lakehouses.', duration: '90 minutes' },
+];
+
 
 export const courses: Course[] = [
   {
@@ -118,6 +128,19 @@ export const courses: Course[] = [
     instructor: 'DevOps Guru',
     rating: 4.8,
     enrolledStudents: 3200,
+  },
+  {
+    id: 'data-engineering-bootcamp',
+    title: 'Data Engineering Bootcamp',
+    description: 'Build robust data pipelines and master ETL processes with tools like Spark, Airflow, and Kafka.',
+    longDescription: "This comprehensive bootcamp covers the end-to-end data engineering lifecycle. You'll learn to design, build, and manage scalable data pipelines. Topics include data modeling, ETL/ELT processes, big data technologies like Apache Spark and Hadoop, workflow orchestration with Airflow, and real-time data streaming with Kafka. This course is perfect for software engineers or analysts looking to specialize in data engineering.",
+    category: 'Data Engineering',
+    imageUrl: 'https://placehold.co/600x400.png',
+    imageHint: 'data pipelines flowchart',
+    modules: sampleModulesDataEngineering,
+    instructor: 'Data Architect Pro',
+    rating: 4.7,
+    enrolledStudents: 1900,
   },
   {
     id: 'playwright-modern-testing',
