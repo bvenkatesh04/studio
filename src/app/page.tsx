@@ -67,8 +67,8 @@ export default function HomePage() {
           id="why-invest"
           initial="hidden"
           whileInView="visible"
-          viewport={{ amount: 0.1 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: false, amount: 0.05 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
           variants={sectionVariants}
         >
           <h2 className="text-3xl font-semibold font-headline mb-2 text-center text-primary">
@@ -85,8 +85,8 @@ export default function HomePage() {
                 key={course.id}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ amount: 0.1 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: false, amount: 0.05 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
                 variants={itemVariants}
                 whileHover={{
                   y: -8,
@@ -141,13 +141,13 @@ export default function HomePage() {
           className="text-center"
           initial="hidden"
           whileInView="visible"
-          viewport={{ amount: 0.1 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: false, amount: 0.05 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
           variants={sectionVariants}
         >
           <h2 className="text-3xl font-bold font-headline mb-10 text-primary">Why Choose TechFarm?</h2>
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <motion.div variants={featureCardVariants} transition={{ duration: 0.5, delay: 0.1 }}>
+            <motion.div variants={featureCardVariants} transition={{ duration: 0.4, delay: 0.1 }}>
               <Card className="h-full bg-card p-6 text-center shadow-xl hover:shadow-2xl transition-shadow duration-300">
                   <div className="mb-4 inline-flex items-center justify-center h-16 w-16 rounded-full bg-primary/10 text-primary">
                     <Award className="h-8 w-8" />
@@ -156,7 +156,7 @@ export default function HomePage() {
                   <p className="text-muted-foreground">Learn from industry professionals with real-world experience.</p>
               </Card>
             </motion.div>
-             <motion.div variants={featureCardVariants} transition={{ duration: 0.5, delay: 0.2 }}>
+             <motion.div variants={featureCardVariants} transition={{ duration: 0.4, delay: 0.2 }}>
               <Card className="h-full bg-card p-6 text-center shadow-xl hover:shadow-2xl transition-shadow duration-300">
                  <div className="mb-4 inline-flex items-center justify-center h-16 w-16 rounded-full bg-primary/10 text-primary">
                     <Laptop className="h-8 w-8" />
@@ -165,7 +165,7 @@ export default function HomePage() {
                 <p className="text-muted-foreground">Apply your knowledge with practical projects and exercises.</p>
               </Card>
             </motion.div>
-            <motion.div variants={featureCardVariants} transition={{ duration: 0.5, delay: 0.3 }}>
+            <motion.div variants={featureCardVariants} transition={{ duration: 0.4, delay: 0.3 }}>
               <Card className="h-full bg-card p-6 text-center shadow-xl hover:shadow-2xl transition-shadow duration-300">
                 <div className="mb-4 inline-flex items-center justify-center h-16 w-16 rounded-full bg-primary/10 text-primary">
                     <Users className="h-8 w-8" />
