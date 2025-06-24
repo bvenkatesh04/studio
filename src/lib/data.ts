@@ -122,7 +122,7 @@ export const courses: Course[] = [
     description: 'Master DevOps tools: Kubernetes, Docker, Terraform, Ansible, Jenkins, CI/CD, Git, Prometheus, Grafana, ELK, Jfrog Artifactory, ArgoCD, Helm, Vault, AWS DevOps tools, Azure DevOps and more.',
     longDescription: 'This bootcamp provides a comprehensive overview of DevOps principles and tools. Learn containerization with Docker, orchestration with Kubernetes, IaC with Terraform, configuration management with Ansible, CI/CD with Jenkins, Maven, GitLab & GitHub Actions, monitoring with Prometheus & Grafana, logging with ELK Stack, artifact management with Jfrog Artifactory, GitOps with ArgoCD, package management with Helm, secrets management with Vault, version control with Git. Also covers AWS native DevOps tools (CodeCommit, CodeBuild, CodeDeploy, CodePipeline) and Azure DevOps Services (Repos, Pipelines, Boards, Test Plans, Artifacts). Includes hands-on labs and real-world scenarios.',
     category: 'DevOps',
-    imageUrl: 'https://images.unsplash.com/photo-1542626991-cbc4e62684cc?w=600&h=400&auto=format&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&h=400&auto=format&fit=crop',
     imageHint: 'devops tools pipeline',
     modules: sampleModulesDevOps,
     instructor: 'DevOps Guru',
