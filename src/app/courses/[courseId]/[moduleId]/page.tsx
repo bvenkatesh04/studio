@@ -7,10 +7,16 @@ import { ArrowLeft, ArrowRight, BookOpen, Video } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
-
-export default async function ModulePage({ params }: { params: { courseId: string; moduleId: string } }) {
-  const course = await getCourseById(params.courseId);
-  const module = await getModuleById(params.courseId, params.moduleId);
+type ModulePageProps = {
+  params: {
+    courseId: string;
+    moduleId: string;
+  };
+};
+export default async function ModulePage({ params }: ModulePageProps) {
+    const { courseId, moduleId } = params;
+  const course = await getCourseById(courseId);
+  const module = await getModuleById(courseId,moduleId);
 
   if (!course || !module) {
     notFound();
