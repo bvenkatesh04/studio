@@ -9,7 +9,23 @@ import { Badge } from '@/components/ui/badge';
 
 type PageProps = {
       params: Promise<{ courseId: string; moduleId: string }>;
+}
+// This function tells Next.js what params to generate at build time
+export async function generateStaticParams() {
+  // Fetch all courses and their modules
+  const courses = await getAllCourses(); // You need to implement this in your data/lib
+  const params = [];
 
+  for (const course of courses) {
+    for (const module of course.modules) {
+      params.push({
+        courseId: course.id,
+        moduleId: module.id,
+      });
+    }
+  }
+
+  return params;
 }
 export default async function Page({params}: PageProps) {
  const course = getCourseById((await params).courseId);
