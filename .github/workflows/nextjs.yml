@@ -73,6 +73,11 @@ jobs:
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+      - name: Check type dependencies
+        run:  npm ls typescript || echo "❌ No typescript installed"
+              npm ls @types/react || echo "❌ No @types/react installed"
+      - name: Show tsconfig.json
+        run: cat tsconfig.json
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build --no-lint
       - name: Upload artifact
