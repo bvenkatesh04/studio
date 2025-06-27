@@ -1,22 +1,20 @@
-
 import { getModuleById, getCourseById } from '@/lib/data';
 import { notFound } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { ArrowLeft, ArrowRight, BookOpen, Video } from 'lucide-react';
+import { ArrowLeft, ArrowRight, BookOpen } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
-type ModulePageProps = {
-  params: {
-    courseId: string;
-    moduleId: string;
-  };
-};
-export default async function ModulePage({ params }: ModulePageProps) {
-    const { courseId, moduleId } = params;
+
+export default async function ModulePage({
+  params,
+}: {
+  params: { courseId: string; moduleId: string }
+}) {
+  const { courseId, moduleId } = params;
   const course = await getCourseById(courseId);
-  const module = await getModuleById(courseId,moduleId);
+  const module = await getModuleById(courseId, moduleId);
 
   if (!course || !module) {
     notFound();
@@ -30,13 +28,13 @@ export default async function ModulePage({ params }: ModulePageProps) {
     <Card className="bg-card shadow-xl rounded-lg">
       <CardHeader>
         <div className="flex items-center justify-between">
-            <div>
-                <Link href={`/courses/${course.id}`} className="text-sm text-primary hover:underline flex items-center">
-                    <BookOpen className="h-4 w-4 mr-1" /> Back to {course.title}
-                </Link>
-                <CardTitle className="text-3xl font-bold font-headline mt-1 text-primary">{module.title}</CardTitle>
-            </div>
-            <Badge variant="outline" className="text-sm">{module.duration}</Badge>
+          <div>
+            <Link href={`/courses/${course.id}`} className="text-sm text-primary hover:underline flex items-center">
+              <BookOpen className="h-4 w-4 mr-1" /> Back to {course.title}
+            </Link>
+            <CardTitle className="text-3xl font-bold font-headline mt-1 text-primary">{module.title}</CardTitle>
+          </div>
+          <Badge variant="outline" className="text-sm">{module.duration}</Badge>
         </div>
       </CardHeader>
       <Separator />
@@ -55,7 +53,6 @@ export default async function ModulePage({ params }: ModulePageProps) {
           </div>
         )}
         <p>{module.content}</p>
-        {/* Add more structured content rendering here if module.content is Markdown/HTML */}
       </CardContent>
       <Separator />
       <div className="p-6 flex justify-between items-center">
@@ -69,9 +66,9 @@ export default async function ModulePage({ params }: ModulePageProps) {
               </div>
             </Link>
           </Button>
-        ) : <div /> } {/* Placeholder for spacing */}
+        ) : <div /> }
         {nextModule ? (
-           <Button asChild variant="default" className="h-auto bg-primary hover:bg-primary/80 text-primary-foreground">
+          <Button asChild variant="default" className="h-auto bg-primary hover:bg-primary/80 text-primary-foreground">
             <Link href={`/courses/${course.id}/${nextModule.id}`} className="flex items-center">
               <div className="text-right">
                 <span className="text-xs font-normal opacity-80">Next</span>
@@ -80,7 +77,7 @@ export default async function ModulePage({ params }: ModulePageProps) {
               <ArrowRight className="ml-3 h-5 w-5 flex-shrink-0" />
             </Link>
           </Button>
-        ) : <div /> } {/* Placeholder for spacing */}
+        ) : <div /> }
       </div>
     </Card>
   );
