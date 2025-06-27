@@ -8,14 +8,12 @@ import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
 
 type PageProps = {
-  params: {
-    courseId: string;
-    moduleId: string;
-  };
+      params: Promise<{ courseId: string; moduleId: string }>;
+
 }
 export default async function Page({params}: PageProps) {
-  const course = await getCourseById(params.courseId);
-  const module = await getModuleById(params.courseId, params.moduleId);
+ const course = getCourseById((await params).courseId);
+ const module = getModuleById((await params).courseId, (await params).moduleId);
 
   if (!course || !module) {
     notFound();
