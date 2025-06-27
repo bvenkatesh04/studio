@@ -10,9 +10,16 @@ import { PlayCircle, Users, Star, Clock, BookOpen } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Terminal } from "lucide-react";
 import { Separator } from '@/components/ui/separator';
+import { getAllCourses } from '@/lib/data';
 type ModulePageProps = {
      params: Promise<{ courseId: string }>;
 };
+export async function generateStaticParams() {
+  const courses = await getAllCourses();
+  return courses.map((course: { id: string }) => ({
+    courseId: course.id,
+  }));
+}
 export default async function CourseOverviewPage({ params }: ModulePageProps) {
   const course = getCourseById((await params).courseId);
   if (!course) {
