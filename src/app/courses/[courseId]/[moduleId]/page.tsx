@@ -7,11 +7,13 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
 
-export default async function ModulePage({
-  params,
-}: {
-  params: { courseId: string; moduleId: string }
-}) {
+type PageProps = {
+  params: {
+    courseId: string;
+    moduleId: string;
+  };
+}
+export default async function ModulePage({params,}: PageProps) {
   const { courseId, moduleId } = params;
   const course = await getCourseById(courseId);
   const module = await getModuleById(courseId, moduleId);
