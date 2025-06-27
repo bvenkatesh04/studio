@@ -13,10 +13,9 @@ type PageProps = {
     moduleId: string;
   };
 }
-export default async function ModulePage({params,}: PageProps) {
-  const { courseId, moduleId } = params;
-  const course = await getCourseById(courseId);
-  const module = await getModuleById(courseId, moduleId);
+export default async function Page({params}: PageProps) {
+  const course = await getCourseById(params.courseId);
+  const module = await getModuleById(params.courseId, params.moduleId);
 
   if (!course || !module) {
     notFound();
