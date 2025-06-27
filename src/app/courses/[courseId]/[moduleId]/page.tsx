@@ -9,8 +9,8 @@ import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
 
 export default async function ModulePage({ params }: { params: { courseId: string; moduleId: string } }) {
-  const course = getCourseById(params.courseId);
-  const module = getModuleById(params.courseId, params.moduleId);
+  const course = await getCourseById(params.courseId);
+  const module = await getModuleById(params.courseId, params.moduleId);
 
   if (!course || !module) {
     notFound();
