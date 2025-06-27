@@ -6,7 +6,7 @@ import { ArrowLeft, ArrowRight, BookOpen } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
-
+import { getAllCourses } from '@/lib/data';
 type PageProps = {
       params: Promise<{ courseId: string; moduleId: string }>;
 }

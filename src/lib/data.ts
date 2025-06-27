@@ -165,3 +165,6 @@ export const getModuleById = (courseId: string, moduleId: string): Module | unde
   const course = getCourseById(courseId);
   return course?.modules.find(module => module.id === moduleId);
 };
+export async function getAllCourses() {
+  return courses;
+}
