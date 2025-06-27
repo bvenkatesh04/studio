@@ -11,13 +11,10 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Terminal } from "lucide-react";
 import { Separator } from '@/components/ui/separator';
 type ModulePageProps = {
-  params: {
-    courseId: string;
-  };
+     params: Promise<{ courseId: string }>;
 };
 export default async function CourseOverviewPage({ params }: ModulePageProps) {
-  const { courseId } = params;
-  const course = getCourseById(courseId);
+  const course = getCourseById((await params).courseId);
   if (!course) {
     notFound();
   }
