@@ -27,9 +27,11 @@ jobs:
       - name: Build Next.js app
         run: npm run build
 
-      - name: Export static site
-        run: npm run export
-
+      # - name: Export static site
+      #   run: npm run export
+      - name : npm run app
+        run: npm run start
+        
       - name: Add .nojekyll file
         run: touch out/.nojekyll
 
