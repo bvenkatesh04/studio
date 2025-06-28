@@ -304,45 +304,45 @@ export default function HomePage() {
         </div>
       </section>
 
-      <div className="container mx-auto px-4 py-16 space-y-32">
-        {/* Enhanced Why Choose Section */}
+      <div className="container mx-auto px-4 py-12 space-y-20">
+        {/* COMPACT Why Choose Section */}
         <motion.section
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, amount: 0.1 }}
           variants={sectionVariants}
         >
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <motion.h2 
               variants={itemVariants}
-              className="text-4xl md:text-5xl font-bold font-headline mb-6 text-primary"
+              className="text-3xl md:text-4xl font-bold font-headline mb-4 text-primary"
             >
               Why Choose TechFarm?
             </motion.h2>
             <motion.p 
               variants={itemVariants}
-              className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed"
+              className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed"
             >
               We're not just another online learning platform. We're your career transformation partner, 
               committed to your success with proven methodologies and industry connections.
             </motion.p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {benefits.map((benefit, index) => (
               <motion.div 
                 key={benefit.title}
                 variants={featureCardVariants} 
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <Card className="h-full p-8 text-center shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 bg-card/80 backdrop-blur-sm group">
-                  <div className="mb-6 inline-flex items-center justify-center h-16 w-16 rounded-full bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
-                    <benefit.icon className="h-8 w-8" />
+                <Card className="h-full p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 bg-card/80 backdrop-blur-sm group">
+                  <div className="mb-4 inline-flex items-center justify-center h-12 w-12 rounded-full bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                    <benefit.icon className="h-6 w-6" />
                   </div>
-                  <h3 className="text-xl font-semibold mb-4 text-card-foreground group-hover:text-primary transition-colors duration-300">
+                  <h3 className="text-lg font-semibold mb-3 text-card-foreground group-hover:text-primary transition-colors duration-300">
                     {benefit.title}
                   </h3>
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="text-sm text-muted-foreground leading-relaxed">
                     {benefit.description}
                   </p>
                 </Card>
@@ -351,7 +351,7 @@ export default function HomePage() {
           </div>
         </motion.section>
 
-        {/* Enhanced Courses Section - COMPACT LAYOUT */}
+        {/* COMPACT Courses Section */}
         <motion.section
           id="why-invest"
           initial="hidden"
@@ -359,23 +359,23 @@ export default function HomePage() {
           viewport={{ once: false, amount: 0.05 }}
           variants={sectionVariants}
         >
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <motion.h2 
               variants={itemVariants}
-              className="text-4xl md:text-5xl font-semibold font-headline mb-6 text-primary"
+              className="text-3xl md:text-4xl font-semibold font-headline mb-4 text-primary"
             >
               Master In-Demand Technologies
             </motion.h2>
             <motion.p 
               variants={itemVariants}
-              className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed"
+              className="text-lg text-muted-foreground max-w-4xl mx-auto leading-relaxed"
             >
               In today's rapidly evolving digital landscape, staying ahead means mastering the right technologies. 
               Our expertly crafted courses are designed to give you the competitive edge you need to excel in your career.
             </motion.p>
           </div>
 
-          <div className="space-y-8">
+          <div className="space-y-6">
             {courses.map((course, index) => (
               <motion.div 
                 key={course.id}
@@ -385,13 +385,13 @@ export default function HomePage() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 variants={itemVariants}
                 whileHover={{
-                  y: -8,
+                  y: -6,
                   transition: { type: "spring", stiffness: 300, damping: 20 }
                 }}
               >
-                <Card className="bg-card/80 backdrop-blur-sm shadow-xl overflow-hidden border-2 border-transparent hover:border-primary/30 transition-all duration-500 hover:shadow-2xl">
+                <Card className="bg-card/80 backdrop-blur-sm shadow-lg overflow-hidden border-2 border-transparent hover:border-primary/30 transition-all duration-500 hover:shadow-xl">
                   <div className="grid md:grid-cols-12 gap-0">
-                    <div className="md:col-span-4 relative h-48 md:h-full min-h-[200px]">
+                    <div className="md:col-span-4 relative h-40 md:h-full min-h-[180px]">
                       <Image
                         src={course.imageUrl}
                         alt={course.title}
@@ -401,55 +401,49 @@ export default function HomePage() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent" />
                       <div className="absolute top-3 left-3">
-                        <Badge variant="secondary" className="bg-primary text-primary-foreground">
+                        <Badge variant="secondary" className="bg-primary text-primary-foreground text-xs">
                           {course.category}
                         </Badge>
                       </div>
                       {course.rating && (
-                        <div className="absolute bottom-3 left-3 flex items-center gap-2 bg-black/50 backdrop-blur-sm rounded-full px-3 py-1">
-                          <Star className="h-4 w-4 text-yellow-400 fill-current" />
-                          <span className="text-white text-sm font-medium">{course.rating.toFixed(1)}</span>
+                        <div className="absolute bottom-3 left-3 flex items-center gap-2 bg-black/50 backdrop-blur-sm rounded-full px-2 py-1">
+                          <Star className="h-3 w-3 text-yellow-400 fill-current" />
+                          <span className="text-white text-xs font-medium">{course.rating.toFixed(1)}</span>
                         </div>
                       )}
                     </div>
                     <div className="md:col-span-8">
-                      <div className="p-6 md:p-8 flex flex-col h-full">
-                        <CardHeader className="p-0 mb-4">
-                          <CardTitle className="text-xl md:text-2xl font-bold font-headline text-primary mb-2">
+                      <div className="p-5 md:p-6 flex flex-col h-full">
+                        <CardHeader className="p-0 mb-3">
+                          <CardTitle className="text-lg md:text-xl font-bold font-headline text-primary mb-2">
                             {course.title}
                           </CardTitle>
-                          <CardDescription className="text-base text-muted-foreground leading-relaxed line-clamp-2">
+                          <CardDescription className="text-sm text-muted-foreground leading-relaxed line-clamp-2">
                             {course.longDescription || course.description}
                           </CardDescription>
                         </CardHeader>
                         
                         <CardContent className="p-0 flex-grow">
-                          <div className="grid grid-cols-2 gap-3 mb-4">
-                            {course.enrolledStudents && (
-                              <div className="flex items-center gap-2">
-                                <Users className="h-4 w-4 text-primary" />
-                                <span className="text-sm font-medium">{course.enrolledStudents.toLocaleString()} students</span>
-                              </div>
-                            )}
+                          <div className="grid grid-cols-2 gap-3 mb-3">
                             <div className="flex items-center gap-2">
                               <BookOpen className="h-4 w-4 text-primary" />
-                              <span className="text-sm font-medium">{course.modules.length} modules</span>
+                              <span className="text-xs font-medium">{course.modules.length} modules</span>
                             </div>
                             {course.instructor && (
                               <div className="flex items-center gap-2">
                                 <Award className="h-4 w-4 text-primary" />
-                                <span className="text-sm font-medium">{course.instructor}</span>
+                                <span className="text-xs font-medium">{course.instructor}</span>
                               </div>
                             )}
                             <div className="flex items-center gap-2">
                               <Clock className="h-4 w-4 text-primary" />
-                              <span className="text-sm font-medium">Self-paced</span>
+                              <span className="text-xs font-medium">Self-paced</span>
                             </div>
                           </div>
                         </CardContent>
                         
                         <div className="flex flex-col sm:flex-row gap-3 mt-auto">
-                          <Button asChild className="flex-1 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
+                          <Button asChild className="flex-1 transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg text-sm">
                             <Link href={`/courses/${course.id}`}>
                               <BookOpen className="mr-2 h-4 w-4" />
                               Explore Course
@@ -458,7 +452,7 @@ export default function HomePage() {
                           <Button 
                             asChild 
                             variant="outline" 
-                            className="flex-1 border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+                            className="flex-1 border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg text-sm"
                           >
                             <Link href={`/contact?course=${encodeURIComponent(course.title)}`}>
                               <MessageSquare className="mr-2 h-4 w-4" />
@@ -481,50 +475,50 @@ export default function HomePage() {
           whileInView="visible"
           viewport={{ once: false, amount: 0.1 }}
           variants={sectionVariants}
-          className="py-16"
+          className="py-12"
         >
-          <div className="text-center mb-16">
+          <div className="text-center mb-12">
             <motion.h2 
               variants={itemVariants}
-              className="text-4xl md:text-5xl font-bold font-headline mb-6 text-primary"
+              className="text-3xl md:text-4xl font-bold font-headline mb-4 text-primary"
             >
               Success Stories
             </motion.h2>
             <motion.p 
               variants={itemVariants}
-              className="text-xl text-muted-foreground max-w-3xl mx-auto"
+              className="text-lg text-muted-foreground max-w-3xl mx-auto"
             >
               Join thousands of professionals who have transformed their careers with TechFarm
             </motion.p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-6">
             {testimonials.map((testimonial, index) => (
               <motion.div
                 key={testimonial.name}
                 variants={featureCardVariants}
                 transition={{ delay: index * 0.2 }}
               >
-                <Card className="h-full p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 bg-card/80 backdrop-blur-sm">
-                  <div className="flex items-center mb-6">
+                <Card className="h-full p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 bg-card/80 backdrop-blur-sm">
+                  <div className="flex items-center mb-4">
                     <Image
                       src={testimonial.image}
                       alt={testimonial.name}
-                      width={60}
-                      height={60}
-                      className="rounded-full mr-4"
+                      width={50}
+                      height={50}
+                      className="rounded-full mr-3"
                     />
                     <div>
-                      <h4 className="font-semibold text-lg">{testimonial.name}</h4>
-                      <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                      <h4 className="font-semibold text-base">{testimonial.name}</h4>
+                      <p className="text-xs text-muted-foreground">{testimonial.role}</p>
                     </div>
                   </div>
-                  <div className="flex mb-4">
+                  <div className="flex mb-3">
                     {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
+                      <Star key={i} className="h-4 w-4 text-yellow-400 fill-current" />
                     ))}
                   </div>
-                  <blockquote className="text-muted-foreground italic leading-relaxed">
+                  <blockquote className="text-sm text-muted-foreground italic leading-relaxed">
                     "{testimonial.quote}"
                   </blockquote>
                 </Card>
@@ -539,20 +533,20 @@ export default function HomePage() {
           whileInView="visible"
           viewport={{ once: false, amount: 0.1 }}
           variants={sectionVariants}
-          className="text-center py-16"
+          className="text-center py-12"
         >
-          <Card className="p-12 md:p-16 bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 border-primary/20 shadow-2xl">
+          <Card className="p-8 md:p-12 bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 border-primary/20 shadow-xl">
             <motion.h2 
               variants={itemVariants}
-              className="text-4xl md:text-5xl font-bold font-headline mb-6 text-primary"
+              className="text-3xl md:text-4xl font-bold font-headline mb-4 text-primary"
             >
               Ready to Transform Your Career?
             </motion.h2>
             <motion.p 
               variants={itemVariants}
-              className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed"
+              className="text-lg text-muted-foreground mb-6 max-w-3xl mx-auto leading-relaxed"
             >
-              Join over 50,000 professionals who have already accelerated their careers with TechFarm. 
+              Join thousands of professionals who have already accelerated their careers with TechFarm. 
               Start your journey today and unlock unlimited possibilities.
             </motion.p>
             <motion.div 
