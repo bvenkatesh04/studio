@@ -3,7 +3,7 @@ import type { Course, Module } from '@/types';
 const sampleModulesGeneric: Module[] = [
   { id: 'm_intro', title: 'Introduction to Core Concepts', content: 'This module covers the fundamental principles and theories. We explore the history and evolution of the subject, laying a strong foundation for advanced topics. Key definitions and terminologies will be introduced and explained with practical examples.', duration: '45 minutes' },
   { id: 'm_setup', title: 'Setting Up Your Environment', content: 'Learn how to set up your development or working environment. This includes software installation, configuration, and necessary tools to get started. We provide step-by-step guides for Windows, macOS, and Linux.', duration: '60 minutes' },
-  { id: 'm_project1', title: 'First Project: Getting Started', content: 'A hands-on module where you will build your first project. This classic "Hello World" style exercise will help you understand the basic workflow and see immediate results. We will also cover debugging basics.', duration: '30 minutes' },
+  { id: 'm_project1', title: 'First Project: Getting Started', content: 'A hands-on project where you will build your first project. This classic "Hello World" style exercise will help you understand the basic workflow and see immediate results. We will also cover debugging basics.', duration: '30 minutes' },
   { id: 'm_advanced', title: 'Advanced Techniques & Best Practices', content: 'Delve into advanced techniques and best practices. This module explores complex problem-solving, optimization strategies, and efficient workflows. Case studies and real-world scenarios will be analyzed.', duration: '90 minutes' },
   { id: 'm_final', title: 'Final Project Submission and Review', content: 'Guidance on how to submit your final project for review. This module covers the submission criteria, common pitfalls to avoid, and how the review process works. Peer review examples will be discussed.', duration: '30 minutes' },
 ];
@@ -48,6 +48,198 @@ const sampleModulesDataEngineering: Module[] = [
     { id: 'de_warehousing', title: 'Data Warehousing & Data Lakes', content: 'Understand the architecture and principles of modern data warehousing, data lakes, and data lakehouses.', duration: '90 minutes' },
 ];
 
+// Comprehensive AWS Cloud Engineer Modules
+const awsCloudEngineerModules: Module[] = [
+    // Foundation & Core Services
+    { 
+        id: 'aws_foundations', 
+        title: 'AWS Cloud Foundations & Global Infrastructure', 
+        content: 'Master AWS fundamentals including global infrastructure, regions, availability zones, edge locations, and the AWS Well-Architected Framework. Understand cloud computing models, AWS service categories, and the shared responsibility model. Learn about AWS pricing models, billing, and cost optimization strategies.', 
+        duration: '90 minutes' 
+    },
+    { 
+        id: 'aws_iam', 
+        title: 'Identity & Access Management (IAM)', 
+        content: 'Deep dive into AWS IAM including users, groups, roles, and policies. Learn about multi-factor authentication (MFA), identity federation, AWS Organizations, Service Control Policies (SCPs), and IAM best practices. Understand cross-account access, temporary credentials, and security token service (STS).', 
+        duration: '120 minutes' 
+    },
+    
+    // Compute Services
+    { 
+        id: 'aws_ec2', 
+        title: 'Elastic Compute Cloud (EC2) & Auto Scaling', 
+        content: 'Master EC2 instances, instance types, AMIs, security groups, and key pairs. Learn about Elastic Load Balancing (ALB, NLB, CLB), Auto Scaling Groups, launch templates, and placement groups. Understand EC2 pricing models, Spot instances, Reserved instances, and Dedicated hosts.', 
+        duration: '150 minutes' 
+    },
+    { 
+        id: 'aws_lambda', 
+        title: 'AWS Lambda & Serverless Computing', 
+        content: 'Explore serverless computing with AWS Lambda, including function creation, triggers, layers, and versions. Learn about API Gateway, Step Functions, EventBridge, and serverless application patterns. Understand Lambda pricing, cold starts, and performance optimization.', 
+        duration: '120 minutes' 
+    },
+    { 
+        id: 'aws_containers', 
+        title: 'Container Services: ECS, EKS & Fargate', 
+        content: 'Learn container orchestration with Amazon ECS, EKS (Kubernetes), and AWS Fargate. Understand task definitions, services, clusters, and container networking. Explore ECR for container registry, service mesh with App Mesh, and container security best practices.', 
+        duration: '180 minutes' 
+    },
+    
+    // Storage Services
+    { 
+        id: 'aws_s3', 
+        title: 'Simple Storage Service (S3) & Storage Classes', 
+        content: 'Master S3 buckets, objects, versioning, and lifecycle policies. Learn about S3 storage classes (Standard, IA, Glacier, Deep Archive), Cross-Region Replication, Transfer Acceleration, and S3 security features including bucket policies and ACLs.', 
+        duration: '120 minutes' 
+    },
+    { 
+        id: 'aws_ebs_efs', 
+        title: 'Elastic Block Store (EBS) & Elastic File System (EFS)', 
+        content: 'Understand EBS volume types, snapshots, encryption, and performance optimization. Learn about EFS for shared file storage, mount targets, performance modes, and throughput modes. Explore FSx for high-performance file systems.', 
+        duration: '90 minutes' 
+    },
+    
+    // Database Services
+    { 
+        id: 'aws_rds', 
+        title: 'Relational Database Service (RDS) & Aurora', 
+        content: 'Master RDS for managed relational databases including MySQL, PostgreSQL, Oracle, and SQL Server. Learn about Aurora serverless, read replicas, Multi-AZ deployments, automated backups, and database security. Understand RDS Proxy and performance insights.', 
+        duration: '120 minutes' 
+    },
+    { 
+        id: 'aws_nosql', 
+        title: 'DynamoDB & NoSQL Database Services', 
+        content: 'Deep dive into DynamoDB including tables, items, partition keys, sort keys, and indexes (GSI/LSI). Learn about DynamoDB Streams, DAX for caching, on-demand vs provisioned capacity, and DynamoDB best practices for performance and cost optimization.', 
+        duration: '120 minutes' 
+    },
+    { 
+        id: 'aws_data_services', 
+        title: 'Data Warehousing: Redshift, EMR & Analytics', 
+        content: 'Explore Amazon Redshift for data warehousing, EMR for big data processing, and analytics services like Athena, QuickSight, and Kinesis. Learn about data lakes with Lake Formation, Glue for ETL, and real-time analytics with Kinesis Data Analytics.', 
+        duration: '150 minutes' 
+    },
+    
+    // Networking & Content Delivery
+    { 
+        id: 'aws_vpc', 
+        title: 'Virtual Private Cloud (VPC) & Advanced Networking', 
+        content: 'Master VPC creation, subnets, route tables, internet gateways, and NAT gateways. Learn about VPC peering, Transit Gateway, VPN connections, Direct Connect, and network security with NACLs and security groups. Understand VPC endpoints and PrivateLink.', 
+        duration: '180 minutes' 
+    },
+    { 
+        id: 'aws_cloudfront', 
+        title: 'CloudFront CDN & Global Content Delivery', 
+        content: 'Learn about CloudFront distributions, origins, behaviors, and caching strategies. Understand edge locations, Lambda@Edge, CloudFront Functions, and integration with other AWS services. Explore Global Accelerator for improved application performance.', 
+        duration: '90 minutes' 
+    },
+    { 
+        id: 'aws_route53', 
+        title: 'Route 53 DNS & Domain Management', 
+        content: 'Master Route 53 for DNS management, hosted zones, record types, and routing policies (simple, weighted, latency-based, failover, geolocation). Learn about health checks, domain registration, and DNS security with DNSSEC.', 
+        duration: '75 minutes' 
+    },
+    
+    // Security & Compliance
+    { 
+        id: 'aws_security', 
+        title: 'AWS Security Services & Best Practices', 
+        content: 'Comprehensive security coverage including AWS WAF, Shield, GuardDuty, Inspector, and Security Hub. Learn about AWS Config for compliance, CloudTrail for auditing, and KMS for encryption. Understand AWS Secrets Manager, Parameter Store, and Certificate Manager.', 
+        duration: '150 minutes' 
+    },
+    { 
+        id: 'aws_compliance', 
+        title: 'Compliance, Governance & Risk Management', 
+        content: 'Learn about AWS compliance frameworks (SOC, PCI DSS, HIPAA, GDPR), AWS Artifact for compliance reports, and governance with AWS Organizations, Control Tower, and Service Catalog. Understand risk management and security assessment tools.', 
+        duration: '90 minutes' 
+    },
+    
+    // Monitoring & Operations
+    { 
+        id: 'aws_cloudwatch', 
+        title: 'CloudWatch Monitoring & Observability', 
+        content: 'Master CloudWatch metrics, alarms, dashboards, and logs. Learn about CloudWatch Insights, X-Ray for distributed tracing, and AWS Systems Manager for operational insights. Understand custom metrics, log aggregation, and automated responses.', 
+        duration: '120 minutes' 
+    },
+    { 
+        id: 'aws_automation', 
+        title: 'Systems Manager & Automation', 
+        content: 'Explore AWS Systems Manager for patch management, parameter store, session manager, and automation documents. Learn about AWS Config for configuration management, CloudFormation for infrastructure as code, and AWS CLI/SDK for automation.', 
+        duration: '120 minutes' 
+    },
+    
+    // DevOps & CI/CD
+    { 
+        id: 'aws_devops', 
+        title: 'AWS DevOps Tools: CodeCommit, CodeBuild, CodeDeploy, CodePipeline', 
+        content: 'Master AWS native DevOps tools for complete CI/CD pipelines. Learn about CodeCommit for source control, CodeBuild for build automation, CodeDeploy for deployment automation, and CodePipeline for orchestrating the entire pipeline. Understand integration with third-party tools.', 
+        duration: '150 minutes' 
+    },
+    { 
+        id: 'aws_cloudformation', 
+        title: 'Infrastructure as Code with CloudFormation & CDK', 
+        content: 'Deep dive into CloudFormation templates, stacks, stack sets, and drift detection. Learn about AWS CDK for programmatic infrastructure definition, nested stacks, cross-stack references, and CloudFormation best practices for large-scale deployments.', 
+        duration: '120 minutes' 
+    },
+    
+    // Application Integration
+    { 
+        id: 'aws_messaging', 
+        title: 'Messaging & Integration: SQS, SNS, EventBridge', 
+        content: 'Master AWS messaging services including SQS for queuing, SNS for notifications, and EventBridge for event-driven architectures. Learn about message ordering, dead letter queues, fan-out patterns, and event routing. Understand API Gateway for RESTful APIs.', 
+        duration: '120 minutes' 
+    },
+    
+    // Cost Management & Optimization
+    { 
+        id: 'aws_cost_optimization', 
+        title: 'Cost Management & Optimization Strategies', 
+        content: 'Learn comprehensive cost optimization including Reserved Instances, Savings Plans, Spot Instances, and rightsizing. Master AWS Cost Explorer, Budgets, Cost and Usage Reports, and Trusted Advisor. Understand cost allocation tags and multi-account billing strategies.', 
+        duration: '90 minutes' 
+    },
+    
+    // Migration & Hybrid Cloud
+    { 
+        id: 'aws_migration', 
+        title: 'Cloud Migration & Hybrid Solutions', 
+        content: 'Explore migration strategies using AWS Migration Hub, Database Migration Service (DMS), Server Migration Service (SMS), and DataSync. Learn about hybrid cloud solutions with Storage Gateway, Outposts, and Wavelength for edge computing.', 
+        duration: '120 minutes' 
+    },
+    
+    // Advanced Services & Emerging Technologies
+    { 
+        id: 'aws_ml_ai', 
+        title: 'Machine Learning & AI Services', 
+        content: 'Introduction to AWS ML/AI services including SageMaker, Rekognition, Comprehend, Polly, and Lex. Learn about pre-trained models, custom model training, and ML pipeline automation. Understand AI/ML integration patterns and use cases.', 
+        duration: '90 minutes' 
+    },
+    { 
+        id: 'aws_iot_edge', 
+        title: 'IoT & Edge Computing Solutions', 
+        content: 'Explore AWS IoT Core, IoT Device Management, and IoT Analytics. Learn about edge computing with AWS IoT Greengrass, Wavelength for 5G applications, and Local Zones for ultra-low latency applications.', 
+        duration: '75 minutes' 
+    },
+    
+    // Disaster Recovery & Business Continuity
+    { 
+        id: 'aws_disaster_recovery', 
+        title: 'Disaster Recovery & Business Continuity', 
+        content: 'Master disaster recovery strategies including backup and restore, pilot light, warm standby, and multi-site active-active. Learn about AWS Backup, cross-region replication, and RTO/RPO planning. Understand business continuity best practices.', 
+        duration: '90 minutes' 
+    },
+    
+    // Real-World Projects & Case Studies
+    { 
+        id: 'aws_architecture_patterns', 
+        title: 'AWS Architecture Patterns & Design Principles', 
+        content: 'Learn common AWS architecture patterns including 3-tier web applications, microservices, event-driven architectures, and data lakes. Understand the AWS Well-Architected Framework pillars: operational excellence, security, reliability, performance efficiency, and cost optimization.', 
+        duration: '120 minutes' 
+    },
+    { 
+        id: 'aws_capstone_project', 
+        title: 'Capstone Project: End-to-End AWS Solution', 
+        content: 'Build a comprehensive, production-ready AWS solution incorporating multiple services. Design and implement a scalable, secure, and cost-effective architecture. Include monitoring, logging, security, CI/CD pipeline, and disaster recovery. Present and defend your architectural decisions.', 
+        duration: '180 minutes' 
+    }
+];
 
 export const courses: Course[] = [
   {
@@ -77,17 +269,17 @@ export const courses: Course[] = [
     enrolledStudents: 2500,
   },
   {
-    id: 'aws-solutions-architect-associate',
-    title: 'AWS Certified Solutions Architect - Associate Prep',
-    description: 'Prepare for the AWS SAA-C03 exam. Learn to design resilient, high-performing, secure, and cost-optimized architectures.',
-    longDescription: 'This course is tailored for the AWS Certified Solutions Architect - Associate (SAA-C03) exam. It covers core AWS services, including EC2, S3, VPC, RDS, IAM, Lambda, CloudFormation, and teaches best practices for designing solutions on AWS.',
+    id: 'aws-cloud-engineer-complete',
+    title: 'Complete AWS Cloud Engineer Certification Path',
+    description: 'Master all AWS services essential for cloud engineers. From foundational services to advanced architectures, security, DevOps, and cost optimization.',
+    longDescription: 'This comprehensive course covers every AWS service a cloud engineer needs to master. Learn EC2, S3, VPC, RDS, Lambda, ECS/EKS, CloudFormation, IAM, CloudWatch, and 50+ other services. Includes hands-on labs, real-world projects, security best practices, cost optimization, disaster recovery, and preparation for AWS certifications (Solutions Architect, SysOps Administrator, DevOps Engineer).',
     category: 'Cloud Computing',
     imageUrl: 'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800',
     imageHint: 'aws cloud computing server infrastructure architecture',
-    modules: sampleModulesTech,
-    instructor: 'Cloud Architect Pro',
-    rating: 4.7,
-    enrolledStudents: 2800,
+    modules: awsCloudEngineerModules,
+    instructor: 'AWS Solutions Architect Pro',
+    rating: 4.9,
+    enrolledStudents: 3500,
   },
   {
     id: 'selenium-webdriver-automation',
@@ -156,14 +348,13 @@ export const courses: Course[] = [
   }
 ];
 
-// Removed userProfile object as it's no longer needed.
-
 export const getCourseById = (id: string): Course | undefined => courses.find(course => course.id === id);
 
 export const getModuleById = (courseId: string, moduleId: string): Module | undefined => {
   const course = getCourseById(courseId);
   return course?.modules.find(module => module.id === moduleId);
 };
+
 export async function getAllCourses() {
   return courses;
 }
