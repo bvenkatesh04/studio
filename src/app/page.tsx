@@ -395,7 +395,7 @@ export default function HomePage() {
           </div>
         </motion.section>
 
-        {/* Enhanced Courses Section */}
+        {/* Enhanced Courses Section - COMPACT LAYOUT */}
         <motion.section
           id="why-invest"
           initial="hidden"
@@ -419,7 +419,7 @@ export default function HomePage() {
             </motion.p>
           </div>
 
-          <div className="space-y-12">
+          <div className="space-y-8">
             {courses.map((course, index) => (
               <motion.div 
                 key={course.id}
@@ -429,13 +429,13 @@ export default function HomePage() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 variants={itemVariants}
                 whileHover={{
-                  y: -12,
+                  y: -8,
                   transition: { type: "spring", stiffness: 300, damping: 20 }
                 }}
               >
                 <Card className="bg-card/80 backdrop-blur-sm shadow-xl overflow-hidden border-2 border-transparent hover:border-primary/30 transition-all duration-500 hover:shadow-2xl">
                   <div className="grid md:grid-cols-12 gap-0">
-                    <div className="md:col-span-5 relative h-64 md:h-full min-h-[300px]">
+                    <div className="md:col-span-4 relative h-48 md:h-full min-h-[200px]">
                       <Image
                         src={course.imageUrl}
                         alt={course.title}
@@ -444,58 +444,58 @@ export default function HomePage() {
                         data-ai-hint={course.imageHint || 'technology education'}
                       />
                       <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent" />
-                      <div className="absolute top-4 left-4">
+                      <div className="absolute top-3 left-3">
                         <Badge variant="secondary" className="bg-primary text-primary-foreground">
                           {course.category}
                         </Badge>
                       </div>
                       {course.rating && (
-                        <div className="absolute bottom-4 left-4 flex items-center gap-2 bg-black/50 backdrop-blur-sm rounded-full px-3 py-1">
+                        <div className="absolute bottom-3 left-3 flex items-center gap-2 bg-black/50 backdrop-blur-sm rounded-full px-3 py-1">
                           <Star className="h-4 w-4 text-yellow-400 fill-current" />
                           <span className="text-white text-sm font-medium">{course.rating.toFixed(1)}</span>
                         </div>
                       )}
                     </div>
-                    <div className="md:col-span-7">
-                      <div className="p-8 md:p-12 flex flex-col h-full">
-                        <CardHeader className="p-0 mb-6">
-                          <CardTitle className="text-2xl md:text-3xl font-bold font-headline text-primary mb-3">
+                    <div className="md:col-span-8">
+                      <div className="p-6 md:p-8 flex flex-col h-full">
+                        <CardHeader className="p-0 mb-4">
+                          <CardTitle className="text-xl md:text-2xl font-bold font-headline text-primary mb-2">
                             {course.title}
                           </CardTitle>
-                          <CardDescription className="text-lg text-muted-foreground leading-relaxed">
+                          <CardDescription className="text-base text-muted-foreground leading-relaxed line-clamp-2">
                             {course.longDescription || course.description}
                           </CardDescription>
                         </CardHeader>
                         
                         <CardContent className="p-0 flex-grow">
-                          <div className="grid grid-cols-2 gap-4 mb-6">
+                          <div className="grid grid-cols-2 gap-3 mb-4">
                             {course.enrolledStudents && (
                               <div className="flex items-center gap-2">
-                                <Users className="h-5 w-5 text-primary" />
+                                <Users className="h-4 w-4 text-primary" />
                                 <span className="text-sm font-medium">{course.enrolledStudents.toLocaleString()} students</span>
                               </div>
                             )}
                             <div className="flex items-center gap-2">
-                              <BookOpen className="h-5 w-5 text-primary" />
+                              <BookOpen className="h-4 w-4 text-primary" />
                               <span className="text-sm font-medium">{course.modules.length} modules</span>
                             </div>
                             {course.instructor && (
                               <div className="flex items-center gap-2">
-                                <Award className="h-5 w-5 text-primary" />
+                                <Award className="h-4 w-4 text-primary" />
                                 <span className="text-sm font-medium">{course.instructor}</span>
                               </div>
                             )}
                             <div className="flex items-center gap-2">
-                              <Clock className="h-5 w-5 text-primary" />
+                              <Clock className="h-4 w-4 text-primary" />
                               <span className="text-sm font-medium">Self-paced</span>
                             </div>
                           </div>
                         </CardContent>
                         
-                        <div className="flex flex-col sm:flex-row gap-4 mt-auto">
+                        <div className="flex flex-col sm:flex-row gap-3 mt-auto">
                           <Button asChild className="flex-1 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
                             <Link href={`/courses/${course.id}`}>
-                              <BookOpen className="mr-2 h-5 w-5" />
+                              <BookOpen className="mr-2 h-4 w-4" />
                               Explore Course
                             </Link>
                           </Button>
@@ -505,7 +505,7 @@ export default function HomePage() {
                             className="flex-1 border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
                           >
                             <Link href={`/contact?course=${encodeURIComponent(course.title)}`}>
-                              <MessageSquare className="mr-2 h-5 w-5" />
+                              <MessageSquare className="mr-2 h-4 w-4" />
                               Get Info
                             </Link>
                           </Button>
