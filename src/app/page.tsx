@@ -233,17 +233,6 @@ export default function HomePage() {
 
         {/* Enhanced Content */}
         <div className="relative z-10 max-w-6xl px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="mb-6"
-          >
-            <Badge variant="secondary" className="mb-4 px-4 py-2 text-sm bg-white/20 text-gray-700 backdrop-blur-sm border-none">
-              🚀 Join 50,000+ Successful Learners
-            </Badge>
-          </motion.div>
-
           <motion.h1 
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-headline mb-6 text-gray-800 drop-shadow-lg leading-tight"
             initial={{ opacity: 0, y: 30 }}
