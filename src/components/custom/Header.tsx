@@ -11,6 +11,7 @@ import TechFarmLogo from './TechFarmLogo';
 const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/#why-invest', label: 'Courses' },
+  { href: '/community', label: 'Community' },
   { href: '/contact', label: 'Contact' },
 ];
 
