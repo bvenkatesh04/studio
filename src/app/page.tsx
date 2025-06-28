@@ -8,11 +8,6 @@ import { MessageSquare, BookOpen, ArrowDownCircle, Award, Laptop, Users } from '
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
-import ResponsiveContainer from '@/components/custom/ResponsiveContainer';
-import AnimatedCard from '@/components/custom/AnimatedCard';
-import AnimatedButton from '@/components/custom/AnimatedButton';
-import StaggeredGrid from '@/components/custom/StaggeredGrid';
-import ParallaxSection from '@/components/custom/ParallaxSection';
 
 export default function HomePage() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -21,7 +16,7 @@ export default function HomePage() {
     offset: ["start start", "end start"]
   });
 
-  const heroY = useTransform(scrollYProgress, [0, 1], [0, 300]);
+  const heroY = useTransform(scrollYProgress, [0, 1], [0, 200]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   const sectionVariants = {
@@ -64,76 +59,95 @@ export default function HomePage() {
 
   return (
     <>
-      {/* Hero Section */}
+      {/* Hero Section with Glass Background */}
       <section 
         ref={heroRef}
         className="relative min-h-screen flex items-center justify-center text-center text-white overflow-hidden"
       >
-        {/* Animated Background */}
+        {/* Glass Background with Animated Elements */}
         <motion.div 
           style={{ y: heroY, opacity: heroOpacity }}
-          className="absolute inset-0 bg-gradient-to-br from-gray-900 via-blue-900 to-gray-800"
+          className="absolute inset-0"
         >
-          {/* Floating Particles */}
+          {/* Base gradient background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-green-50" />
+          
+          {/* Glass overlay with blur effect */}
+          <div className="absolute inset-0 bg-white/20 backdrop-blur-sm" />
+          
+          {/* Floating Glass Orbs */}
           <div className="absolute inset-0">
-            {[...Array(30)].map((_, i) => (
+            {[...Array(15)].map((_, i) => (
               <motion.div
                 key={i}
-                className="absolute w-1 h-1 bg-primary/30 rounded-full"
-                initial={{
-                  x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1200),
-                  y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 800),
+                className="absolute rounded-full bg-white/10 backdrop-blur-md border border-white/20"
+                style={{
+                  width: Math.random() * 100 + 50,
+                  height: Math.random() * 100 + 50,
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
                 }}
                 animate={{
-                  x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1200),
-                  y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 800),
+                  x: [0, Math.random() * 100 - 50],
+                  y: [0, Math.random() * 100 - 50],
+                  scale: [1, 1.1, 1],
+                  opacity: [0.3, 0.6, 0.3],
                 }}
                 transition={{
-                  duration: Math.random() * 20 + 10,
+                  duration: Math.random() * 10 + 10,
                   repeat: Infinity,
-                  ease: "linear",
+                  ease: "easeInOut",
                 }}
               />
             ))}
           </div>
 
-          {/* Geometric Shapes */}
+          {/* Animated Grid Pattern */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="grid grid-cols-12 h-full">
+              {[...Array(144)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="border border-primary/20"
+                  animate={{
+                    opacity: [0.1, 0.3, 0.1],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    delay: i * 0.1,
+                    ease: "easeInOut"
+                  }}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Floating Geometric Shapes */}
           <motion.div
-            className="absolute top-20 left-4 sm:left-10 w-16 sm:w-32 h-16 sm:h-32 border border-primary/20 rotate-45"
+            className="absolute top-20 left-10 w-32 h-32 border-2 border-primary/30 rotate-45 bg-white/5 backdrop-blur-sm"
             animate={{ rotate: 360 }}
             transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
           />
           <motion.div
-            className="absolute top-40 right-4 sm:right-20 w-12 sm:w-24 h-12 sm:h-24 border border-green-400/20 rounded-full"
+            className="absolute top-40 right-20 w-24 h-24 border-2 border-green-400/30 rounded-full bg-white/5 backdrop-blur-sm"
             animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
           />
           <motion.div
-            className="absolute bottom-32 left-1/4 w-8 sm:w-16 h-8 sm:h-16 bg-primary/10 rotate-12"
+            className="absolute bottom-32 left-1/4 w-16 h-16 bg-primary/20 rotate-12 backdrop-blur-sm"
             animate={{ rotate: [12, 45, 12] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
           />
 
-          {/* Pulsing Circles */}
-          <motion.div
-            className="absolute top-1/3 left-1/2 w-48 sm:w-96 h-48 sm:h-96 border border-primary/10 rounded-full"
-            animate={{ scale: [1, 1.5, 1], opacity: [0.1, 0.3, 0.1] }}
-            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          />
-          <motion.div
-            className="absolute top-1/2 left-1/2 w-32 sm:w-64 h-32 sm:h-64 border border-green-400/10 rounded-full"
-            animate={{ scale: [1, 1.3, 1], opacity: [0.2, 0.4, 0.2] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          />
-
-          {/* Code-like Lines */}
+          {/* Animated Light Rays */}
           <div className="absolute inset-0 overflow-hidden">
-            {[...Array(6)].map((_, i) => (
+            {[...Array(8)].map((_, i) => (
               <motion.div
                 key={i}
-                className="absolute h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"
+                className="absolute h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"
                 style={{
-                  top: `${15 + i * 15}%`,
+                  top: `${15 + i * 10}%`,
                   width: `${40 + Math.random() * 40}%`,
                   left: `${Math.random() * 30}%`,
                 }}
@@ -142,7 +156,7 @@ export default function HomePage() {
                   opacity: [0, 0.6, 0]
                 }}
                 transition={{
-                  duration: 3,
+                  duration: 4,
                   repeat: Infinity,
                   delay: i * 0.5,
                   ease: "easeInOut"
@@ -153,9 +167,9 @@ export default function HomePage() {
         </motion.div>
 
         {/* Content */}
-        <ResponsiveContainer className="relative z-10 max-w-4xl">
+        <div className="relative z-10 max-w-4xl px-4">
           <motion.h1 
-            className="text-responsive-4xl font-bold font-headline mb-4 sm:mb-6 text-white drop-shadow-lg gradient-text"
+            className="text-4xl sm:text-5xl md:text-7xl font-bold font-headline mb-4 text-gray-800 drop-shadow-lg"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
@@ -163,7 +177,7 @@ export default function HomePage() {
             Unlock Your Potential with TechFarm
           </motion.h1>
           <motion.p 
-            className="text-lg sm:text-xl md:text-2xl text-white/90 mb-6 sm:mb-8 drop-shadow-md max-w-3xl mx-auto leading-relaxed"
+            className="text-xl md:text-2xl text-gray-700 mb-8 drop-shadow-md max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
@@ -171,41 +185,37 @@ export default function HomePage() {
             Navigate the digital frontier with confidence. Our courses are crafted to equip you with today's most in-demand technologies, turning your ambition into real-world expertise.
           </motion.p>
           <motion.div 
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            className="flex flex-wrap gap-4 justify-center"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
           >
-            <AnimatedButton 
+            <Button 
               asChild 
               size="lg" 
-              className="bg-primary hover:bg-primary/80 text-primary-foreground shadow-lg hover:shadow-xl w-full sm:w-auto"
-              shimmer
-              pulse
+              className="bg-primary hover:bg-primary/80 text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
             >
               <Link href="/#why-invest">
                 <BookOpen className="mr-2 h-5 w-5" />
                 Browse Courses
               </Link>
-            </AnimatedButton>
-            <AnimatedButton 
+            </Button>
+            <Button 
               asChild 
               size="lg" 
               variant="outline" 
-              className="border-white/50 bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm shadow-lg hover:shadow-xl w-full sm:w-auto"
-              shimmer
+              className="border-gray-300 bg-white/50 hover:bg-white/70 text-gray-800 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
             >
               <Link href="#why-invest">
                 <ArrowDownCircle className="mr-2 h-5 w-5" />
                 Learn More
               </Link>
-            </AnimatedButton>
+            </Button>
           </motion.div>
-        </ResponsiveContainer>
+        </div>
       </section>
 
-      <ResponsiveContainer className="py-8 sm:py-12 lg:py-16 space-y-16 sm:space-y-20 lg:space-y-24">
-        {/* Courses Section */}
+      <div className="container mx-auto px-4 py-16 space-y-24">
         <motion.section
           id="why-invest"
           initial="hidden"
@@ -214,157 +224,114 @@ export default function HomePage() {
           transition={{ duration: 0.4, ease: "easeOut" }}
           variants={sectionVariants}
         >
-          <div className="text-center mb-8 sm:mb-12">
-            <motion.h2 
-              className="text-responsive-3xl font-semibold font-headline mb-4 text-primary"
-              variants={itemVariants}
-            >
-              Why Invest in These Technologies?
-            </motion.h2>
-            <motion.p 
-              className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed"
-              variants={itemVariants}
-            >
-              In a rapidly evolving digital landscape, mastering key technologies is crucial for career growth. Here's why our courses are essential for your success.
-            </motion.p>
-          </div>
-          
-          <div className="space-y-6 sm:space-y-8">
+          <h2 className="text-3xl font-semibold font-headline mb-2 text-center text-primary">
+            Why Invest in These Technologies?
+          </h2>
+          <p className="text-lg text-muted-foreground mb-10 text-center max-w-3xl mx-auto">
+            In a rapidly evolving digital landscape, mastering key technologies is crucial for career growth. Here's why our courses are essential for your success.
+          </p>
+          <div className="space-y-8">
             {courses.map((course, index) => (
               <motion.div 
                 key={course.id}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: false, amount: 0.1 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
                 variants={itemVariants}
+                whileHover={{
+                  y: -8,
+                  transition: { type: "spring", stiffness: 300, damping: 20 }
+                }}
               >
-                <AnimatedCard 
-                  className="overflow-hidden border-2 border-transparent hover:border-primary/30 bg-card/50 backdrop-blur-sm"
-                  delay={index * 0.1}
-                  interactive
-                  glow
-                >
-                  <div className="grid grid-cols-1 md:grid-cols-12 gap-0">
-                    <div className="md:col-span-4 relative h-48 sm:h-64 md:h-full min-h-[200px]">
+                <Card className="bg-card shadow-lg overflow-hidden border-2 border-transparent hover:border-primary/30 transition-all duration-300 hover:shadow-xl">
+                  <div className="grid md:grid-cols-12 gap-0">
+                    <div className="md:col-span-4 relative h-64 md:h-full min-h-[200px]">
                       <Image
                         src={course.imageUrl}
                         alt={course.title}
                         fill
                         className="object-cover transition-transform duration-500 hover:scale-105"
                         data-ai-hint={course.imageHint || 'technology education'}
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent md:bg-gradient-to-r md:from-transparent md:to-black/20" />
                     </div>
                     <div className="md:col-span-8">
-                      <div className="p-4 sm:p-6 md:p-8 flex flex-col h-full">
+                      <div className="p-6 md:p-8 flex flex-col h-full">
                         <CardHeader className="p-0 mb-4">
-                          <CardTitle className="text-xl sm:text-2xl font-bold font-headline text-primary">
-                            {course.title}
-                          </CardTitle>
+                          <CardTitle className="text-2xl font-bold font-headline text-primary">{course.title}</CardTitle>
                         </CardHeader>
                         <CardContent className="p-0 flex-grow">
-                          <CardDescription className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                          <CardDescription className="text-base text-muted-foreground leading-relaxed">
                             {course.description}
                           </CardDescription>
                         </CardContent>
-                        <div className="mt-6 flex flex-col sm:flex-row gap-3 sm:gap-4">
-                          <AnimatedButton asChild className="flex-1 sm:flex-none" shimmer>
+                        <div className="mt-6 flex flex-col sm:flex-row gap-4">
+                          <Button asChild className="transition-all duration-300 hover:scale-105">
                             <Link href={`/courses/${course.id}`}>
-                              <BookOpen className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
+                              <BookOpen className="mr-2 h-5 w-5" />
                               View Course
                             </Link>
-                          </AnimatedButton>
-                          <AnimatedButton 
+                          </Button>
+                          <Button 
                             asChild 
                             variant="outline" 
-                            className="border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground flex-1 sm:flex-none"
-                            shimmer
+                            className="border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-105"
                           >
                             <Link href={`/contact?course=${encodeURIComponent(course.title)}`}>
-                              <MessageSquare className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
+                              <MessageSquare className="mr-2 h-5 w-5" />
                               Inquire Now
                             </Link>
-                          </AnimatedButton>
+                          </Button>
                         </div>
                       </div>
                     </div>
                   </div>
-                </AnimatedCard>
+                </Card>
               </motion.div>
             ))}
           </div>
         </motion.section>
 
-        {/* Features Section */}
-        <ParallaxSection speed={0.3}>
-          <motion.section 
-            className="text-center"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: false, amount: 0.05 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
-            variants={sectionVariants}
-          >
-            <motion.h2 
-              className="text-responsive-3xl font-bold font-headline mb-8 sm:mb-12 text-primary"
-              variants={itemVariants}
-            >
-              Why Choose TechFarm?
-            </motion.h2>
-            
-            <StaggeredGrid 
-              columns={{ default: 1, sm: 2, lg: 3 }}
-              className="max-w-6xl mx-auto"
-              staggerDelay={0.2}
-            >
-              {[
-                {
-                  icon: Award,
-                  title: "Expert-Led Content",
-                  description: "Learn from industry professionals with real-world experience and proven track records."
-                },
-                {
-                  icon: Laptop,
-                  title: "Hands-On Projects",
-                  description: "Apply your knowledge with practical projects and real-world exercises that build your portfolio."
-                },
-                {
-                  icon: Users,
-                  title: "Flexible Learning",
-                  description: "Learn at your own pace, anytime, anywhere, on any device with our responsive platform."
-                }
-              ].map((feature, index) => (
-                <AnimatedCard 
-                  key={feature.title}
-                  className="p-4 sm:p-6 text-center shadow-xl hover:shadow-2xl bg-card/80 backdrop-blur-sm"
-                  delay={index * 0.2}
-                  hover
-                  glow
-                >
-                  <motion.div 
-                    className="mb-4 sm:mb-6 inline-flex items-center justify-center h-12 w-12 sm:h-16 sm:w-16 rounded-full bg-primary/10 text-primary"
-                    whileHover={{ 
-                      scale: 1.1, 
-                      rotate: 5,
-                      transition: { type: "spring", stiffness: 300, damping: 20 }
-                    }}
-                  >
-                    <feature.icon className="h-6 w-6 sm:h-8 sm:w-8" />
-                  </motion.div>
-                  <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-card-foreground">
-                    {feature.title}
-                  </h3>
-                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                    {feature.description}
-                  </p>
-                </AnimatedCard>
-              ))}
-            </StaggeredGrid>
-          </motion.section>
-        </ParallaxSection>
-      </ResponsiveContainer>
+        <motion.section 
+          className="text-center"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.05 }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+          variants={sectionVariants}
+        >
+          <h2 className="text-3xl font-bold font-headline mb-10 text-primary">Why Choose TechFarm?</h2>
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <motion.div variants={featureCardVariants} transition={{ duration: 0.4, delay: 0.1 }}>
+              <Card className="h-full bg-card p-6 text-center shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                  <div className="mb-4 inline-flex items-center justify-center h-16 w-16 rounded-full bg-primary/10 text-primary">
+                    <Award className="h-8 w-8" />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2 text-card-foreground">Expert-Led Content</h3>
+                  <p className="text-muted-foreground">Learn from industry professionals with real-world experience.</p>
+              </Card>
+            </motion.div>
+             <motion.div variants={featureCardVariants} transition={{ duration: 0.4, delay: 0.2 }}>
+              <Card className="h-full bg-card p-6 text-center shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                 <div className="mb-4 inline-flex items-center justify-center h-16 w-16 rounded-full bg-primary/10 text-primary">
+                    <Laptop className="h-8 w-8" />
+                  </div>
+                <h3 className="text-xl font-semibold mb-2 text-card-foreground">Hands-On Projects</h3>
+                <p className="text-muted-foreground">Apply your knowledge with practical projects and exercises.</p>
+              </Card>
+            </motion.div>
+            <motion.div variants={featureCardVariants} transition={{ duration: 0.4, delay: 0.3 }}>
+              <Card className="h-full bg-card p-6 text-center shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                <div className="mb-4 inline-flex items-center justify-center h-16 w-16 rounded-full bg-primary/10 text-primary">
+                    <Users className="h-8 w-8" />
+                  </div>
+                <h3 className="text-xl font-semibold mb-2 text-card-foreground">Flexible Learning</h3>
+                <p className="text-muted-foreground">Learn at your own pace, anytime, anywhere, on any device.</p>
+              </Card>
+            </motion.div>
+          </div>
+        </motion.section>
+      </div>
     </>
   );
 }
