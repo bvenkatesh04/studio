@@ -243,7 +243,7 @@ export default function HomePage() {
             transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
           >
             Transform your career with industry-leading courses in 
-            <span className="text-primary font-semibold"> DevOps, Cloud Computing, Testing, and Programming</span>. 
+            <span className="text-primary font-semibold"> DevOps, Cloud Computing, Data Engineering, Testing, and Programming</span>. 
             Learn from experts, build real projects, and land your dream job.
           </motion.p>
 
