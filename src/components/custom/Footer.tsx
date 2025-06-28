@@ -1,6 +1,6 @@
-
 import Link from 'next/link';
-import { Github, Twitter, Linkedin, BookOpenText } from 'lucide-react';
+import { Github, Twitter, Linkedin } from 'lucide-react';
+import TechFarmLogo from './TechFarmLogo';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -10,8 +10,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-muted-foreground">
           {/* About Section */}
           <div className="md:col-span-2 space-y-4">
-            <Link href="/" className="flex items-center gap-2 text-primary hover:opacity-80 transition-opacity">
-              <BookOpenText size={28} />
+            <Link href="/" className="flex items-center gap-3 text-primary hover:opacity-80 transition-opacity">
+              <TechFarmLogo size={32} animated={false} />
               <span className="text-xl font-bold font-headline">TechFarm</span>
             </Link>
             <p className="text-sm pr-8">
