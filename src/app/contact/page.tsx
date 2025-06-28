@@ -1,4 +1,3 @@
-
 import { Suspense } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import ContactForm from './ContactForm';
@@ -24,7 +23,13 @@ function ContactFormSkeleton() {
   );
 }
 
-export default function ContactPage() {
+interface ContactPageProps {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function ContactPage({ searchParams }: ContactPageProps) {
+  const params = await searchParams;
+  
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="flex justify-center items-center">
@@ -37,7 +42,7 @@ export default function ContactPage() {
           </CardHeader>
           <CardContent>
             <Suspense fallback={<ContactFormSkeleton />}>
-              <ContactForm />
+              <ContactForm searchParams={params} />
             </Suspense>
           </CardContent>
         </Card>

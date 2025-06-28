@@ -5,11 +5,13 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Search } from 'lucide-react';
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
 
-export default function SearchClient() {
-  const searchParams = useSearchParams();
-  const query = searchParams.get('q') || '';
+interface SearchClientProps {
+  searchParams: { [key: string]: string | string[] | undefined };
+}
+
+export default function SearchClient({ searchParams }: SearchClientProps) {
+  const query = (searchParams.q as string) || '';
 
   const filteredCourses = courses.filter(course =>
     course.title.toLowerCase().includes(query.toLowerCase()) ||
