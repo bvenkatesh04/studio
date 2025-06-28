@@ -195,7 +195,7 @@ export default function HomePage() {
               size="lg" 
               className="bg-primary hover:bg-primary/80 text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
             >
-              <Link href="/#why-invest">
+              <Link href="/search">
                 <BookOpen className="mr-2 h-5 w-5" />
                 Browse Courses
               </Link>
