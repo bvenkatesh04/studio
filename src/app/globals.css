@@ -4,51 +4,51 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --background-end: 210 20% 96%;
-    --foreground: 224 71% 4%;
+    --background: 35 20% 96%;
+    --background-end: 30 15% 92%;
+    --foreground: 20 14% 4%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 224 71% 4%;
+    --card: 35 20% 98%;
+    --card-foreground: 20 14% 4%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 224 71% 4%;
+    --popover: 35 20% 98%;
+    --popover-foreground: 20 14% 4%;
 
-    --primary: 142 76% 36%;
+    --primary: 25 85% 45%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 30 20% 94%;
+    --secondary-foreground: 20 14% 15%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 30 20% 94%;
+    --muted-foreground: 25 10% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 30 20% 94%;
+    --accent-foreground: 20 14% 15%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 142.1 70.6% 45.3%;
+    --border: 30 25% 88%;
+    --input: 30 25% 88%;
+    --ring: 25 85% 45%;
 
     --radius: 0.75rem;
 
-    --chart-1: 142 76% 36%;
-    --chart-2: 142 66% 46%;
-    --chart-3: 142 56% 56%;
-    --chart-4: 142 46% 66%;
-    --chart-5: 142 36% 76%;
+    --chart-1: 25 85% 45%;
+    --chart-2: 30 75% 50%;
+    --chart-3: 35 65% 55%;
+    --chart-4: 40 55% 60%;
+    --chart-5: 45 45% 65%;
     
-    --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 224 71% 4%;
-    --sidebar-primary: 142 76% 36%;
+    --sidebar-background: 35 20% 96%;
+    --sidebar-foreground: 20 14% 4%;
+    --sidebar-primary: 25 85% 45%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 210 40% 96.1%;
-    --sidebar-accent-foreground: 222.2 47.4% 11.2%;
-    --sidebar-border: 214.3 31.8% 91.4%;
-    --sidebar-ring: 142.1 70.6% 45.3%;
+    --sidebar-accent: 30 20% 94%;
+    --sidebar-accent-foreground: 20 14% 15%;
+    --sidebar-border: 30 25% 88%;
+    --sidebar-ring: 25 85% 45%;
   }
 }
 
@@ -58,9 +58,45 @@
   }
   body {
     @apply text-foreground;
-    background-color: hsl(var(--background));
-    background-image: linear-gradient(to bottom, hsl(var(--background)) 0%, hsl(var(--background-end)) 100%);
+    background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--background-end)) 100%);
     font-feature-settings: "rlig" 1, "calt" 1;
+    position: relative;
+    overflow-x: hidden;
+  }
+  
+  /* Warm Background Animation */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(circle at 20% 80%, rgba(255, 183, 77, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(255, 138, 101, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(255, 206, 84, 0.08) 0%, transparent 50%);
+    animation: float-warm 20s ease-in-out infinite;
+    pointer-events: none;
+    z-index: -1;
+  }
+  
+  /* Additional floating warm particles */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      radial-gradient(circle at 10% 20%, rgba(255, 183, 77, 0.05) 1px, transparent 1px),
+      radial-gradient(circle at 90% 80%, rgba(255, 138, 101, 0.05) 1px, transparent 1px),
+      radial-gradient(circle at 60% 60%, rgba(255, 206, 84, 0.05) 1px, transparent 1px);
+    background-size: 100px 100px, 150px 150px, 200px 200px;
+    animation: drift-particles 30s linear infinite;
+    pointer-events: none;
+    z-index: -1;
   }
 }
 
@@ -83,7 +119,7 @@ html {
 
 .card-interactive:hover {
   transform: translateY(-4px);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 20px 25px -5px rgba(255, 183, 77, 0.1), 0 10px 10px -5px rgba(255, 138, 101, 0.04);
 }
 
 /* Responsive grid utilities */
@@ -120,6 +156,47 @@ html {
   perspective: 1000px;
 }
 
+/* Warm background animations */
+@keyframes float-warm {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.8;
+  }
+  33% { 
+    transform: translateY(-20px) rotate(120deg);
+    opacity: 1;
+  }
+  66% { 
+    transform: translateY(10px) rotate(240deg);
+    opacity: 0.9;
+  }
+}
+
+@keyframes drift-particles {
+  0% { 
+    transform: translateX(0px) translateY(0px);
+  }
+  33% { 
+    transform: translateX(-30px) translateY(-30px);
+  }
+  66% { 
+    transform: translateX(30px) translateY(-60px);
+  }
+  100% { 
+    transform: translateX(0px) translateY(-90px);
+  }
+}
+
+/* Warm glow effect for interactive elements */
+.warm-glow {
+  box-shadow: 0 0 20px rgba(255, 183, 77, 0.3);
+  transition: box-shadow 0.3s ease;
+}
+
+.warm-glow:hover {
+  box-shadow: 0 0 30px rgba(255, 183, 77, 0.5), 0 0 60px rgba(255, 138, 101, 0.3);
+}
+
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -129,5 +206,10 @@ html {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+  
+  body::before,
+  body::after {
+    animation: none !important;
   }
 }

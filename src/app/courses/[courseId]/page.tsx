@@ -1,4 +1,3 @@
-
 import { getCourseById } from '@/lib/data';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
@@ -29,10 +28,10 @@ export default async function CourseOverviewPage({ params }: ModulePageProps) {
   const firstModuleId = course.modules.length > 0 ? course.modules[0].id : null;
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
       {/* Hero Section */}
-      <Card className="overflow-hidden bg-card shadow-xl border-none rounded-lg">
-        <CardHeader className="p-0 relative h-64 md:h-80 w-full">
+      <Card className="overflow-hidden bg-card shadow-xl border-none rounded-lg warm-glow">
+        <CardHeader className="p-0 relative h-48 md:h-64 w-full">
           <Image
             src={course.imageUrl}
             alt={course.title}
@@ -42,10 +41,10 @@ export default async function CourseOverviewPage({ params }: ModulePageProps) {
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-          <div className="absolute bottom-0 left-0 p-6 md:p-8 text-white">
-            <Badge variant="secondary" className="mb-2 bg-white/20 text-white backdrop-blur-sm border-none">{course.category}</Badge>
-            <CardTitle className="text-3xl sm:text-4xl md:text-5xl font-bold font-headline">{course.title}</CardTitle>
-            <CardDescription className="mt-2 text-lg text-white/90 max-w-3xl">
+          <div className="absolute bottom-0 left-0 p-4 md:p-6 text-white">
+            <Badge variant="secondary" className="mb-2 bg-white/20 text-white backdrop-blur-sm border-none text-xs">{course.category}</Badge>
+            <CardTitle className="text-2xl sm:text-3xl md:text-4xl font-bold font-headline">{course.title}</CardTitle>
+            <CardDescription className="mt-2 text-base text-white/90 max-w-3xl">
               {course.description}
             </CardDescription>
           </div>
@@ -53,16 +52,16 @@ export default async function CourseOverviewPage({ params }: ModulePageProps) {
       </Card>
 
       {/* Main Content Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         
         {/* Left Column (main content) */}
-        <div className="lg:col-span-2 space-y-8">
-           <Card className="shadow-lg">
+        <div className="lg:col-span-2 space-y-6">
+           <Card className="shadow-lg warm-glow">
             <CardHeader>
-              <CardTitle className="text-2xl font-headline text-primary">About this course</CardTitle>
+              <CardTitle className="text-xl font-headline text-primary">About this course</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="prose max-w-none text-base text-muted-foreground leading-relaxed">
+              <div className="prose max-w-none text-sm text-muted-foreground leading-relaxed">
                 <p>{course.longDescription || course.description}</p>
               </div>
             </CardContent>
@@ -70,11 +69,11 @@ export default async function CourseOverviewPage({ params }: ModulePageProps) {
         </div>
 
         {/* Right Column (sidebar details) */}
-        <div className="lg:col-span-1 space-y-6">
+        <div className="lg:col-span-1 space-y-4">
           {firstModuleId ? (
-            <Button size="lg" asChild className="w-full bg-primary hover:bg-primary/80 text-primary-foreground text-lg py-7 shadow-lg transition-transform hover:scale-105">
+            <Button size="lg" asChild className="w-full bg-primary hover:bg-primary/80 text-primary-foreground text-base py-6 shadow-lg transition-transform hover:scale-105 warm-glow">
               <Link href={`/courses/${course.id}/${firstModuleId}`}>
-                <PlayCircle className="mr-3 h-6 w-6" />
+                <PlayCircle className="mr-2 h-5 w-5" />
                 Start Course
               </Link>
             </Button>
@@ -88,45 +87,43 @@ export default async function CourseOverviewPage({ params }: ModulePageProps) {
               </Alert>
           )}
 
-          <Card className="bg-secondary/50 shadow-lg">
-            <CardContent className="p-6 space-y-4">
+          <Card className="bg-secondary/50 shadow-lg warm-glow">
+            <CardContent className="p-4 space-y-3">
               {course.instructor && (
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                    <Users className="h-5 w-5 text-primary" />
+                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                    <Users className="h-4 w-4 text-primary" />
                     <span>Instructor</span>
                   </div>
-                  <span className="font-semibold text-sm text-secondary-foreground">{course.instructor}</span>
+                  <span className="font-semibold text-xs text-secondary-foreground">{course.instructor}</span>
                 </div>
               )}
               <Separator />
               {course.rating && (
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                    <Star className="h-5 w-5 text-yellow-400" />
+                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                    <Star className="h-4 w-4 text-yellow-400" />
                     <span>Rating</span>
                   </div>
-                  <span className="font-semibold text-sm text-secondary-foreground">{course.rating.toFixed(1)} / 5.0</span>
+                  <span className="font-semibold text-xs text-secondary-foreground">{course.rating.toFixed(1)} / 5.0</span>
                 </div>
               )}
                <Separator />
                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                    <BookOpen className="h-5 w-5 text-primary" />
+                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                    <BookOpen className="h-4 w-4 text-primary" />
                     <span>Modules</span>
                   </div>
-                  <span className="font-semibold text-sm text-secondary-foreground">{course.modules.length} Modules</span>
+                  <span className="font-semibold text-xs text-secondary-foreground">{course.modules.length} Modules</span>
                 </div>
                 <Separator />
-                {course.enrolledStudents && (
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                    <Clock className="h-5 w-5 text-primary" />
-                    <span>Enrolled</span>
+                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                    <Clock className="h-4 w-4 text-primary" />
+                    <span>Access</span>
                   </div>
-                  <span className="font-semibold text-sm text-secondary-foreground">{course.enrolledStudents.toLocaleString()} Students</span>
+                  <span className="font-semibold text-xs text-secondary-foreground">Lifetime</span>
                 </div>
-                )}
             </CardContent>
           </Card>
         </div>

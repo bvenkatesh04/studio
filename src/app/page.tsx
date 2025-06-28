@@ -290,7 +290,7 @@ export default function HomePage() {
             </div>
             <div className="flex items-center gap-2">
               <CheckCircle className="h-5 w-5 text-green-600" />
-              <span className="text-sm font-medium">95% Job Placement</span>
+              <span className="text-sm font-medium">Expert Mentorship</span>
             </div>
             <div className="flex items-center gap-2">
               <CheckCircle className="h-5 w-5 text-green-600" />
@@ -335,7 +335,7 @@ export default function HomePage() {
                 variants={featureCardVariants} 
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <Card className="h-full p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 bg-card/80 backdrop-blur-sm group">
+                <Card className="h-full p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 bg-card/80 backdrop-blur-sm group warm-glow">
                   <div className="mb-4 inline-flex items-center justify-center h-12 w-12 rounded-full bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
                     <benefit.icon className="h-6 w-6" />
                   </div>
@@ -389,7 +389,7 @@ export default function HomePage() {
                   transition: { type: "spring", stiffness: 300, damping: 20 }
                 }}
               >
-                <Card className="bg-card/80 backdrop-blur-sm shadow-lg overflow-hidden border-2 border-transparent hover:border-primary/30 transition-all duration-500 hover:shadow-xl">
+                <Card className="bg-card/80 backdrop-blur-sm shadow-lg overflow-hidden border-2 border-transparent hover:border-primary/30 transition-all duration-500 hover:shadow-xl warm-glow">
                   <div className="grid md:grid-cols-12 gap-0">
                     <div className="md:col-span-4 relative h-40 md:h-full min-h-[180px]">
                       <Image
@@ -499,7 +499,7 @@ export default function HomePage() {
                 variants={featureCardVariants}
                 transition={{ delay: index * 0.2 }}
               >
-                <Card className="h-full p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 bg-card/80 backdrop-blur-sm">
+                <Card className="h-full p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 bg-card/80 backdrop-blur-sm warm-glow">
                   <div className="flex items-center mb-4">
                     <Image
                       src={testimonial.image}
@@ -535,7 +535,7 @@ export default function HomePage() {
           variants={sectionVariants}
           className="text-center py-12"
         >
-          <Card className="p-8 md:p-12 bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 border-primary/20 shadow-xl">
+          <Card className="p-8 md:p-12 bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 border-primary/20 shadow-xl warm-glow">
             <motion.h2 
               variants={itemVariants}
               className="text-3xl md:text-4xl font-bold font-headline mb-4 text-primary"
