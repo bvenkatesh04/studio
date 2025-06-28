@@ -1,4 +1,5 @@
 "use client";
+import { useSearchParams } from 'next/navigation';
 import { courses } from '@/lib/data';
 import CourseCard from '@/components/custom/CourseCard';
 import { Input } from '@/components/ui/input';
@@ -6,12 +7,9 @@ import { Button } from '@/components/ui/button';
 import { Search } from 'lucide-react';
 import Link from 'next/link';
 
-interface SearchClientProps {
-  searchParams: { [key: string]: string | string[] | undefined };
-}
-
-export default function SearchClient({ searchParams }: SearchClientProps) {
-  const query = (searchParams.q as string) || '';
+export default function SearchClient() {
+  const searchParams = useSearchParams();
+  const query = searchParams.get('q') || '';
 
   const filteredCourses = courses.filter(course =>
     course.title.toLowerCase().includes(query.toLowerCase()) ||

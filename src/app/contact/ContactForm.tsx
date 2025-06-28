@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -11,16 +12,13 @@ import { sendContactMessage } from './actions';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { courses } from '@/lib/data';
 
-interface ContactFormProps {
-  searchParams: { [key: string]: string | string[] | undefined };
-}
-
-export default function ContactForm({ searchParams }: ContactFormProps) {
+export default function ContactForm() {
   const { toast } = useToast();
   const formRef = useRef<HTMLFormElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const searchParams = useSearchParams();
   
-  const courseFromUrl = (searchParams.course as string) || '';
+  const courseFromUrl = searchParams.get('course') || '';
 
   const [selectedCourse, setSelectedCourse] = useState(courseFromUrl);
   const [message, setMessage] = useState(
