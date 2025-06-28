@@ -1,4 +1,3 @@
-
 "use client";
 
 import { courses } from '@/lib/data';
@@ -28,37 +27,149 @@ export default function HomePage() {
 
   return (
     <>
-      <section
-        className="relative min-h-screen flex items-center justify-center text-center text-white"
-        style={{
-          backgroundImage: `linear-gradient(to top, rgba(17, 24, 39, 0.9), rgba(17, 24, 39, 0.3)), url(https://storage.googleapis.com/devo-st-bucket/assets/asset-1a134371-18e3-469b-8d82-965a3d7d4c2b.png)`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
-        <div
-            className="max-w-4xl px-4"
-        >
-          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold font-headline mb-4 text-white drop-shadow-lg">
+      <section className="relative min-h-screen flex items-center justify-center text-center text-white overflow-hidden">
+        {/* Animated Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-blue-900 to-gray-800">
+          {/* Floating Particles */}
+          <div className="absolute inset-0">
+            {[...Array(50)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute w-1 h-1 bg-primary/30 rounded-full"
+                initial={{
+                  x: Math.random() * window.innerWidth,
+                  y: Math.random() * window.innerHeight,
+                }}
+                animate={{
+                  x: Math.random() * window.innerWidth,
+                  y: Math.random() * window.innerHeight,
+                }}
+                transition={{
+                  duration: Math.random() * 20 + 10,
+                  repeat: Infinity,
+                  ease: "linear",
+                }}
+              />
+            ))}
+          </div>
+
+          {/* Geometric Shapes */}
+          <motion.div
+            className="absolute top-20 left-10 w-32 h-32 border border-primary/20 rotate-45"
+            animate={{ rotate: 360 }}
+            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          />
+          <motion.div
+            className="absolute top-40 right-20 w-24 h-24 border border-green-400/20 rounded-full"
+            animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <motion.div
+            className="absolute bottom-32 left-1/4 w-16 h-16 bg-primary/10 rotate-12"
+            animate={{ rotate: [12, 45, 12] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <motion.div
+            className="absolute bottom-20 right-1/3 w-20 h-20 border-2 border-blue-400/20 rounded-full"
+            animate={{ y: [-10, 10, -10] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+          />
+
+          {/* Grid Pattern */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="grid grid-cols-12 grid-rows-12 h-full w-full">
+              {[...Array(144)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="border border-primary/20"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: [0, 0.3, 0] }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    delay: (i * 0.1) % 4,
+                    ease: "easeInOut"
+                  }}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Pulsing Circles */}
+          <motion.div
+            className="absolute top-1/3 left-1/2 w-96 h-96 border border-primary/10 rounded-full"
+            animate={{ scale: [1, 1.5, 1], opacity: [0.1, 0.3, 0.1] }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <motion.div
+            className="absolute top-1/2 left-1/2 w-64 h-64 border border-green-400/10 rounded-full"
+            animate={{ scale: [1, 1.3, 1], opacity: [0.2, 0.4, 0.2] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          />
+
+          {/* Code-like Lines */}
+          <div className="absolute inset-0 overflow-hidden">
+            {[...Array(8)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"
+                style={{
+                  top: `${10 + i * 12}%`,
+                  width: `${60 + Math.random() * 40}%`,
+                  left: `${Math.random() * 20}%`,
+                }}
+                animate={{ 
+                  scaleX: [0, 1, 0],
+                  opacity: [0, 0.6, 0]
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  delay: i * 0.5,
+                  ease: "easeInOut"
+                }}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="relative z-10 max-w-4xl px-4">
+          <motion.h1 
+            className="text-4xl sm:text-5xl md:text-7xl font-bold font-headline mb-4 text-white drop-shadow-lg"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+          >
             Unlock Your Potential with TechFarm
-          </h1>
-          <p className="text-xl md:text-2xl text-white/90 mb-8 drop-shadow-md max-w-3xl mx-auto">
+          </motion.h1>
+          <motion.p 
+            className="text-xl md:text-2xl text-white/90 mb-8 drop-shadow-md max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
+          >
             Navigate the digital frontier with confidence. Our courses are crafted to equip you with today's most in-demand technologies, turning your ambition into real-world expertise.
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Button asChild size="lg" className="bg-primary hover:bg-primary/80 text-primary-foreground">
+          </motion.p>
+          <motion.div 
+            className="flex flex-wrap gap-4 justify-center"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
+          >
+            <Button asChild size="lg" className="bg-primary hover:bg-primary/80 text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300">
               <Link href="/#why-invest">
                 <BookOpen className="mr-2 h-5 w-5" />
                 Browse Courses
               </Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="border-white/50 bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm">
+            <Button asChild size="lg" variant="outline" className="border-white/50 bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300">
               <Link href="#why-invest">
                 <ArrowDownCircle className="mr-2 h-5 w-5" />
                 Learn More
               </Link>
             </Button>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -75,11 +186,9 @@ export default function HomePage() {
             Why Invest in These Technologies?
           </h2>
           <p className="text-lg text-muted-foreground mb-10 text-center max-w-3xl mx-auto">
-            In a rapidly evolving digital landscape, mastering key technologies is crucial for career growth. Here’s why our courses are essential for your success.
+            In a rapidly evolving digital landscape, mastering key technologies is crucial for career growth. Here's why our courses are essential for your success.
           </p>
-          <div 
-            className="space-y-8"
-          >
+          <div className="space-y-8">
             {courses.map((course, index) => (
               <motion.div 
                 key={course.id}
