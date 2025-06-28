@@ -58,13 +58,6 @@ export default function HomePage() {
     },
   };
 
-  const statsData = [
-    { number: "50K+", label: "Students Enrolled", icon: Users },
-    { number: "95%", label: "Job Placement Rate", icon: TrendingUp },
-    { number: "4.8/5", label: "Average Rating", icon: Star },
-    { number: "24/7", label: "Learning Support", icon: Clock }
-  ];
-
   const benefits = [
     {
       icon: Award,
@@ -312,32 +305,6 @@ export default function HomePage() {
       </section>
 
       <div className="container mx-auto px-4 py-16 space-y-32">
-        {/* Stats Section */}
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.1 }}
-          variants={sectionVariants}
-          className="py-16"
-        >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {statsData.map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                variants={featureCardVariants}
-                transition={{ delay: index * 0.1 }}
-                className="text-center"
-              >
-                <Card className="p-6 hover:shadow-xl transition-all duration-300 hover:scale-105 bg-card/80 backdrop-blur-sm">
-                  <stat.icon className="h-8 w-8 text-primary mx-auto mb-4" />
-                  <div className="text-3xl font-bold text-primary mb-2">{stat.number}</div>
-                  <div className="text-sm text-muted-foreground font-medium">{stat.label}</div>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </motion.section>
-
         {/* Enhanced Why Choose Section */}
         <motion.section
           initial="hidden"
