@@ -3,30 +3,63 @@ import { useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 import { courses } from '@/lib/data';
 import CourseCard from '@/components/custom/CourseCard';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { Search, Filter } from 'lucide-react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import ResponsiveContainer from '@/components/custom/ResponsiveContainer';
 import StaggeredGrid from '@/components/custom/StaggeredGrid';
 import AnimatedButton from '@/components/custom/AnimatedButton';
 import LoadingSpinner from '@/components/custom/LoadingSpinner';
+import AdvancedSearchFilters, { SearchFilters } from '@/components/custom/AdvancedSearchFilters';
+import type { Course } from '@/types';
 
 export default function SearchClient() {
   const searchParams = useSearchParams();
   const initialQuery = searchParams.get('q') || '';
-  const [query, setQuery] = useState(initialQuery);
+  
+  const [filters, setFilters] = useState<SearchFilters>({
+    query: initialQuery,
+    category: 'All Categories',
+    difficulty: 'All Levels',
+    duration: [0, 300],
+    rating: [0, 5],
+    tags: []
+  });
+  
+  const [isFiltersOpen, setIsFiltersOpen] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
 
-  const filteredCourses = courses.filter(course =>
-    course.title.toLowerCase().includes(query.toLowerCase()) ||
-    course.description.toLowerCase().includes(query.toLowerCase()) ||
-    course.category.toLowerCase().includes(query.toLowerCase())
-  );
+  const filteredCourses = courses.filter((course: Course) => {
+    // Text search
+    const matchesQuery = !filters.query || 
+      course.title.toLowerCase().includes(filters.query.toLowerCase()) ||
+      course.description.toLowerCase().includes(filters.query.toLowerCase()) ||
+      course.category.toLowerCase().includes(filters.query.toLowerCase());
 
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
+    // Category filter
+    const matchesCategory = filters.category === 'All Categories' || 
+      course.category === filters.category;
+
+    // Rating filter
+    const matchesRating = !course.rating || 
+      (course.rating >= filters.rating[0] && course.rating <= filters.rating[1]);
+
+    // Duration filter (approximate based on module count)
+    const estimatedDuration = course.modules.length * 45; // 45 min per module average
+    const matchesDuration = estimatedDuration >= filters.duration[0] && 
+      estimatedDuration <= filters.duration[1];
+
+    // Tags filter (basic implementation)
+    const matchesTags = filters.tags.length === 0 || 
+      filters.tags.some(tag => 
+        course.title.toLowerCase().includes(tag.toLowerCase()) ||
+        course.description.toLowerCase().includes(tag.toLowerCase())
+      );
+
+    return matchesQuery && matchesCategory && matchesRating && matchesDuration && matchesTags;
+  });
+
+  const handleFiltersChange = (newFilters: SearchFilters) => {
+    setFilters(newFilters);
     setIsSearching(true);
     // Simulate search delay for better UX
     setTimeout(() => setIsSearching(false), 500);
@@ -70,52 +103,19 @@ export default function SearchClient() {
           </p>
         </motion.section>
 
-        {/* Search Form */}
-        <motion.section variants={itemVariants} className="max-w-2xl mx-auto">
-          <form onSubmit={handleSearch} className="flex flex-col sm:flex-row gap-2 sm:gap-3">
-            <div className="relative flex-grow">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-              <Input
-                type="search"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search by title, category, or description..."
-                className="pl-10 h-10 sm:h-12 text-sm bg-card/50 backdrop-blur-sm border-2 focus:border-primary/50 transition-all duration-300"
-              />
-            </div>
-            <div className="flex gap-2">
-              <AnimatedButton 
-                type="submit" 
-                size="default" 
-                className="flex-1 sm:flex-none h-10 sm:h-12 px-4 sm:px-6 text-sm"
-                shimmer
-                disabled={isSearching}
-              >
-                {isSearching ? (
-                  <LoadingSpinner size="sm" />
-                ) : (
-                  <>
-                    <Search className="mr-2 h-4 w-4" />
-                    Search
-                  </>
-                )}
-              </AnimatedButton>
-              <AnimatedButton 
-                variant="outline" 
-                size="default" 
-                className="h-10 sm:h-12 px-3 sm:px-4 text-sm"
-                shimmer
-              >
-                <Filter className="h-4 w-4" />
-                <span className="sr-only sm:not-sr-only sm:ml-2">Filter</span>
-              </AnimatedButton>
-            </div>
-          </form>
+        {/* Advanced Search Filters */}
+        <motion.section variants={itemVariants}>
+          <AdvancedSearchFilters
+            filters={filters}
+            onFiltersChange={handleFiltersChange}
+            isOpen={isFiltersOpen}
+            onToggle={() => setIsFiltersOpen(!isFiltersOpen)}
+          />
         </motion.section>
         
         {/* Results */}
         <motion.section variants={itemVariants}>
-          {query && (
+          {(filters.query || isFiltersOpen) && (
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -128,9 +128,9 @@ export default function SearchClient() {
                     Searching...
                   </span>
                 ) : (
-                  <>
+                        {' '}for <span className="font-semibold text-primary">"{filters.query}"</span>
                     Showing <span className="font-semibold text-primary">{filteredCourses.length}</span> results for{' '}
-                    <span className="font-semibold text-primary">"{query}"</span>
+                    {filters.query && (
                   </>
                 )}
               </p>
@@ -148,7 +148,7 @@ export default function SearchClient() {
                     <CourseCard key={course.id} course={course} delay={index * 0.1} />
                   ))}
                 </StaggeredGrid>
-              ) : query ? (
+              ) : filters.query || isFiltersOpen ? (
                 <motion.div 
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -160,7 +160,7 @@ export default function SearchClient() {
                       No Courses Found
                     </h2>
                     <p className="text-muted-foreground mb-4 text-sm">
-                      We couldn't find any courses matching "{query}". Try a different search term or browse all courses.
+                      We couldn't find any courses matching your criteria. Try adjusting your filters or browse all courses.
                     </p>
                     <AnimatedButton asChild shimmer>
                       <Link href="/#why-invest">Browse All Courses</Link>

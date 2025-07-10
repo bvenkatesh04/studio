@@ -9,6 +9,7 @@ import { cn } from '@/lib/utils';
 import { motion, AnimatePresence } from 'framer-motion';
 import TechFarmLogo from './TechFarmLogo';
 import AnimatedButton from './AnimatedButton';
+import { ThemeToggle } from '@/components/ui/theme-toggle';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -176,6 +177,17 @@ export default function Header() {
                 <span className="sr-only">Search</span>
               </Link>
             </AnimatedButton>
+          </motion.div>
+          
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ 
+              opacity: 1, 
+              scale: 1,
+              transition: { delay: 0.7 }
+            }}
+          >
+            <ThemeToggle />
           </motion.div>
         </nav>
 

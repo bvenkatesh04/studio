@@ -50,6 +50,52 @@
     --sidebar-border: 30 25% 88%;
     --sidebar-ring: 25 85% 45%;
   }
+
+  .dark {
+    --background: 20 14.3% 4.1%;
+    --background-end: 20 14.3% 6.1%;
+    --foreground: 0 0% 95%;
+
+    --card: 20 14.3% 4.1%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 20 14.3% 4.1%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 25 85% 55%;
+    --primary-foreground: 20 14.3% 4.1%;
+
+    --secondary: 12 6.5% 15.1%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 12 6.5% 15.1%;
+    --muted-foreground: 24 5.4% 63.9%;
+
+    --accent: 12 6.5% 15.1%;
+    --accent-foreground: 0 0% 95%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 95%;
+
+    --border: 12 6.5% 15.1%;
+    --input: 12 6.5% 15.1%;
+    --ring: 25 85% 55%;
+
+    --chart-1: 25 85% 55%;
+    --chart-2: 30 75% 60%;
+    --chart-3: 35 65% 65%;
+    --chart-4: 40 55% 70%;
+    --chart-5: 45 45% 75%;
+    
+    --sidebar-background: 20 14.3% 4.1%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 25 85% 55%;
+    --sidebar-primary-foreground: 20 14.3% 4.1%;
+    --sidebar-accent: 12 6.5% 15.1%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 12 6.5% 15.1%;
+    --sidebar-ring: 25 85% 55%;
+  }
 }
 
 @layer base {
@@ -64,7 +110,7 @@
     overflow-x: hidden;
   }
   
-  /* Warm Background Animation */
+  /* Enhanced Background Animation */
   body::before {
     content: '';
     position: fixed;
@@ -73,15 +119,15 @@
     width: 100%;
     height: 100%;
     background: 
-      radial-gradient(circle at 20% 80%, rgba(255, 183, 77, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, rgba(255, 138, 101, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 40% 40%, rgba(255, 206, 84, 0.08) 0%, transparent 50%);
-    animation: float-warm 20s ease-in-out infinite;
+      radial-gradient(circle at 20% 80%, rgba(34, 197, 94, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(34, 197, 94, 0.06) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(34, 197, 94, 0.04) 0%, transparent 50%);
+    animation: float-warm 25s ease-in-out infinite;
     pointer-events: none;
     z-index: -1;
   }
   
-  /* Additional floating warm particles */
+  /* Enhanced floating particles */
   body::after {
     content: '';
     position: fixed;
@@ -90,13 +136,28 @@
     width: 100%;
     height: 100%;
     background-image: 
-      radial-gradient(circle at 10% 20%, rgba(255, 183, 77, 0.05) 1px, transparent 1px),
-      radial-gradient(circle at 90% 80%, rgba(255, 138, 101, 0.05) 1px, transparent 1px),
-      radial-gradient(circle at 60% 60%, rgba(255, 206, 84, 0.05) 1px, transparent 1px);
-    background-size: 100px 100px, 150px 150px, 200px 200px;
-    animation: drift-particles 30s linear infinite;
+      radial-gradient(circle at 10% 20%, rgba(34, 197, 94, 0.03) 1px, transparent 1px),
+      radial-gradient(circle at 90% 80%, rgba(34, 197, 94, 0.03) 1px, transparent 1px),
+      radial-gradient(circle at 60% 60%, rgba(34, 197, 94, 0.03) 1px, transparent 1px);
+    background-size: 120px 120px, 180px 180px, 240px 240px;
+    animation: drift-particles 35s linear infinite;
     pointer-events: none;
     z-index: -1;
+  }
+
+  /* Dark mode adjustments */
+  .dark body::before {
+    background: 
+      radial-gradient(circle at 20% 80%, rgba(34, 197, 94, 0.06) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(34, 197, 94, 0.04) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(34, 197, 94, 0.03) 0%, transparent 50%);
+  }
+
+  .dark body::after {
+    background-image: 
+      radial-gradient(circle at 10% 20%, rgba(34, 197, 94, 0.02) 1px, transparent 1px),
+      radial-gradient(circle at 90% 80%, rgba(34, 197, 94, 0.02) 1px, transparent 1px),
+      radial-gradient(circle at 60% 60%, rgba(34, 197, 94, 0.02) 1px, transparent 1px);
   }
 }
 
@@ -119,7 +180,7 @@ html {
 
 .card-interactive:hover {
   transform: translateY(-4px);
-  box-shadow: 0 20px 25px -5px rgba(255, 183, 77, 0.1), 0 10px 10px -5px rgba(255, 138, 101, 0.04);
+  box-shadow: 0 20px 25px -5px rgba(34, 197, 94, 0.1), 0 10px 10px -5px rgba(34, 197, 94, 0.04);
 }
 
 /* Responsive grid utilities */
@@ -189,12 +250,59 @@ html {
 
 /* Warm glow effect for interactive elements */
 .warm-glow {
-  box-shadow: 0 0 20px rgba(255, 183, 77, 0.3);
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.15);
   transition: box-shadow 0.3s ease;
 }
 
 .warm-glow:hover {
-  box-shadow: 0 0 30px rgba(255, 183, 77, 0.5), 0 0 60px rgba(255, 138, 101, 0.3);
+  box-shadow: 0 0 30px rgba(34, 197, 94, 0.25), 0 0 60px rgba(34, 197, 94, 0.15);
+}
+
+/* Enhanced animations */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.btn-animated {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-animated::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.btn-animated:hover::before {
+  left: 100%;
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .btn-animated::before {
+    display: none;
+  }
+}
+
+/* Performance optimizations */
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-opacity {
+  will-change: opacity;
 }
 
 /* Reduced motion support */

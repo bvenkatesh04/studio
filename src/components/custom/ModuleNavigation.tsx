@@ -7,6 +7,8 @@ import { Button } from '@/components/ui/button';
 import { CheckCircle, Circle, BookOpen } from 'lucide-react';
 import { motion } from 'framer-motion';
 import AnimatedCard from './AnimatedCard';
+import { useProgress } from '@/hooks/use-progress';
+import ProgressBar from './ProgressBar';
 
 interface ModuleNavigationProps {
   course: Course;
@@ -15,8 +17,7 @@ interface ModuleNavigationProps {
 
 export default function ModuleNavigation({ course, currentModuleId }: ModuleNavigationProps) {
   const pathname = usePathname();
-  // Mock progress for demo. In a real app, this would come from user data.
-  const completedModules = ['m1_1']; 
+  const { isModuleCompleted, updateProgress } = useProgress();
 
   const containerVariants = {
     hidden: { opacity: 0, x: -50 },
@@ -41,7 +42,9 @@ export default function ModuleNavigation({ course, currentModuleId }: ModuleNavi
     }
   };
 
-  const progressPercentage = (completedModules.length / course.modules.length) * 100;
+  const completedCount = course.modules.filter(module => 
+    isModuleCompleted(course.id, module.id)
+  ).length;
 
   return (
     <motion.aside 
@@ -60,20 +63,12 @@ export default function ModuleNavigation({ course, currentModuleId }: ModuleNavi
           </div>
           
           {/* Progress Bar */}
-          <div className="mb-4">
-            <div className="flex justify-between text-xs sm:text-sm text-muted-foreground mb-2">
-              <span>Progress</span>
-              <span>{completedModules.length}/{course.modules.length} completed</span>
-            </div>
-            <div className="w-full bg-muted rounded-full h-2">
-              <motion.div 
-                className="bg-primary h-2 rounded-full"
-                initial={{ width: 0 }}
-                animate={{ width: `${progressPercentage}%` }}
-                transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-              />
-            </div>
-          </div>
+          <ProgressBar 
+            progress={completedCount} 
+            total={course.modules.length}
+            size="md"
+            animated
+          />
         </motion.div>
 
         <ScrollArea className="h-auto max-h-[calc(100vh-20rem)] pr-3">
@@ -81,7 +76,7 @@ export default function ModuleNavigation({ course, currentModuleId }: ModuleNavi
             <ul className="space-y-2">
               {course.modules.map((module, index) => {
                 const isActive = pathname === `/courses/${course.id}/${module.id}`;
-                const isCompleted = completedModules.includes(module.id);
+                const isCompleted = isModuleCompleted(course.id, module.id);
                 
                 return (
                   <motion.li 
@@ -98,6 +93,11 @@ export default function ModuleNavigation({ course, currentModuleId }: ModuleNavi
                           ? 'bg-primary/20 text-primary border-l-4 border-primary shadow-md' 
                           : 'hover:bg-secondary/80 hover:translate-x-1'
                       }`}
+                      onClick={() => {
+                        if (isActive) {
+                          updateProgress(course.id, module.id, course.modules.length);
+                        }
+                      }}
                     >
                       <Link href={`/courses/${course.id}/${module.id}`} className="flex items-start gap-3 w-full">
                         <motion.div

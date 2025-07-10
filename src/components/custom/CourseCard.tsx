@@ -6,9 +6,12 @@ import { motion } from 'framer-motion';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Star, BookOpen } from 'lucide-react';
+import { Star, BookOpen, Heart } from 'lucide-react';
 import AnimatedCard from './AnimatedCard';
 import AnimatedButton from './AnimatedButton';
+import { useFavorites } from '@/hooks/use-favorites';
+import { useProgress } from '@/hooks/use-progress';
+import ProgressBar from './ProgressBar';
 
 interface CourseCardProps {
   course: Course;
@@ -16,6 +19,11 @@ interface CourseCardProps {
 }
 
 export default function CourseCard({ course, delay = 0 }: CourseCardProps) {
+  const { isFavorite, toggleFavorite } = useFavorites();
+  const { getProgressPercentage } = useProgress();
+  const isCourseFavorite = isFavorite(course.id);
+  const progressPercentage = getProgressPercentage(course.id);
+
   return (
     <AnimatedCard 
       className="flex flex-col overflow-hidden bg-card hover:border-primary/50 shadow-lg hover:shadow-xl warm-glow"
@@ -34,6 +42,26 @@ export default function CourseCard({ course, delay = 0 }: CourseCardProps) {
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+          
+          {/* Favorite Button */}
+          <motion.button
+            onClick={(e) => {
+              e.preventDefault();
+              toggleFavorite(course.id);
+            }}
+            className="absolute top-2 left-2 p-2 rounded-full bg-black/50 backdrop-blur-sm hover:bg-black/70 transition-colors"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+          >
+            <Heart 
+              className={`h-4 w-4 transition-colors ${
+                isCourseFavorite 
+                  ? 'fill-red-500 text-red-500' 
+                  : 'text-white hover:text-red-500'
+              }`} 
+            />
+          </motion.button>
+          
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -56,6 +84,18 @@ export default function CourseCard({ course, delay = 0 }: CourseCardProps) {
         <CardDescription className="text-muted-foreground text-xs sm:text-sm line-clamp-3 flex-grow">
           {course.description}
         </CardDescription>
+        
+        {/* Progress Bar */}
+        {progressPercentage > 0 && (
+          <div className="mt-3">
+            <ProgressBar 
+              progress={progressPercentage} 
+              total={100} 
+              size="sm"
+              showBadge={false}
+            />
+          </div>
+        )}
         
         <div className="mt-3 flex items-center justify-between text-xs text-muted-foreground">
           {course.rating && (
@@ -84,7 +124,9 @@ export default function CourseCard({ course, delay = 0 }: CourseCardProps) {
           className="w-full bg-primary hover:bg-primary/80 text-primary-foreground text-sm"
           shimmer
         >
-          <Link href={`/courses/${course.id}`}>View Course</Link>
+          <Link href={`/courses/${course.id}`}>
+            {progressPercentage > 0 ? 'Continue Learning' : 'View Course'}
+          </Link>
         </AnimatedButton>
       </CardFooter>
     </AnimatedCard>

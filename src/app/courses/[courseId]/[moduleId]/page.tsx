@@ -2,11 +2,14 @@ import { getModuleById, getCourseById } from '@/lib/data';
 import { notFound } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { ArrowLeft, ArrowRight, BookOpen } from 'lucide-react';
+import { ArrowLeft, ArrowRight, BookOpen, CheckCircle } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
 import { getAllCourses } from '@/lib/data';
+import ProgressBar from '@/components/custom/ProgressBar';
+import { motion } from 'framer-motion';
+
 type PageProps = {
       params: Promise<{ courseId: string; moduleId: string }>;
 }
@@ -40,7 +43,29 @@ export default async function Page({params}: PageProps) {
   const nextModule = moduleIndex < course.modules.length - 1 ? course.modules[moduleIndex + 1] : null;
 
   return (
-    <Card className="bg-card shadow-xl rounded-lg">
+    <div className="space-y-6">
+      {/* Progress Bar */}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
+        <Card className="p-4">
+          <ProgressBar 
+            progress={moduleIndex + 1} 
+            total={course.modules.length}
+            size="md"
+            animated
+          />
+        </Card>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+      >
+        <Card className="bg-card shadow-xl rounded-lg warm-glow">
       <CardHeader>
         <div className="flex items-center justify-between">
           <div>
@@ -49,7 +74,13 @@ export default async function Page({params}: PageProps) {
             </Link>
             <CardTitle className="text-3xl font-bold font-headline mt-1 text-primary">{module.title}</CardTitle>
           </div>
-          <Badge variant="outline" className="text-sm">{module.duration}</Badge>
+              <div className="flex items-center gap-2">
+                <Badge variant="outline" className="text-sm">{module.duration}</Badge>
+                <Badge variant="default" className="text-sm bg-green-600">
+                  <CheckCircle className="h-3 w-3 mr-1" />
+                  Module {moduleIndex + 1}
+                </Badge>
+              </div>
         </div>
       </CardHeader>
       <Separator />
@@ -95,5 +126,7 @@ export default async function Page({params}: PageProps) {
         ) : <div /> }
       </div>
     </Card>
+      </motion.div>
+    </div>
   );
 }

@@ -5,11 +5,15 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { PlayCircle, Users, Star, Clock, BookOpen } from 'lucide-react';
+import { PlayCircle, Users, Star, Clock, BookOpen, Heart } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Terminal } from "lucide-react";
 import { Separator } from '@/components/ui/separator';
 import { getAllCourses } from '@/lib/data';
+import CourseRecommendations from '@/components/custom/CourseRecommendations';
+import ProgressBar from '@/components/custom/ProgressBar';
+import { motion } from 'framer-motion';
+
 type ModulePageProps = {
      params: Promise<{ courseId: string }>;
 };
@@ -28,7 +32,8 @@ export default async function CourseOverviewPage({ params }: ModulePageProps) {
   const firstModuleId = course.modules.length > 0 ? course.modules[0].id : null;
 
   return (
-    <div className="space-y-6">
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="lg:col-span-2 space-y-6">
       {/* Hero Section */}
       <Card className="overflow-hidden bg-card shadow-xl border-none rounded-lg warm-glow">
         <CardHeader className="p-0 relative h-48 md:h-64 w-full">
@@ -46,17 +51,24 @@ export default async function CourseOverviewPage({ params }: ModulePageProps) {
             <CardTitle className="text-2xl sm:text-3xl md:text-4xl font-bold font-headline">{course.title}</CardTitle>
             <CardDescription className="mt-2 text-base text-white/90 max-w-3xl">
               {course.description}
-            </CardDescription>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <Card className="overflow-hidden bg-card shadow-xl border-none rounded-lg warm-glow">
           </div>
         </CardHeader>
       </Card>
+        </motion.div>
 
-      {/* Main Content Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        
-        {/* Left Column (main content) */}
-        <div className="lg:col-span-2 space-y-6">
-           <Card className="shadow-lg warm-glow">
+        {/* Course Content */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <Card className="shadow-lg warm-glow">
             <CardHeader>
               <CardTitle className="text-xl font-headline text-primary">About this course</CardTitle>
             </CardHeader>
@@ -66,10 +78,16 @@ export default async function CourseOverviewPage({ params }: ModulePageProps) {
               </div>
             </CardContent>
           </Card>
-        </div>
+        </motion.div>
+      </div>
 
-        {/* Right Column (sidebar details) */}
-        <div className="lg:col-span-1 space-y-4">
+      {/* Right Column (sidebar) */}
+      <div className="lg:col-span-1 space-y-4">
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
           {firstModuleId ? (
             <Button size="lg" asChild className="w-full bg-primary hover:bg-primary/80 text-primary-foreground text-base py-6 shadow-lg transition-transform hover:scale-105 warm-glow">
               <Link href={`/courses/${course.id}/${firstModuleId}`}>
@@ -86,7 +104,13 @@ export default async function CourseOverviewPage({ params }: ModulePageProps) {
                 </AlertDescription>
               </Alert>
           )}
+        </motion.div>
 
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
           <Card className="bg-secondary/50 shadow-lg warm-glow">
             <CardContent className="p-4 space-y-3">
               {course.instructor && (
@@ -126,7 +150,16 @@ export default async function CourseOverviewPage({ params }: ModulePageProps) {
                 </div>
             </CardContent>
           </Card>
-        </div>
+        </motion.div>
+
+        {/* Course Recommendations */}
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+        >
+          <CourseRecommendations currentCourseId={course.id} />
+        </motion.div>
       </div>
     </div>
   );
