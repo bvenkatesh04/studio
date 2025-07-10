@@ -51,15 +51,17 @@ export default async function CourseOverviewPage({ params }: ModulePageProps) {
             <CardTitle className="text-2xl sm:text-3xl md:text-4xl font-bold font-headline">{course.title}</CardTitle>
             <CardDescription className="mt-2 text-base text-white/90 max-w-3xl">
               {course.description}
+            </CardDescription>
+          </div>
+        </CardHeader>
+      </Card>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
           <Card className="overflow-hidden bg-card shadow-xl border-none rounded-lg warm-glow">
-          </div>
-        </CardHeader>
-      </Card>
+          </Card>
         </motion.div>
 
         {/* Course Content */}
