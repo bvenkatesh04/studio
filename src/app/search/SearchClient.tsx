@@ -128,9 +128,11 @@ export default function SearchClient() {
                     Searching...
                   </span>
                 ) : (
-                        {' '}for <span className="font-semibold text-primary">"{filters.query}"</span>
-                    Showing <span className="font-semibold text-primary">{filteredCourses.length}</span> results for{' '}
+                  <>
+                    Showing <span className="font-semibold text-primary">{filteredCourses.length}</span> results
                     {filters.query && (
+                      <>{' '}for <span className="font-semibold text-primary">"{filters.query}"</span></>
+                    )}
                   </>
                 )}
               </p>
