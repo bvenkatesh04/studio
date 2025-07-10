@@ -13,6 +13,7 @@ import { getAllCourses } from '@/lib/data';
 import CourseRecommendations from '@/components/custom/CourseRecommendations';
 import ProgressBar from '@/components/custom/ProgressBar';
 import { motion } from 'framer-motion';
+import AnimatedCard from '@/components/custom/AnimatedCard';
 
 type ModulePageProps = {
      params: Promise<{ courseId: string }>;
@@ -65,12 +66,8 @@ export default async function CourseOverviewPage({ params }: ModulePageProps) {
         </motion.div>
 
         {/* Course Content */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          <Card className="shadow-lg warm-glow">
+        <AnimatedCard delay={0.2} className="shadow-lg warm-glow">
+          <Card>
             <CardHeader>
               <CardTitle className="text-xl font-headline text-primary">About this course</CardTitle>
             </CardHeader>
@@ -80,7 +77,7 @@ export default async function CourseOverviewPage({ params }: ModulePageProps) {
               </div>
             </CardContent>
           </Card>
-        </motion.div>
+        </AnimatedCard>
       </div>
 
       {/* Right Column (sidebar) */}
@@ -108,12 +105,8 @@ export default async function CourseOverviewPage({ params }: ModulePageProps) {
           )}
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          <Card className="bg-secondary/50 shadow-lg warm-glow">
+        <AnimatedCard delay={0.4} className="bg-secondary/50 shadow-lg warm-glow">
+          <Card>
             <CardContent className="p-4 space-y-3">
               {course.instructor && (
                 <div className="flex items-center justify-between">
@@ -152,16 +145,12 @@ export default async function CourseOverviewPage({ params }: ModulePageProps) {
                 </div>
             </CardContent>
           </Card>
-        </motion.div>
+        </AnimatedCard>
 
         {/* Course Recommendations */}
-        <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-        >
+        <AnimatedCard delay={0.5}>
           <CourseRecommendations currentCourseId={course.id} />
-        </motion.div>
+        </AnimatedCard>
       </div>
     </div>
   );
