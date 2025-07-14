@@ -1,7 +1,7 @@
 "use client";
 
-import { Progress } from '@/components/ui/progress';
-import { Badge } from '@/components/ui/badge';
+import Progress from '@/components/ui/progress';
+import Badge from '@/components/ui/badge';
 import { CheckCircle, Circle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
