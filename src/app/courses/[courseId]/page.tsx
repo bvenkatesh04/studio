@@ -56,14 +56,6 @@ export default async function CourseOverviewPage({ params }: ModulePageProps) {
           </div>
         </CardHeader>
       </Card>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <Card className="overflow-hidden bg-card shadow-xl border-none rounded-lg warm-glow">
-          </Card>
-        </motion.div>
 
         {/* Course Content */}
         <AnimatedCard delay={0.2} className="shadow-lg warm-glow">
