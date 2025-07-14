@@ -12,8 +12,8 @@ import { Separator } from '@/components/ui/separator';
 import { getAllCourses } from '@/lib/data';
 import CourseRecommendations from '@/components/custom/CourseRecommendations';
 import ProgressBar from '@/components/custom/ProgressBar';
-import { motion } from 'framer-motion';
 import AnimatedCard from '@/components/custom/AnimatedCard';
+import AnimatedCourseAction from '@/components/custom/AnimatedCourseAction';
 
 type ModulePageProps = {
      params: Promise<{ courseId: string }>;
@@ -74,11 +74,7 @@ export default async function CourseOverviewPage({ params }: ModulePageProps) {
 
       {/* Right Column (sidebar) */}
       <div className="lg:col-span-1 space-y-4">
-        <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
+        <AnimatedCourseAction delay={0.3}>
           {firstModuleId ? (
             <Button size="lg" asChild className="w-full bg-primary hover:bg-primary/80 text-primary-foreground text-base py-6 shadow-lg transition-transform hover:scale-105 warm-glow">
               <Link href={`/courses/${course.id}/${firstModuleId}`}>
@@ -95,7 +91,7 @@ export default async function CourseOverviewPage({ params }: ModulePageProps) {
                 </AlertDescription>
               </Alert>
           )}
-        </motion.div>
+        </AnimatedCourseAction>
 
         <AnimatedCard delay={0.4} className="bg-secondary/50 shadow-lg warm-glow">
           <Card>
