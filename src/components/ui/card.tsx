@@ -76,5 +76,4 @@ const CardFooter = React.forwardRef<
 ))
 CardFooter.displayName = "CardFooter"
 
-export { CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
-export default Card
+export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }

@@ -55,6 +55,5 @@ const AlertDescription = React.forwardRef<
   />
 ))
 AlertDescription.displayName = "AlertDescription"
-
-export { AlertTitle, AlertDescription }
+export { Alert, AlertTitle, AlertDescription }
 export default Alert
