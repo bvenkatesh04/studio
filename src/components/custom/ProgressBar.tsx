@@ -3,7 +3,6 @@
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import { CheckCircle, Circle } from 'lucide-react';
-import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
 interface ProgressBarProps {
@@ -12,7 +11,6 @@ interface ProgressBarProps {
   className?: string;
   showBadge?: boolean;
   size?: 'sm' | 'md' | 'lg';
-  animated?: boolean;
 }
 
 export default function ProgressBar({
@@ -20,8 +18,7 @@ export default function ProgressBar({
   total,
   className,
   showBadge = true,
-  size = 'md',
-  animated = true
+  size = 'md'
 }: ProgressBarProps) {
   const percentage = total > 0 ? Math.round((progress / total) * 100) : 0;
   const isCompleted = progress >= total && total > 0;
@@ -32,12 +29,6 @@ export default function ProgressBar({
     lg: 'h-3'
   };
 
-  const ProgressComponent = animated ? motion.div : 'div';
-  const progressProps = animated ? {
-    initial: { width: 0 },
-    animate: { width: `${percentage}%` },
-    transition: { duration: 1, ease: "easeOut" }
-  } : {};
 
   return (
     <div className={cn("space-y-2", className)}>
@@ -63,18 +54,13 @@ export default function ProgressBar({
         )}
       </div>
       
-      <div className={cn("w-full bg-muted rounded-full overflow-hidden", sizeClasses[size])}>
-        <ProgressComponent
-          className={cn(
-            "h-full transition-all duration-300 rounded-full",
-            isCompleted 
-              ? "bg-green-600" 
-              : "bg-primary"
-          )}
-          style={{ width: animated ? undefined : `${percentage}%` }}
-          {...progressProps}
-        />
-      </div>
+      <Progress
+        value={percentage}
+        className={cn(
+          sizeClasses[size],
+          isCompleted && "text-green-600"
+        )}
+      />
     </div>
   );
 }
