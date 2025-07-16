@@ -67,7 +67,6 @@ export default function ModuleNavigation({ course, currentModuleId }: ModuleNavi
             progress={completedCount} 
             total={course.modules.length}
             size="md"
-            animated
           />
         </motion.div>
 

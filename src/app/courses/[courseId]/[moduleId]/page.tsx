@@ -55,7 +55,6 @@ export default async function Page({params}: PageProps) {
             progress={moduleIndex + 1} 
             total={course.modules.length}
             size="md"
-            animated
           />
         </Card>
       </motion.div>
