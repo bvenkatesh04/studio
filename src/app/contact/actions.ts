@@ -13,16 +13,19 @@ export async function sendContactMessage(formData: FormData) {
   }
 
   // In a real app, you would integrate an email service like SendGrid, Resend, or Nodemailer here.
-  // For this demonstration, we are logging the data to the server console.
-  console.log('--- New Contact Form Submission ---');
-  console.log(`Name: ${name}`);
-  console.log(`Email: ${email}`);
-  console.log(`Phone: ${phone}`);
-  if (course) {
-    console.log(`Course: ${course}`);
+  // For this demonstration, we are processing the contact form submission.
+  // In production, avoid logging sensitive user data
+  if (process.env.NODE_ENV === 'development') {
+    console.log('--- New Contact Form Submission ---');
+    console.log(`Name: ${name}`);
+    console.log(`Email: ${email}`);
+    console.log(`Phone: ${phone}`);
+    if (course) {
+      console.log(`Course: ${course}`);
+    }
+    console.log(`Message: ${message}`);
+    console.log('------------------------------------');
   }
-  console.log(`Message: ${message}`);
-  console.log('------------------------------------');
 
   // Simulate network delay to show loading state
   await new Promise(resolve => setTimeout(resolve, 1000));

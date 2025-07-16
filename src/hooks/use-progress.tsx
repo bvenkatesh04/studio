@@ -22,17 +22,25 @@ const ProgressContext = createContext<ProgressContextType | undefined>(undefined
 
 export function ProgressProvider({ children }: { children: React.ReactNode }) {
   const [courseProgress, setCourseProgress] = useState<Record<string, CourseProgress>>({});
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const stored = localStorage.getItem('techfarm-progress');
     if (stored) {
-      setCourseProgress(JSON.parse(stored));
+      try {
+        setCourseProgress(JSON.parse(stored));
+      } catch (error) {
+        console.error('Failed to parse progress from localStorage:', error);
+        localStorage.removeItem('techfarm-progress');
+      }
     }
   }, []);
 
   useEffect(() => {
+    if (!mounted) return;
     localStorage.setItem('techfarm-progress', JSON.stringify(courseProgress));
-  }, [courseProgress]);
+  }, [courseProgress, mounted]);
 
   const updateProgress = (courseId: string, moduleId: string, totalModules: number) => {
     setCourseProgress(prev => {

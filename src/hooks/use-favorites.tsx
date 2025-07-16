@@ -15,20 +15,34 @@ const FavoritesContext = createContext<FavoritesContextType | undefined>(undefin
 
 export function FavoritesProvider({ children }: { children: React.ReactNode }) {
   const [favorites, setFavorites] = useState<string[]>([]);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const stored = localStorage.getItem('techfarm-favorites');
     if (stored) {
-      setFavorites(JSON.parse(stored));
+      try {
+        setFavorites(JSON.parse(stored));
+      } catch (error) {
+        console.error('Failed to parse favorites from localStorage:', error);
+        localStorage.removeItem('techfarm-favorites');
+      }
     }
   }, []);
 
   useEffect(() => {
+    if (!mounted) return;
     localStorage.setItem('techfarm-favorites', JSON.stringify(favorites));
-  }, [favorites]);
+  }, [favorites, mounted]);
 
   const addToFavorites = (courseId: string) => {
-    setFavorites(prev => [...prev, courseId]);
+    setFavorites(prev => {
+      // Prevent duplicates
+      if (prev.includes(courseId)) {
+        return prev;
+      }
+      return [...prev, courseId];
+    });
   };
 
   const removeFromFavorites = (courseId: string) => {
