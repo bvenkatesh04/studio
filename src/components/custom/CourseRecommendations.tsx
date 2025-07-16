@@ -72,7 +72,7 @@ export default function CourseRecommendations({
   if (recommendations.length === 0) return null;
 
   return (
-    <Card className="warm-glow">
+    <Card className="warm-glow h-fit">
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-lg">
           <Sparkles className="h-5 w-5 text-primary" />
@@ -88,7 +88,7 @@ export default function CourseRecommendations({
         >
           {recommendations.map((course) => (
             <motion.div key={course.id} variants={itemVariants}>
-              <Card className="hover:shadow-md transition-shadow duration-300">
+              <Card className="hover:shadow-md transition-shadow duration-300 h-fit">
                 <CardContent className="p-4">
                   <div className="flex gap-4">
                     <div className="relative w-16 h-16 flex-shrink-0">
