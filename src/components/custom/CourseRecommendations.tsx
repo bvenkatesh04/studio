@@ -79,7 +79,7 @@ export default function CourseRecommendations({
           Recommended for You
         </CardTitle>
       </CardHeader>
-      <CardContent>
+      <CardContent className="p-6">
         <motion.div
           variants={containerVariants}
           initial="hidden"
